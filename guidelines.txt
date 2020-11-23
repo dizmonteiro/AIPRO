@@ -1,0 +1,38 @@
+Sistemas de Partilha de Bicicletas (SPB)
+
+Problema do Reequilibrio de Partilha de Bicicletas (PRPB)
+
+Ára de Proximidade de uma Estação (APE)
+
+Agente de Estação (AE)
+
+Agente Utilizador (AU)
+
+Agente Interface (AI)
+
+-Agente de Estação (AE):
+	-representam as estações do SPB
+	-escutam as mensagens dos AUs
+	-atualizam o seu conhecimento sempre que um utilizador entra ou sai da sua APE
+	-associa os AUs que se encontrem dentro da sua área de proximidade
+	-monitorizam os alugueres e devoluções das suas bicicletas
+	-determinam o seu estado
+	-caracterizam o nivel de preenchimento: baixo, medio ou alto
+	-infere se quer atrair bicicletas de utilizadores próximos
+	-infere se quer oferecer incentivo
+
+-Agente Utilizador (AU):
+	-representam agentes associados a smartphones dos utilizadores
+	-monitorizam os dados fornecidos pelo sensor GPS, como forma a influenciar a decisão de seleção da estação para a devolução da bicicleta
+	-com base na posição e destino, o agente determina a distância do utilizador para as estações
+	-quando a distancia da viagem ultrapassar 3/4s, o AU começa a ser solicitado para entregar a bicicleta
+	-o utilizador poderá aceitar ou não o pedido
+
+
+-Agente Interface (AI):
+	-utilizador vai interagir com este agente de forma a monitorizar e gerir as suas bicicletas
+	-pode ser textual / visual
+	
+
+
+	
