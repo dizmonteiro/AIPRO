@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveBikeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveNearbyUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveProposalAnswer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveNearbyStation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveProposal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/diagram.uml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/AnswerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceivePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveBikeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveNearbyUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveProposalAnswer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveNearbyStation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveProposal.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +98,7 @@
       <workItem from="1609172070889" duration="3430000" />
       <workItem from="1609175719205" duration="772000" />
       <workItem from="1609176650870" duration="16000" />
-      <workItem from="1609178062760" duration="11990000" />
+      <workItem from="1609178062760" duration="13365000" />
     </task>
     <servers />
   </component>
