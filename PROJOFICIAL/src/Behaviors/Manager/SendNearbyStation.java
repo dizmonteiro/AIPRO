@@ -7,13 +7,13 @@ import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
 /**
- * Behavior AnswerUser
+ * Behavior SendNearbyStations
  * 1. Recebe o AID do User
  * 2. Recebe o AID da Station
- * 3. Envia o AID da Station para User para que ele possa fazer contacto direto
+ * 3. Envia o AID da Station para o User
  */
 
-public class AnswerUser extends OneShotBehaviour {
+public class SendNearbyStation extends OneShotBehaviour {
 
     /**
      * Variáveis
@@ -27,7 +27,7 @@ public class AnswerUser extends OneShotBehaviour {
      * Construtores
      */
 
-    public AnswerUser(Manager agentManager, AID agentUser, AID agentStation) {
+    public SendNearbyStation(Manager agentManager, AID agentUser, AID agentStation) {
 
         this.setAgentManager(agentManager);
         this.setAgentStation(agentStation);

@@ -5,19 +5,18 @@ import Extra.Position;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Behavior ReceivePosition
+ * Behavior ReceiveUserPosition
  * 1. Recebe a posição do User
  * 2. Atualiza a posição do User
  * 3. Verifica se a nova posição é dentro de uma ou mais APEs
  * 4. Caso a nova posição seja dentro de uma ou mais APEs, inicia Behavior AnswerUser
  */
 
-public class ReceivePosition extends CyclicBehaviour {
+public class ReceiveInfoM extends CyclicBehaviour {
 
     /**
      * Variáveis
@@ -29,7 +28,7 @@ public class ReceivePosition extends CyclicBehaviour {
      * Construtores
      */
 
-    public ReceivePosition(Manager agentManager) {
+    public ReceiveInfoM(Manager agentManager) {
 
         this.setAgentManager(agentManager);
 
@@ -73,9 +72,10 @@ public class ReceivePosition extends CyclicBehaviour {
                         //Vai buscar todas as estações no range do User
                         List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(agentUser));
 
-                        //Envia a lista das estações para o User
+                        //Envia a lista das estações para o User, envia o User para todas as Estações
                         for(AID agentStation : nearStations) {
-                            this.agentManager.addBehaviour(new AnswerUser(this.agentManager, agentUser, agentStation));
+                            this.agentManager.addBehaviour(new SendNearbyStation(this.agentManager, agentUser, agentStation));
+                            this.agentManager.addBehaviour(new SendNearbyUser(this.agentManager, agentStation, agentUser));
                         }
                     }
 

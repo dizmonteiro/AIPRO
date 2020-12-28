@@ -6,7 +6,10 @@ import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User extends Agent {
@@ -21,7 +24,7 @@ public class User extends Agent {
     private Position destination;
     private double balance;
     private boolean isTraveling;
-    private Map<AID, Station> localStations;
+    private List<AID> localStations;
 
     /**
      * Setup
@@ -40,7 +43,7 @@ public class User extends Agent {
         this.setOrigin(null);
         this.setDestination(null);
         this.setTraveling(false);
-        this.localStations = new HashMap<>();
+        this.localStations = new ArrayList<>();
 
     }
 
@@ -48,7 +51,7 @@ public class User extends Agent {
      * Construtores
      */
 
-    public User(WorldMap map, Position origin, Position actualPosition, Position destination, double balance, boolean isTraveling, Map<AID, Station> localStations) {
+    public User(WorldMap map, Position origin, Position actualPosition, Position destination, double balance, boolean isTraveling, List<AID> localStations) {
 
         this.setMap(map);
         this.setOrigin(origin);
@@ -88,9 +91,9 @@ public class User extends Agent {
 
     }
 
-    public Map<AID, Station> getLocalStations() {
+    public List getLocalStations() {
 
-        Map<AID, Station> res = new HashMap<AID, Station>(this.localStations);
+        List<AID> res = new ArrayList<>(this.localStations);
 
         return res;
 
@@ -130,9 +133,9 @@ public class User extends Agent {
 
     }
 
-    public void setLocalStations(Map<AID, Station> localStations) {
+    public void setLocalStations(List<AID> localStations) {
 
-        this.localStations = new HashMap<AID, Station>(localStations);
+        this.localStations = new ArrayList<>(localStations);
 
     }
 
@@ -167,59 +170,6 @@ public class User extends Agent {
     /**
      * Métodos Auxiliares
      */
-
-    /**
-     * Behavior SendPosition
-     *
-     */
-
-    private class SendPosition extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior SendInformation
-     *
-     */
-
-    private class SenfInformation extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior MakeRequest
-     *
-     */
-
-    private class MakeRequest extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior AnswerProposal
-     *
-     */
-
-    private class AnswerProposal extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
 
 
 }

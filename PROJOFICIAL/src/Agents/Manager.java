@@ -1,6 +1,6 @@
 package Agents;
 
-import Behaviors.Manager.ReceivePosition;
+import Behaviors.Manager.ReceiveInfoM;
 import Extra.Position;
 import Extra.WorldMap;
 import Util.DFFunctions;
@@ -37,7 +37,7 @@ public class Manager extends Agent {
         this.globalUsers = new HashMap<>();
         this.globalStations = new HashMap<>();
 
-        addBehaviour(new ReceivePosition(this));
+        addBehaviour(new ReceiveInfoM(this));
 
     }
 

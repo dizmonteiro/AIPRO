@@ -2,11 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveBikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveNearbyUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveProposalAnswer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveNearbyStation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/diagram.uml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/AnswerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/AnswerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceivePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceivePosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/AnswerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceivePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,12 +44,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1lyqFriCmDcwZlIRVtJswOa0gML" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../PROJFERREIRA/NaturalDisastersResolution/NaturalDisastersResolution" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -92,7 +111,7 @@
       <workItem from="1609172070889" duration="3430000" />
       <workItem from="1609175719205" duration="772000" />
       <workItem from="1609176650870" duration="16000" />
-      <workItem from="1609178062760" duration="7618000" />
+      <workItem from="1609178062760" duration="11990000" />
     </task>
     <servers />
   </component>
@@ -111,6 +130,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MYPROJ$MainContainer.ic" NAME="MainContainer Coverage Results" MODIFIED="1608605037151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -6,7 +6,10 @@ import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Station extends Agent {
@@ -19,8 +22,8 @@ public class Station extends Agent {
     private int ape;
     private int numBikes;
     private Position position;
-    private Map<AID, User> requestQueue;
-    private Map<AID, User> localUsers;
+    private List<AID> requestQueue;
+    private List<AID> localUsers;
 
     /**
      * Setup
@@ -37,8 +40,8 @@ public class Station extends Agent {
 
         DFFunctions.registerAgent(this, "Agent Station");
 
-        this.requestQueue = new HashMap<>();
-        this.localUsers = new HashMap<>();
+        this.requestQueue = new ArrayList<>();
+        this.localUsers = new ArrayList<>();
 
     }
 
@@ -46,7 +49,7 @@ public class Station extends Agent {
      * Construtores
      */
 
-    public Station(WorldMap map, int ape, int numBikes, Position position, Map<AID, User> requestQueue, Map<AID, User> localUsers) {
+    public Station(WorldMap map, int ape, int numBikes, Position position, List<AID> requestQueue, List<AID> localUsers) {
 
         this.setMap(map);
         this.setApe(ape);
@@ -73,17 +76,17 @@ public class Station extends Agent {
 
     }
 
-    public Map<AID, User> getLocalUsers() {
+    public List<AID> getLocalUsers() {
 
-        Map<AID, User> res = new HashMap<AID, User>(this.localUsers);
+        List<AID> res = new ArrayList<AID>(this.localUsers);
 
         return res;
 
     }
 
-    public Map<AID, User> getRequestQueue() {
+    public List<AID> getRequestQueue() {
 
-        Map<AID, User> res = new HashMap<AID, User>(this.requestQueue);
+        List<AID> res = new ArrayList<AID>(this.requestQueue);
 
         return res;
 
@@ -117,15 +120,15 @@ public class Station extends Agent {
 
     }
 
-    public void setLocalUsers(Map<AID, User> localUsers) {
+    public void setLocalUsers(List<AID> localUsers) {
 
-        this.localUsers = new HashMap<AID, User>(localUsers);
+        this.localUsers = new ArrayList<AID>(localUsers);
 
     }
 
-    public void setRequestQueue(Map<AID, User> requestQueue) {
+    public void setRequestQueue(List<AID> requestQueue) {
 
-        this.requestQueue = new HashMap<AID, User>(requestQueue);
+        this.requestQueue = new ArrayList<AID>(requestQueue);
 
     }
 
@@ -155,52 +158,5 @@ public class Station extends Agent {
      * Métodos Auxiliares
      */
 
-    /**
-     * Behavior ReceiveUser
-     */
-
-    private class ReceiveUser extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior MakeProposal
-     */
-
-    private class MakeProposal extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior InformUser
-     */
-
-    private class InformUser extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
-
-    /**
-     * Behavior AnswerRequest
-     */
-
-    private class AnswerRequest extends OneShotBehaviour {
-
-        public void action() {
-
-        }
-
-    }
 
 }
