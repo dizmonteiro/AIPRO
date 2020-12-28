@@ -1,10 +1,16 @@
 package Agents;
 
+import Extra.Position;
 import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.Agent;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.*;
 
 public class Interface extends Agent {
 
@@ -15,7 +21,7 @@ public class Interface extends Agent {
     private WorldMap map;
     private List<User> users;
     private List<Station> stations;
-
+    private PainelInicial pi;
     /**
      * Setup
      */
@@ -31,6 +37,9 @@ public class Interface extends Agent {
         this.users = new ArrayList<>();
         this.stations = new ArrayList<>();
 
+        pi = new PainelInicial();
+        JScrollPane scroll = new JScrollPane(pi);
+        pi.setPreferredSize(new Dimension(500*10,500*10));
     }
 
     /**
@@ -123,6 +132,34 @@ public class Interface extends Agent {
     /**
      * Outros Métodos
      */
+    public class PainelInicial extends JPanel {
+        public void paintComponent(Graphics g){
+            int x, y;
+            Position s_pos;
+            Position u_pos;
+            super.paintComponent(g);
+            for (int row = 0; row < map.getMapSize(); row++) {
+                for (int col = 0; col < map.getMapSize(); col++) {
+                    x = row * 10;
+                    y = col * 10;
+                    g.drawRect(x, y, 10, 10);
+                }
+            }
+
+            for(User u : users) {
+                u_pos = u.getActualPosition();
+                g.setColor(Color.ORANGE);
+                g.fillRect(u_pos.getX() * 10, u_pos.getY() * 10, 10, 10);
+            }
+
+            for(Station s : stations) {
+                s_pos = s.getPosition();
+                g.setColor(Color.ORANGE);
+                g.fillRect(s_pos.getX() * 10, s_pos.getY() * 10, 10, 10);
+            }
+
+        }
+    }
 
 
 
