@@ -6,6 +6,9 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Behavior ReceivePosition
  * 1. Recebe a posição do User
@@ -53,8 +56,8 @@ public class ReceivePosition extends CyclicBehaviour {
 
         if(message != null) {
 
-            AID agent = message.getSender();
-            String agentName = agent.getLocalName();
+            AID agentUser = message.getSender();
+            String agentName = agentUser.getLocalName();
 
             //Caso seja um Agent User a mandar a posição
             if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
@@ -62,13 +65,18 @@ public class ReceivePosition extends CyclicBehaviour {
                 try {
 
                     Position newUserPos = (Position) message.getContentObject();
-                    this.agentManager.updateUserPos(agent, newUserPos);
+                    this.agentManager.updateUserPos(agentUser, newUserPos);
 
                     //Caso o User esteja dentro de uma APE vamos responder
-                    if(this.agentManager.isNearStation(agent)) {
+                    if(this.agentManager.isNearStation(agentUser)) {
 
-                        this.agentManager.addBehaviour(new AnswerUser(this.agentManager,null, null));
+                        //Vai buscar todas as estações no range do User
+                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(agentUser));
 
+                        //Envia a lista das estações para o User
+                        for(AID agentStation : nearStations) {
+                            this.agentManager.addBehaviour(new AnswerUser(this.agentManager, agentUser, agentStation));
+                        }
                     }
 
                 } catch (Exception e) {

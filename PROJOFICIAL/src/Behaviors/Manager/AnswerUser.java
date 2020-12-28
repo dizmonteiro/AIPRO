@@ -6,6 +6,13 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
+/**
+ * Behavior AnswerUser
+ * 1. Recebe o AID do User
+ * 2. Recebe o AID da Station
+ * 3. Envia o AID da Station para User para que ele possa fazer contacto direto
+ */
+
 public class AnswerUser extends OneShotBehaviour {
 
     /**

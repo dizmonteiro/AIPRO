@@ -6,6 +6,8 @@ import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,18 +121,61 @@ public class Manager extends Agent {
 
     }
 
-    public boolean isNearStation(AID agent) {
+    //Verifica se a posição do User está dentro da APE de uma estação especifica
+    public boolean isInRange(Position userPos, Position stationPos, int ape) {
 
-        Position agentPosition = this.globalUsers.get(agent).getActualPosition().clone();
+        double calc1 = ((userPos.getX() - stationPos.getX())^2) + ((userPos.getY() - stationPos.getY())^2);
+        double calc2 = ape^2;
 
+        if(calc1 < calc2) {
 
+            return true;
+
+        }
 
         return false;
 
     }
 
-    public List getNeatStations(AID agent) {
-        return null;
+    //Verifica se o User está dentro da APE de qualquer estação
+    public boolean isNearStation(AID agent) {
+
+        Position userPosition = this.globalUsers.get(agent).getActualPosition();
+        final boolean[] x = new boolean[1];
+        x[0] = false;
+
+        this.globalStations.forEach((k,v) -> {
+
+            if(isInRange(userPosition, v.getPosition(), v.getApe())) {
+
+                x[0] = true;
+
+            }
+
+        });
+
+        return x[0];
+
+    }
+
+    //Devolve uma lista com todas as estações em que o User tem no seu range
+    public List getNearStations(AID agent) {
+
+        List<AID> nearStations = new ArrayList<>();
+        Position userPosition = this.globalUsers.get(agent).getActualPosition();
+
+        this.globalStations.forEach((k,v) -> {
+
+            if(isInRange(userPosition, v.getPosition(), v.getApe())) {
+
+                nearStations.add(k);
+
+            }
+
+        });
+
+        return nearStations;
+
     }
 
 }

@@ -16,7 +16,7 @@ public class Station extends Agent {
      */
 
     private WorldMap map;
-    private double ape;
+    private int ape;
     private int numBikes;
     private Position position;
     private Map<AID, User> requestQueue;
@@ -31,7 +31,7 @@ public class Station extends Agent {
         Object[] args = this.getArguments();
 
         this.setMap((WorldMap) args[0]);
-        this.setApe((Double) args[1]);
+        this.setApe((Integer) args[1]);
         this.setNumBikes((Integer) args[2]);
         this.setPosition((Position) args[3]);
 
@@ -46,7 +46,7 @@ public class Station extends Agent {
      * Construtores
      */
 
-    public Station(WorldMap map, double ape, int numBikes, Position position, Map<AID, User> requestQueue, Map<AID, User> localUsers) {
+    public Station(WorldMap map, int ape, int numBikes, Position position, Map<AID, User> requestQueue, Map<AID, User> localUsers) {
 
         this.setMap(map);
         this.setApe(ape);
@@ -67,7 +67,7 @@ public class Station extends Agent {
 
     }
 
-    public double getApe() {
+    public int getApe() {
 
         return this.ape;
 
@@ -111,7 +111,7 @@ public class Station extends Agent {
 
     }
 
-    public void setApe(double ape) {
+    public void setApe(int ape) {
 
         this.ape = ape;
 
