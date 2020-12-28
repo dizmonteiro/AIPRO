@@ -11,6 +11,7 @@ import jade.lang.acl.ACLMessage;
  *      - Nearby Users
  *      - Bike Requests
  *      - Proposal Answers
+ *      - Deliver Bike Informs
  */
 
 public class ReceiveInfoS extends CyclicBehaviour {
@@ -60,16 +61,25 @@ public class ReceiveInfoS extends CyclicBehaviour {
                 try {
 
 
-
                 } catch (Exception e) {
 
                     e.printStackTrace();
 
                 }
 
+                //User informa Bike Delivery
+            } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
+
+
             //User envia um pedido de requisitar bike
             } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.REQUEST) {
 
+                //Verifica se tem bikes disponiveis
+                if(this.agentStation.getNumBikes() > 0) {
+
+
+
+                }
 
             //User responder à proposta
             } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {

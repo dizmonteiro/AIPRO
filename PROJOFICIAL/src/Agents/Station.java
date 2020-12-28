@@ -158,5 +158,17 @@ public class Station extends Agent {
      * Métodos Auxiliares
      */
 
+    public void removeBike() {
+
+        this.numBikes--;
+
+    }
+
+    public void addBike() {
+
+        this.numBikes++;
+
+    }
+
 
 }
