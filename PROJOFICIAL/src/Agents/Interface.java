@@ -119,9 +119,12 @@ public class Interface extends Agent {
 
     }
 
+    /**
+     * Métodos Auxiliares
+     */
 
     /**
-     * Outros Métodos
+     * Behaviors
      */
 
 

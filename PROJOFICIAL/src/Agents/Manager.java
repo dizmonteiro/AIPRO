@@ -1,16 +1,13 @@
 package Agents;
 
-import Behaviors.AnswerUser;
-import Behaviors.ReceivePosition;
+import Behaviors.Manager.ReceivePosition;
 import Extra.Position;
 import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.lang.acl.ACLMessage;
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Manager extends Agent {
@@ -38,7 +35,7 @@ public class Manager extends Agent {
         this.globalUsers = new HashMap<>();
         this.globalStations = new HashMap<>();
 
-        addBehaviour(new ReceivePosition());
+        addBehaviour(new ReceivePosition(this));
 
     }
 
@@ -113,7 +110,7 @@ public class Manager extends Agent {
     }
 
     /**
-     * Métodos
+     * Métodos Auxiliares
      */
 
     public void updateUserPos(AID agent, Position newPos) {
@@ -126,65 +123,14 @@ public class Manager extends Agent {
 
         Position agentPosition = this.globalUsers.get(agent).getActualPosition().clone();
 
+
+
         return false;
 
     }
 
-    /**
-     * Behaviors Receive & Answer
-     */
-
-    public class ReceivePosition extends CyclicBehaviour {
-
-        public void action() {
-
-            ACLMessage message = receive();
-
-            if(message != null) {
-
-                AID agent = message.getSender();
-                String agentName = agent.getLocalName();
-
-                //Caso seja um Agent User a mandar a posição
-                if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
-
-                    try {
-
-                        Position newUserPos = (Position) message.getContentObject();
-                        updateUserPos(agent, newUserPos);
-
-                        //Caso o User esteja dentro de uma APE vamos responder
-                        if(isNearStation(agent)) {
-
-                            addBehaviour(new AnswerUser());
-
-                        }
-
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
-
-                    }
-
-                    //Caso seja um Agent Interface a pedir informação
-                } else {
-
-                    block();
-
-                }
-
-            }
-
-        }
-
-    }
-
-    public class AnswerUser extends CyclicBehaviour {
-
-        public void action() {
-
-        }
-
+    public List getNeatStations(AID agent) {
+        return null;
     }
 
 }

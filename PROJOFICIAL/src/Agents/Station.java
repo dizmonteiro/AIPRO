@@ -5,6 +5,7 @@ import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.OneShotBehaviour;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -151,7 +152,55 @@ public class Station extends Agent {
     }
 
     /**
-     * Outros Métodos
+     * Métodos Auxiliares
      */
+
+    /**
+     * Behavior ReceiveUser
+     */
+
+    private class ReceiveUser extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior MakeProposal
+     */
+
+    private class MakeProposal extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior InformUser
+     */
+
+    private class InformUser extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior AnswerRequest
+     */
+
+    private class AnswerRequest extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
 
 }

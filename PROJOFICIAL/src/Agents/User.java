@@ -5,6 +5,7 @@ import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.OneShotBehaviour;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -164,7 +165,61 @@ public class User extends Agent {
     }
 
     /**
-     * Outros Métodos
+     * Métodos Auxiliares
      */
+
+    /**
+     * Behavior SendPosition
+     *
+     */
+
+    private class SendPosition extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior SendInformation
+     *
+     */
+
+    private class SenfInformation extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior MakeRequest
+     *
+     */
+
+    private class MakeRequest extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+    /**
+     * Behavior AnswerProposal
+     *
+     */
+
+    private class AnswerProposal extends OneShotBehaviour {
+
+        public void action() {
+
+        }
+
+    }
+
+
 
 }
