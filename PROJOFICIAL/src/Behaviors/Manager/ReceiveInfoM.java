@@ -2,6 +2,7 @@ package Behaviors.Manager;
 
 import Agents.Manager;
 import Extra.Position;
+import Extra.InfoPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -58,24 +59,29 @@ public class ReceiveInfoM extends CyclicBehaviour {
             AID agentUser = message.getSender();
             String agentName = agentUser.getLocalName();
 
-            //Caso seja um Agent User a mandar a posição
+            //Manager recebe a nova posição de um User
             if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
 
                 try {
 
-                    Position newUserPos = (Position) message.getContentObject();
+                    InfoPackage newPackage = (InfoPackage) message.getContentObject();
+                    Position newUserPos = newPackage.getActualPos();
+                    Boolean isTraveling = newPackage.isTraveling();
                     this.agentManager.updateUserPos(agentUser, newUserPos);
 
-                    //Caso o User esteja dentro de uma APE vamos responder
+                    //Manager verifica se a nova posição do User está dentro de uma APE
                     if(this.agentManager.isNearStation(agentUser)) {
 
-                        //Vai buscar todas as estações no range do User
+                        //Manager vai buscar todas as Stations que estão no range do User
                         List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(agentUser));
 
-                        //Envia a lista das estações para o User, envia o User para todas as Estações
+                        //Manager envia a lista das Stations para o User
+                        //Manager envia o User para todas as Stations
                         for(AID agentStation : nearStations) {
+
                             this.agentManager.addBehaviour(new SendNearbyStation(this.agentManager, agentUser, agentStation));
-                            this.agentManager.addBehaviour(new SendNearbyUser(this.agentManager, agentStation, agentUser));
+                            this.agentManager.addBehaviour(new SendNearbyUser(this.agentManager, agentStation, agentUser, isTraveling));
+
                         }
                     }
 
@@ -85,7 +91,6 @@ public class ReceiveInfoM extends CyclicBehaviour {
 
                 }
 
-                //Caso seja um Agent Interface a pedir informação
             } else {
 
                 block();

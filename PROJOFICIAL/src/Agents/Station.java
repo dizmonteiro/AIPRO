@@ -5,12 +5,8 @@ import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.OneShotBehaviour;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Station extends Agent {
 
@@ -23,6 +19,7 @@ public class Station extends Agent {
     private int numBikes;
     private Position position;
     private List<AID> requestQueue;
+    private List<AID> newArrivals; //novos users que entram na ape, para estes users vamos mandar uma proposal
     private List<AID> localUsers;
 
     /**

@@ -1,6 +1,7 @@
 package Behaviors.Station;
 
 import Agents.Station;
+import Extra.InfoPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -55,11 +56,19 @@ public class ReceiveInfoS extends CyclicBehaviour {
             AID agent = message.getSender();
             String agentName = agent.getLocalName();
 
-            //Manager envia AID de Nearby User
+            //Station recebe mensagem do Manager com AID do User que entrou no seu APE
             if (agentName.contains("Manager") && message.getPerformative() == ACLMessage.INFORM) {
 
                 try {
 
+                    InfoPackage newPackage = (InfoPackage) message.getContentObject();
+
+                    //Station verifica se o User está a viajar
+                    //Caso esteja, deve ser introduzido na lista de newArrivals para mandar proposta
+                    //Caso não esteja, vai direto os localUsers
+                    if(newPackage.isTraveling()) {
+
+                    }
 
                 } catch (Exception e) {
 
@@ -67,22 +76,28 @@ public class ReceiveInfoS extends CyclicBehaviour {
 
                 }
 
-                //User informa Bike Delivery
+                //Station recebe mensagem do User de que entregou a sua Bike
             } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
 
 
-            //User envia um pedido de requisitar bike
+
+                //Station recebe pedido do User para requisitar uma Bike
             } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.REQUEST) {
 
-                //Verifica se tem bikes disponiveis
+                //Station verifica se tem bikes disponiveis
                 if(this.agentStation.getNumBikes() > 0) {
 
 
 
                 }
 
-            //User responder à proposta
+                //Station recebe mensagem do User a aceitar proposta
             } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+
+
+
+                //Station recebe mensagem do User a rejeitar proposta
+            } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
 
 
 

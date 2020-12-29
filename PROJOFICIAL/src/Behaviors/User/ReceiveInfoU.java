@@ -54,7 +54,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
             AID agent = message.getSender();
             String agentName = agent.getLocalName();
 
-            //Manager envia AID de Nearby Station
+            //User recebe mensagem do Manager com AID da Station que entrou no seu range
             if (agentName.contains("Manager") && message.getPerformative() == ACLMessage.INFORM) {
 
                 try {
@@ -66,12 +66,19 @@ public class ReceiveInfoU extends CyclicBehaviour {
 
                 }
 
-                //Station envia uma proposta para deixar a bike
+                //User recebe mensagem da Station com desconto para deixar a sua bike
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REQUEST) {
 
 
-                //Station responde ao Bike Request
+
+                //User recebe resposta da Station que aceita o seu Bike Request
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+
+
+
+                //User recebe resposta da Station que rejeita o seu Bike Request
+            } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
+
 
 
             } else {

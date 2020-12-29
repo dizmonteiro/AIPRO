@@ -5,12 +5,8 @@ import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.OneShotBehaviour;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class User extends Agent {
 
@@ -24,6 +20,7 @@ public class User extends Agent {
     private Position destination;
     private double balance;
     private boolean isTraveling;
+    private int teimosia; //grau de teimosia de 1-10, variável que será util na decisão de aceitar ou rejeitar propostas das Stations
     private List<AID> localStations;
 
     /**
@@ -37,6 +34,7 @@ public class User extends Agent {
         this.setMap((WorldMap) args[0]);
         this.setActualPosition((Position) args[1]);
         this.setBalance((Double) args[2]);
+        this.setTeimosia((Integer) args[3]);
 
         DFFunctions.registerAgent(this, "Agent User");
 
@@ -51,7 +49,7 @@ public class User extends Agent {
      * Construtores
      */
 
-    public User(WorldMap map, Position origin, Position actualPosition, Position destination, double balance, boolean isTraveling, List<AID> localStations) {
+    public User(WorldMap map, Position origin, Position actualPosition, Position destination, double balance, boolean isTraveling, List<AID> localStations, int teimosia) {
 
         this.setMap(map);
         this.setOrigin(origin);
@@ -60,6 +58,7 @@ public class User extends Agent {
         this.setBalance(balance);
         this.setTraveling(isTraveling);
         this.setLocalStations(localStations);
+        this.setTeimosia(teimosia);
 
     }
 
@@ -111,6 +110,10 @@ public class User extends Agent {
 
     }
 
+    public int getTeimosia() {
+        return this.teimosia;
+    }
+
     /**
      * Setters
      */
@@ -157,13 +160,17 @@ public class User extends Agent {
 
     }
 
+    public void setTeimosia(int teimosia) {
+        this.teimosia = teimosia;
+    }
+
     /**
      * Clone
      */
 
     public User clone() {
 
-        return new User(this.map, this.origin, this.actualPosition, this.destination, this.balance, this.isTraveling, this.localStations);
+        return new User(this.map, this.origin, this.actualPosition, this.destination, this.balance, this.isTraveling, this.localStations, this.teimosia);
 
     }
 

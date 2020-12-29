@@ -1,10 +1,12 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
+import Extra.InfoPackage;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Behavior SendNearbyStations
@@ -22,16 +24,18 @@ public class SendNearbyUser extends OneShotBehaviour {
     private Manager agentManager;
     private AID agentUser;
     private AID agentStation;
+    private Boolean isUserTraveling;
 
     /**
      * Construtores
      */
 
-    public SendNearbyUser(Manager agentManager, AID agentStation, AID agentUser) {
+    public SendNearbyUser(Manager agentManager, AID agentStation, AID agentUser, Boolean isUserTraveling) {
 
         this.setAgentManager(agentManager);
         this.setAgentStation(agentStation);
         this.setAgentUser(agentUser);
+        this.setUserTraveling(isUserTraveling);
 
     }
 
@@ -57,6 +61,10 @@ public class SendNearbyUser extends OneShotBehaviour {
 
     }
 
+    public void setUserTraveling(Boolean userTraveling) {
+        this.isUserTraveling = userTraveling;
+    }
+
     /**
      * Action
      */
@@ -66,9 +74,11 @@ public class SendNearbyUser extends OneShotBehaviour {
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
         message.addReceiver(this.agentStation);
 
+        InfoPackage newPackage = new InfoPackage(this.isUserTraveling, this.agentUser);
+
         try {
 
-            message.setContentObject(this.agentUser);
+            message.setContentObject(newPackage);
 
         } catch (IOException e) {
 
