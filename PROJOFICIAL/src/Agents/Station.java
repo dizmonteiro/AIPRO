@@ -69,22 +69,6 @@ public class Station extends Agent {
     }
 
     /**
-     * Construtores
-     */
-
-    /*
-    public Station(WorldMap map, int ape, int baseRate, int numBikes, Position position, List<TravelPackage> rentHistory) {
-
-        this.setMap(map);
-        this.setApe(ape);
-        this.setBaseRate(baseRate);
-        this.setNumBikes(numBikes);
-        this.setPosition(position);
-        this.setRentHistory(rentHistory);
-
-    }*/
-
-    /**
      * Getters
      */
 

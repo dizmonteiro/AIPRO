@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformCreationStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformCreationStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformCreationUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformCreationUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/InfoPackageFromUserToManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/InfoPackageFromUserToManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +97,7 @@
       <workItem from="1609263318608" duration="26821000" />
       <workItem from="1609309507295" duration="773000" />
       <workItem from="1609310494140" duration="27000" />
-      <workItem from="1609355362979" duration="11938000" />
+      <workItem from="1609355362979" duration="11970000" />
     </task>
     <servers />
   </component>
