@@ -46,6 +46,8 @@ public class Station extends Agent {
         this.rentHistory = new ArrayList<>();
 
         //Iniciar Behaviors
+        //Envia um INFORM ao Manager a dizer que foi criado
+        //Começa a ouvir
 
     }
 
@@ -184,5 +186,33 @@ public class Station extends Agent {
 
     }
 
+    public void addTravelPackage(TravelPackage newTP) {
+
+        this.rentHistory.add(newTP.clone());
+
+    }
+
+
+    public double calculateDistance(Position origin, Position destination) {
+
+        double distance = 0;
+
+        distance = Math.sqrt((destination.getX()-origin.getX())^2 + (destination.getY()-origin.getY())^2);
+
+        return distance;
+
+    }
+
+    public double calculateTotalCost(double distance) {
+
+        return distance * this.baseRate;
+
+    }
+
+    public double calculateDiscount(double distance, double precoantigo) {
+
+        return precoantigo - (1/numBikes);
+
+    }
 
 }
