@@ -30,13 +30,17 @@ public class Manager extends Agent {
 
         Object[] args = this.getArguments();
 
+        //Variáveis Pré-Definidas
         this.setMap((WorldMap) args[0]);
 
+        //Registar Agente Manager
         DFFunctions.registerAgent(this, "Agent Manager");
 
+        //Inicialmente o Agente Manager não vai saber que Agentes estão ativos
         this.globalUsers = new HashMap<>();
         this.globalStations = new HashMap<>();
 
+        //Iniciar Behaviors
         addBehaviour(new ReceiveInfoM(this));
 
     }

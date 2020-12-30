@@ -1,6 +1,7 @@
 package Agents;
 
 import Extra.Position;
+import Extra.TravelPackage;
 import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
@@ -15,12 +16,13 @@ public class Station extends Agent {
      */
 
     private WorldMap map;
+
     private int ape;
+    private double baseRate;
     private int numBikes;
     private Position position;
-    private List<AID> requestQueue;
-    private List<AID> newArrivals; //novos users que entram na ape, para estes users vamos mandar uma proposal
-    private List<AID> localUsers;
+
+    private List<TravelPackage> rentHistory;
 
     /**
      * Setup
@@ -30,15 +32,20 @@ public class Station extends Agent {
 
         Object[] args = this.getArguments();
 
+        //Variáveis Pré-definidas
         this.setMap((WorldMap) args[0]);
         this.setApe((Integer) args[1]);
-        this.setNumBikes((Integer) args[2]);
-        this.setPosition((Position) args[3]);
+        this.setBaseRate((Double) args[2]);
+        this.setNumBikes((Integer) args[3]);
+        this.setPosition((Position) args[4]);
 
+        //Registar o Agente Station
         DFFunctions.registerAgent(this, "Agent Station");
 
-        this.requestQueue = new ArrayList<>();
-        this.localUsers = new ArrayList<>();
+        //Inicialmente o Agente Station não tem historico
+        this.rentHistory = new ArrayList<>();
+
+        //Iniciar Behaviors
 
     }
 
@@ -46,14 +53,14 @@ public class Station extends Agent {
      * Construtores
      */
 
-    public Station(WorldMap map, int ape, int numBikes, Position position, List<AID> requestQueue, List<AID> localUsers) {
+    public Station(WorldMap map, int ape, double baseRate, int numBikes, Position position, List<TravelPackage> rentHistory) {
 
         this.setMap(map);
         this.setApe(ape);
+        this.setBaseRate(baseRate);
         this.setNumBikes(numBikes);
         this.setPosition(position);
-        this.setRequestQueue(requestQueue);
-        this.setLocalUsers(localUsers);
+        this.setRentHistory(rentHistory);
 
     }
 
@@ -61,9 +68,9 @@ public class Station extends Agent {
      * Getters
      */
 
-    public int getNumBikes() {
+    public WorldMap getMap() {
 
-        return this.numBikes;
+        return this.map.clone();
 
     }
 
@@ -73,19 +80,15 @@ public class Station extends Agent {
 
     }
 
-    public List<AID> getLocalUsers() {
+    public double getBaseRate() {
 
-        List<AID> res = new ArrayList<AID>(this.localUsers);
-
-        return res;
+        return this.baseRate;
 
     }
 
-    public List<AID> getRequestQueue() {
+    public int getNumBikes() {
 
-        List<AID> res = new ArrayList<AID>(this.requestQueue);
-
-        return res;
+        return this.numBikes;
 
     }
 
@@ -95,9 +98,17 @@ public class Station extends Agent {
 
     }
 
-    public WorldMap getMap() {
+    public List<TravelPackage> getRentHistory() {
 
-        return this.map.clone();
+        List<TravelPackage> res = new ArrayList<>();
+
+        for(TravelPackage tp : this.rentHistory) {
+
+            res.add(tp.clone());
+
+        }
+
+        return res;
 
     }
 
@@ -105,9 +116,9 @@ public class Station extends Agent {
      * Setters
      */
 
-    public void setNumBikes(int numBikes) {
+    public void setMap(WorldMap map) {
 
-        this.numBikes = numBikes;
+        this.map = map.clone();
 
     }
 
@@ -117,15 +128,15 @@ public class Station extends Agent {
 
     }
 
-    public void setLocalUsers(List<AID> localUsers) {
+    public void setBaseRate(double baseRate) {
 
-        this.localUsers = new ArrayList<AID>(localUsers);
+        this.baseRate = baseRate;
 
     }
 
-    public void setRequestQueue(List<AID> requestQueue) {
+    public void setNumBikes(int numBikes) {
 
-        this.requestQueue = new ArrayList<AID>(requestQueue);
+        this.numBikes = numBikes;
 
     }
 
@@ -135,9 +146,15 @@ public class Station extends Agent {
 
     }
 
-    public void setMap(WorldMap map) {
+    public void setRentHistory(List<TravelPackage> rentHistory) {
 
-        this.map = map.clone();
+        this.rentHistory = new ArrayList<>();
+
+        for(TravelPackage tp : rentHistory) {
+
+            this.rentHistory.add(tp.clone());
+
+        }
 
     }
 
@@ -147,7 +164,7 @@ public class Station extends Agent {
 
     public Station clone() {
 
-        return new Station(this.map, this.ape, this.numBikes, this.position, this.requestQueue, this.localUsers);
+        return new Station(this.map, this.ape, this.baseRate, this.numBikes, this.position, this.rentHistory);
 
     }
 

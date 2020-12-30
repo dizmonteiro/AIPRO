@@ -1,12 +1,10 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
-import Extra.InfoPackage;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
-import java.io.Serializable;
 
 /**
  * Behavior SendNearbyStations

@@ -1,6 +1,7 @@
 package Agents;
 
 import Extra.Position;
+import Extra.TravelPackage;
 import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
@@ -15,13 +16,15 @@ public class User extends Agent {
      */
 
     private WorldMap map;
-    private Position origin;
+
+    private int financialStatus; //grau de riqueza, 1-10, quanto mais rico menor será a probabilidade de aceitar os descontos.
+    private int stubborness; //grau de teimosia de 1-10, quanto mais teimoso mmenor será a probabilidade de aceitar os descontos.
+
     private Position actualPosition;
-    private Position destination;
-    private double balance;
+
+    private TravelPackage actualTPackage;
     private boolean isTraveling;
-    private int teimosia; //grau de teimosia de 1-10, variável que será util na decisão de aceitar ou rejeitar propostas das Stations
-    private List<AID> localStations;
+    private List<TravelPackage> travelHistory;
 
     /**
      * Setup
@@ -31,17 +34,26 @@ public class User extends Agent {
 
         Object[] args = this.getArguments();
 
+        //Variáveis pré-definidas
         this.setMap((WorldMap) args[0]);
-        this.setActualPosition((Position) args[1]);
-        this.setBalance((Double) args[2]);
-        this.setTeimosia((Integer) args[3]);
+        this.setFinancialStatus((Integer) args[1]);
+        this.setStubborness((Integer) args[2]);
+        this.setActualPosition((Position) args[3]);
 
+        //Registar o Agente User
         DFFunctions.registerAgent(this, "Agent User");
 
-        this.setOrigin(null);
-        this.setDestination(null);
+        //Inicialmente o Agente User não está a viajar e ainda não fez nenhuma viajem
+        this.actualTPackage = new TravelPackage();
         this.setTraveling(false);
-        this.localStations = new ArrayList<>();
+        this.travelHistory = new ArrayList<>();
+
+        //Iniciar Behaviors
+        //É gerado numa estação aleatória
+        //Informa Manager que foi criado
+        //Recebe o AID das estações do Manager
+        //Manda um pedido de aluguer da bike à Estação. O pedido vai criar o TravelPackage que vai ter a origem, o destino aleatório e mais dados
+        //Começa o movimento e o behaviour UpdatePosition
 
     }
 
@@ -49,16 +61,15 @@ public class User extends Agent {
      * Construtores
      */
 
-    public User(WorldMap map, Position origin, Position actualPosition, Position destination, double balance, boolean isTraveling, List<AID> localStations, int teimosia) {
+    public User(WorldMap map, int financialStatus, int stubborness, Position actualPosition, TravelPackage actualTPackage, boolean isTraveling, List<TravelPackage> travelHistory) {
 
         this.setMap(map);
-        this.setOrigin(origin);
+        this.setFinancialStatus(financialStatus);
+        this.setStubborness(stubborness);
         this.setActualPosition(actualPosition);
-        this.setDestination(destination);
-        this.setBalance(balance);
+        this.setActualTPackage(actualTPackage);
         this.setTraveling(isTraveling);
-        this.setLocalStations(localStations);
-        this.setTeimosia(teimosia);
+        this.setTravelHistory(travelHistory);
 
     }
 
@@ -66,9 +77,21 @@ public class User extends Agent {
      * Getters
      */
 
-    public double getBalance() {
+    public WorldMap getMap() {
 
-        return this.balance;
+        return this.map.clone();
+
+    }
+
+    public int getFinancialStatus() {
+
+        return this.financialStatus;
+
+    }
+
+    public int getStubborness() {
+
+        return this.stubborness;
 
     }
 
@@ -78,23 +101,9 @@ public class User extends Agent {
 
     }
 
-    public Position getDestination() {
+    public TravelPackage getActualTPackage() {
 
-        return this.destination.clone();
-
-    }
-
-    public Position getOrigin() {
-
-        return this.origin.clone();
-
-    }
-
-    public List getLocalStations() {
-
-        List<AID> res = new ArrayList<>(this.localStations);
-
-        return res;
+        return this.actualTPackage.clone();
 
     }
 
@@ -104,55 +113,23 @@ public class User extends Agent {
 
     }
 
-    public WorldMap getMap() {
+    public List<TravelPackage> getTravelHistory() {
 
-        return this.map.clone();
+        List<TravelPackage> res = new ArrayList<>();
 
-    }
+        for(TravelPackage tp : this.travelHistory) {
 
-    public int getTeimosia() {
-        return this.teimosia;
+            res.add(tp.clone());
+
+        }
+
+        return res;
+
     }
 
     /**
      * Setters
      */
-
-    public void setActualPosition(Position actualPosition) {
-
-        this.actualPosition = actualPosition.clone();
-
-    }
-
-    public void setBalance(double balance) {
-
-        this.balance = balance;
-
-    }
-
-    public void setDestination(Position destination) {
-
-        this.destination = destination.clone();
-
-    }
-
-    public void setLocalStations(List<AID> localStations) {
-
-        this.localStations = new ArrayList<>(localStations);
-
-    }
-
-    public void setOrigin(Position origin) {
-
-        this.origin = origin.clone();
-
-    }
-
-    public void setTraveling(boolean traveling) {
-
-        isTraveling = traveling;
-
-    }
 
     public void setMap(WorldMap map) {
 
@@ -160,8 +137,46 @@ public class User extends Agent {
 
     }
 
-    public void setTeimosia(int teimosia) {
-        this.teimosia = teimosia;
+    public void setFinancialStatus(int financialStatus) {
+
+        this.financialStatus = financialStatus;
+
+    }
+
+    public void setStubborness(int stubborness) {
+
+        this.stubborness = stubborness;
+
+    }
+
+    public void setActualTPackage(TravelPackage actualTPackage) {
+
+        this.actualTPackage = actualTPackage.clone();
+
+    }
+
+    public void setActualPosition(Position actualPosition) {
+
+        this.actualPosition = actualPosition.clone();
+
+    }
+
+    public void setTraveling(boolean traveling) {
+
+        this.isTraveling = traveling;
+
+    }
+
+    public void setTravelHistory(List<TravelPackage> travelHistory) {
+
+        this.travelHistory = new ArrayList<>();
+
+        for(TravelPackage tp : travelHistory) {
+
+            this.travelHistory.add(tp.clone());
+
+        }
+
     }
 
     /**
@@ -170,7 +185,7 @@ public class User extends Agent {
 
     public User clone() {
 
-        return new User(this.map, this.origin, this.actualPosition, this.destination, this.balance, this.isTraveling, this.localStations, this.teimosia);
+        return new User(this.map, this.financialStatus, this.stubborness, this.actualPosition, this.actualTPackage, this.isTraveling, this.travelHistory);
 
     }
 

@@ -2,7 +2,6 @@ package Behaviors.Manager;
 
 import Agents.Manager;
 import Extra.Position;
-import Extra.InfoPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
