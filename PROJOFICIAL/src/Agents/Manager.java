@@ -30,7 +30,9 @@ public class Manager extends Agent {
         Object[] args = this.getArguments();
 
         //Variáveis Pré-Definidas
-        this.setMap((WorldMap) args[0]);
+        //this.setMap((WorldMap) args[0]);
+
+        //WorldMap news = (WorldMap) args[0];
 
         //Registar Agente Manager
         DFFunctions.registerAgent(this, "Agent Manager");

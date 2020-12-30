@@ -27,7 +27,7 @@ public class MainContainer {
             e.printStackTrace();
         }
 
-        this.initMainContainerInPlatform("localhost", "9999", "MainContainer");
+        this.initMainContainerInPlatform("localhost", "9888", "MainContainer");
 
     }
 
@@ -79,15 +79,15 @@ public class MainContainer {
     }
 
     public void startManager(WorldMap map){
-        this.startAgentInPlatform("Agent Manager " + totalManagers++, "Agent Manager", new Object[] {map});
+        this.startAgentInPlatform("Agent Manager " + totalManagers++, "Agents.Manager", new Object[] {});
     }
 
     public void startUser(WorldMap map, int financialStatus, int stubborness, Position actualPosition, Position setDestination){
-        this.startAgentInPlatform("Agent User "+ totalUsers++, "Agent User", new Object[] {map, financialStatus, stubborness, actualPosition, setDestination});
+        this.startAgentInPlatform("Agent User "+ totalUsers++, "Agents.User", new Object[] {financialStatus, stubborness, actualPosition, setDestination});
     }
 
     public void startStation(WorldMap map, double ape, double baseRate, int numBikes, Position position) {
-        this.startAgentInPlatform("Agent Station " + totalStations++, "Agent Station", new Object[] {map, ape, baseRate, numBikes, position});
+        this.startAgentInPlatform("Agent Station " + totalStations++, "Agents.Station", new Object[] { ape, baseRate, numBikes, position});
     }
 
     public void startInterface(WorldMap map) {

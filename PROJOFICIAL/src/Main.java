@@ -6,22 +6,40 @@ import java.util.List;
 
 public class Main {
 
-    private WorldMap map;
-    private MainContainer mc;
+    private static WorldMap map;
+    private static MainContainer mc;
 
-    public void main(String[] args){
+    public static void main(String[] args){
 
-        this.mc = new MainContainer();
-        this.mc.startInterface(map);
+        mc = new MainContainer();
+        //mc.startInterface(map);
+
+
+        Position stationP = new Position(10,10);
+
+        Position userP = new Position(4,4);
+
+        map = null;
+
+        try {
+
+            Thread.sleep(1000);
+            mc.startManager(map);
+
+            Thread.sleep(1000);
+            mc.startUser(map,2,2,userP,stationP);
+
+            Thread.sleep(1000);
+            mc.startStation(map,6,2,10,stationP);
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
 
     }
 
-    public void run() {
-
-        List<Position> agentPositions;
-        int id = 0;
-
-        this.mc.startManager(map);
-
-    }
 }

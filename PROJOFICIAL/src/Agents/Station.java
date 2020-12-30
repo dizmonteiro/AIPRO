@@ -37,11 +37,11 @@ public class Station extends Agent {
         Object[] args = this.getArguments();
 
         //Variáveis Pré-definidas
-        this.setMap((WorldMap) args[0]);
-        this.setApe((Integer) args[1]);
-        this.setBaseRate((Double) args[2]);
-        this.setNumBikes((Integer) args[3]);
-        this.setPosition((Position) args[4]);
+        //this.setMap((WorldMap) args[0]);
+        this.setApe((Integer) args[0]);
+        this.setBaseRate((Double) args[1]);
+        this.setNumBikes((Integer) args[2]);
+        this.setPosition((Position) args[3]);
 
         //Registar o Agente Station
         DFFunctions.registerAgent(this, "Agent Station");

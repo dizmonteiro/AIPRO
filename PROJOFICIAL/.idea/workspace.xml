@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MTPs-MainContainer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/DeliverBike.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +48,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -71,16 +65,16 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="MainContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Util.MainContainer" />
-      <module name="MYPROJ" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="PROJOFICIAL" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainContainer" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +101,7 @@
       <workItem from="1609175719205" duration="772000" />
       <workItem from="1609176650870" duration="16000" />
       <workItem from="1609178062760" duration="20271000" />
-      <workItem from="1609263318608" duration="23105000" />
+      <workItem from="1609263318608" duration="25926000" />
     </task>
     <servers />
   </component>
