@@ -17,9 +17,8 @@ public class Position implements Serializable {
      */
 
     public Position(int x, int y) {
-        super();
-        this.x = x;
-        this.y = y;
+        this.setX(x);
+        this.setY(y);
     }
 
     /**
@@ -57,6 +56,21 @@ public class Position implements Serializable {
     /**
      * Outros Métodos
      */
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     public void move(int x, int y) {
         setX(x);

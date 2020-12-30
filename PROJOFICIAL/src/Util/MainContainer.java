@@ -86,8 +86,8 @@ public class MainContainer {
         this.startAgentInPlatform("Agent User "+ totalUsers++, "Agent User", new Object[] {map, financialStatus, stubborness, actualPosition});
     }
 
-    public void startStation(WorldMap map, double ape, int numBikes, Position position) {
-        this.startAgentInPlatform("Agent Station " + totalStations++, "Agent Station", new Object[] {map, ape, numBikes, position});
+    public void startStation(WorldMap map, double ape, double baseRate, int numBikes, Position position) {
+        this.startAgentInPlatform("Agent Station " + totalStations++, "Agent Station", new Object[] {map, ape, baseRate, numBikes, position});
     }
 
     public void startInterface(WorldMap map) {
