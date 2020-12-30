@@ -144,6 +144,7 @@ public class Manager extends Agent {
     //Adiciona um agente estação recém criado ao map de globalStations
     public void addStationInfo(AID agentStation, StationInfo stationInfo) {
 
+        //1. Adicionamos um clone do pacote que recebemos
         this.globalStations.put(agentStation, stationInfo.clone());
 
     }

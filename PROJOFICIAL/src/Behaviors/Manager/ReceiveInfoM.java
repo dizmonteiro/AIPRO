@@ -11,14 +11,6 @@ import jade.lang.acl.ACLMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Behavior ReceiveUserPosition
- * 1. Recebe a posição do User
- * 2. Atualiza a posição do User
- * 3. Verifica se a nova posição é dentro de uma ou mais APEs
- * 4. Caso a nova posição seja dentro de uma ou mais APEs, inicia Behavior AnswerUser
- */
-
 public class ReceiveInfoM extends CyclicBehaviour {
 
     /**
@@ -58,20 +50,33 @@ public class ReceiveInfoM extends CyclicBehaviour {
 
         if(message != null) {
 
-            //O Agente Manager recolhe os dados da mensagem
+            //1. Recolhemos os dados da mensagem
             AID agent = message.getSender();
             String agentName = agent.getLocalName();
 
+            //2. Verificamos qual o Agente e qual o Performative da Mensagem
+
+            //2.1. Caso seja um User a mandar um INFORM
             if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
+
+                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new message from User " + agent);
 
                 try {
 
+                    //2.1.1. Recolhemos o pacote InfoPackageFromUserToManager enviado pelo User
                     InfoPackageFromUserToManager newPackage = (InfoPackageFromUserToManager) message.getContentObject();
+
+                    //2.1.2. Recolhemos os dados contidos no pacote
                     Boolean isTraveling = newPackage.isTraveling();
                     Position newUserPos = newPackage.getActualPos();
-                    TravelPackage tp = newPackage.getTp();
+                    TravelPackage tp = newPackage.getTravelPackage();
 
-                    //O Agente Manager verifica se o Agente User está a viajar
+                    //Mensagem
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new InfoPackageFromUserToManager");
+
+                    //2.1.3. Verificamos se o User que enviou o pacote está a viajar
+
+                    //2.1.4. Caso esteja a viajar (tem bike)
                     if(isTraveling) {
 
                         //O Agente Manager verifica se a nova posição do Agente User está dentro do APE de algum Agente Station
@@ -88,6 +93,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                             }
                         }
 
+                    //2.1.5. Caso não esteja a viajar (não tem bike)
                     } else {
 
                         //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
@@ -108,15 +114,26 @@ public class ReceiveInfoM extends CyclicBehaviour {
 
                 }
 
+            //2.2. Caso seja uma Station a mandar um INFORM
+            //Vamos receber este tipo de mensagem quando uma nova estação for criada
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.INFORM) {
+
+                //Mensagem
+                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new message from Station " + agent);
 
                 try {
 
-                    //Caso seja uma estação que acabou de ser criada, adicionamos ao Map
-
+                    //2.2.1. Recolhemos o pacote StationInfo enviado pela Station
                     StationInfo newStationInfo = (StationInfo) message.getContentObject();
 
-                    this.agentManager.addStationInfo(agent, newStationInfo);
+                    //Mensagem
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new StationInfo");
+
+                    //2.2.2. Adicionamos ao pacote à lista que temos na classe Manager
+                    this.agentManager.addStationInfo(agent, newStationInfo.clone());
+
+                    //Mensagem
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has saved new StationInfo");
 
                 } catch (Exception e) {
 

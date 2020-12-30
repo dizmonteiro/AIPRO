@@ -9,18 +9,19 @@ public class InfoPackageFromUserToManager implements Serializable {
      */
 
     private boolean isTraveling;
-    private TravelPackage tp;
     private Position actualPos;
+
+    private TravelPackage actualTravelPackage;
 
     /**
      * Construtores
      */
 
-    public InfoPackageFromUserToManager(boolean isTraveling, TravelPackage tp, Position actualPos) {
+    public InfoPackageFromUserToManager(boolean isTraveling, Position actualPos, TravelPackage newTP) {
 
         this.setTraveling(isTraveling);
-        this.setTp(tp);
         this.setActualPos(actualPos);
+        this.setTravelPackage(newTP);
 
     }
 
@@ -28,9 +29,9 @@ public class InfoPackageFromUserToManager implements Serializable {
      * Getters
      */
 
-    public TravelPackage getTp() {
+    public TravelPackage getTravelPackage() {
 
-        return this.tp.clone();
+        return this.actualTravelPackage.clone();
 
     }
 
@@ -56,9 +57,9 @@ public class InfoPackageFromUserToManager implements Serializable {
 
     }
 
-    public void setTp(TravelPackage tp) {
+    public void setTravelPackage(TravelPackage newTP) {
 
-        this.tp = tp.clone();
+        this.actualTravelPackage = newTP.clone();
 
     }
 
@@ -75,7 +76,7 @@ public class InfoPackageFromUserToManager implements Serializable {
 
     public InfoPackageFromUserToManager clone() {
 
-        return new InfoPackageFromUserToManager(this.isTraveling, this.tp, this.actualPos);
+        return new InfoPackageFromUserToManager(this.isTraveling, this.actualPos, this.actualTravelPackage);
 
     }
 }

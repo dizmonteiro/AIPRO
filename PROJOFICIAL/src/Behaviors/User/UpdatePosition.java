@@ -98,7 +98,7 @@ public class UpdatePosition extends OneShotBehaviour {
             ACLMessage message = new ACLMessage(ACLMessage.INFORM);
             message.addReceiver(this.agentManager);
 
-            InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualTPackage(), this.agentUser.getActualPosition());
+            InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage());
 
             try {
 

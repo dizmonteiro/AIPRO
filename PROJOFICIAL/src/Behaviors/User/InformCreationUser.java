@@ -39,7 +39,7 @@ public class InformCreationUser extends OneShotBehaviour {
 
     public void action() {
 
-        InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualTPackage(), this.agentUser.getActualPosition());
+        InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage());
 
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
         message.addReceiver(this.agentUser.getAgentManager());
