@@ -2,11 +2,11 @@ package Agents;
 
 import Behaviors.Manager.ReceiveInfoM;
 import Extra.Position;
+import Extra.StationInfo;
 import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +18,11 @@ public class Manager extends Agent {
      * Variáveis
      */
 
+    //Mapa Global com Agents
     private WorldMap map;
-    private Map<AID, Station> globalStations;
+
+    //Info das APE de todas as Stations
+    private Map<AID, StationInfo> globalStations;
 
     /**
      * Setup
@@ -29,18 +32,18 @@ public class Manager extends Agent {
 
         Object[] args = this.getArguments();
 
-        //Variáveis Pré-Definidas
-        //this.setMap((WorldMap) args[0]);
+        //RECOLHER VARIÁVEIS PRÉ-DEFINIDAS
+        this.setMap((WorldMap) args[0]);
 
-        //WorldMap news = (WorldMap) args[0];
-
-        //Registar Agente Manager
+        //REGISTAR AGENTE MANAGER
         DFFunctions.registerAgent(this, "Manager");
 
-        //Inicialmente o Agente Manager não vai saber que Agentes estão ativos
+        //INICIALMENTE A LISTA DE AGENTES STATION VAI ESTAR VAZIA
         this.globalStations = new HashMap<>();
 
-        //Iniciar Behaviors
+        System.out.println("> Manager AID: " + this.getAID() + " is ON");
+
+        //INICIAR BEHAVIORS
         addBehaviour(new ReceiveInfoM(this));
 
     }
@@ -55,9 +58,9 @@ public class Manager extends Agent {
 
     }
 
-    public Map<AID, Station> getGlobalStations() {
+    public Map<AID, StationInfo> getGlobalStationsInfo() {
 
-        Map<AID, Station> res = new HashMap<>(this.globalStations);
+        Map<AID, StationInfo> res = new HashMap<>(this.globalStations);
 
         return res;
 
@@ -73,7 +76,7 @@ public class Manager extends Agent {
 
     }
 
-    public void setGlobalStations(Map<AID, Station> globalStations) {
+    public void setGlobalStationsInfo(Map<AID, StationInfo> globalStationsInfo) {
 
         this.globalStations = new HashMap<>(globalStations);
 
@@ -107,7 +110,7 @@ public class Manager extends Agent {
 
         this.globalStations.forEach((k,v) -> {
 
-            if(isInRange(userPosition, v.getPosition(), v.getApe())) {
+            if(isInRange(userPosition, v.getStationPos(), v.getStationAPE())) {
 
                 x[0] = true;
 
@@ -126,7 +129,7 @@ public class Manager extends Agent {
 
         this.globalStations.forEach((k,v) -> {
 
-            if(isInRange(userPosition, v.getPosition(), v.getApe())) {
+            if(isInRange(userPosition, v.getStationPos(), v.getStationAPE())) {
 
                 nearStations.add(k);
 
@@ -138,9 +141,10 @@ public class Manager extends Agent {
 
     }
 
-    public void addStation(AID agentStation, Station station) {
+    //Adiciona um agente estação recém criado ao map de globalStations
+    public void addStationInfo(AID agentStation, StationInfo stationInfo) {
 
-        this.globalStations.put(agentStation, station.clone());
+        this.globalStations.put(agentStation, stationInfo.clone());
 
     }
 }

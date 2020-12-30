@@ -22,6 +22,7 @@ public class Interface extends Agent {
     private List<User> users;
     private List<Station> stations;
     private PainelInicial pi;
+
     /**
      * Setup
      */
@@ -49,8 +50,8 @@ public class Interface extends Agent {
     public Interface(WorldMap map, List<User> users, List<Station> stations) {
 
         this.setMap(map);
-        this.setUsers(users);
-        this.setStations(stations);
+        //this.setUsers(users);
+        //this.setStations(stations);
 
     }
 
@@ -64,6 +65,7 @@ public class Interface extends Agent {
 
     }
 
+    /*
     public List<Station> getStations() {
 
         List<Station> res = new ArrayList<>();
@@ -87,7 +89,7 @@ public class Interface extends Agent {
         return res;
 
     }
-
+*/
     /**
      * Setters
      */
@@ -97,6 +99,7 @@ public class Interface extends Agent {
         this.map = map.clone();
 
     }
+    /*
 
     public void setStations(List<Station> stations) {
 
@@ -116,7 +119,7 @@ public class Interface extends Agent {
             this.users.add(u.clone());
         }
 
-    }
+    }*/
 
     /**
      * Clone

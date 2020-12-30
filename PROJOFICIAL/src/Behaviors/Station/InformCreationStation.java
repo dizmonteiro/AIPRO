@@ -1,8 +1,7 @@
 package Behaviors.Station;
 
 import Agents.Station;
-import Extra.InfoPackageFromUserToManager;
-import Util.DFFunctions;
+import Extra.StationInfo;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -16,7 +15,6 @@ public class InformCreationStation extends OneShotBehaviour {
      */
 
     private Station agentStation;
-    private AID agentManager;
 
     /**
      * Construtor
@@ -34,14 +32,16 @@ public class InformCreationStation extends OneShotBehaviour {
 
     public void action() {
 
-        this.agentManager = DFFunctions.findSpecificAgent(this.agentStation,"Agent Manager");
+        AID agentManager = this.agentStation.getAgentManager();
 
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-        message.addReceiver(this.agentManager);
+        message.addReceiver(agentManager);
+
+        StationInfo stationInfo = new StationInfo(this.agentStation.getApe(), this.agentStation.getPosition());
 
         try {
 
-            message.setContentObject(this.agentStation.clone());
+            message.setContentObject(stationInfo.clone());
 
         } catch (IOException e) {
 

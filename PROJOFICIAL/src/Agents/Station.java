@@ -2,8 +2,6 @@ package Agents;
 
 import Behaviors.Station.InformCreationStation;
 import Behaviors.Station.ReceiveInfoS;
-import Behaviors.User.InformCreationUser;
-import Behaviors.User.ReceiveInfoU;
 import Extra.Position;
 import Extra.TravelPackage;
 import Extra.WorldMap;
@@ -19,14 +17,26 @@ public class Station extends Agent {
      * Variáveis
      */
 
+    //Mapa global com agentes
     private WorldMap map;
 
+    //Variável ape, raio do range da estação
     private int ape;
-    private double baseRate;
+
+    //Variável baseRate unidade de valor a pagar pela distancia
+    private int baseRate;
+
+    //numBikes disponiveis
     private int numBikes;
+
+    //Posição da estação
     private Position position;
 
+    //Registo do TravelPackage de todas as bicicletas que forem deixadas na estação
     private List<TravelPackage> rentHistory;
+
+    //AID do agente Manager
+    private AID agentManager;
 
     /**
      * Setup
@@ -36,26 +46,24 @@ public class Station extends Agent {
 
         Object[] args = this.getArguments();
 
-        //Variáveis Pré-definidas
-        //this.setMap((WorldMap) args[0]);
-        //this.setApe((Integer) args[0]);
-        //this.setBaseRate((Double) args[1]);
-        //this.setNumBikes((Integer) args[2]);
-        //this.setPosition((Position) args[3]);
+        //RECOLHER VARIÁVEIS PRÉ-DEFINIDAS
+        this.setMap((WorldMap) args[0]);
+        this.setApe((Integer) args[1]);
+        this.setBaseRate((Integer) args[2]);
+        this.setNumBikes((Integer) args[3]);
+        this.setPosition((Position) args[4]);
 
-
-
-        //Registar o Agente Station
+        //REGISTAR O AGENTE STATION
         DFFunctions.registerAgent(this, "Station");
+        this.agentManager = DFFunctions.findSpecificAgent(this,"Manager");
 
-        //Inicialmente o Agente Station não tem historico
+        //INICIAR RENT HISTORY
         this.rentHistory = new ArrayList<>();
 
-        //Iniciar Behaviors
-        //Envia um INFORM ao Manager a dizer que foi criado
-        //Começa a ouvir
+        System.out.println("> Station AID: " + this.getAID() + " is ON");
 
-        //addBehaviour(new InformCreationStation(this));
+        //INICIAR BEHAVIORS
+        addBehaviour(new InformCreationStation(this));
         //addBehaviour(new ReceiveInfoS(this));
 
     }
@@ -64,7 +72,8 @@ public class Station extends Agent {
      * Construtores
      */
 
-    public Station(WorldMap map, int ape, double baseRate, int numBikes, Position position, List<TravelPackage> rentHistory) {
+    /*
+    public Station(WorldMap map, int ape, int baseRate, int numBikes, Position position, List<TravelPackage> rentHistory) {
 
         this.setMap(map);
         this.setApe(ape);
@@ -73,7 +82,7 @@ public class Station extends Agent {
         this.setPosition(position);
         this.setRentHistory(rentHistory);
 
-    }
+    }*/
 
     /**
      * Getters
@@ -91,7 +100,7 @@ public class Station extends Agent {
 
     }
 
-    public double getBaseRate() {
+    public int getBaseRate() {
 
         return this.baseRate;
 
@@ -123,6 +132,12 @@ public class Station extends Agent {
 
     }
 
+    public AID getAgentManager() {
+
+        return this.agentManager;
+
+    }
+
     /**
      * Setters
      */
@@ -139,7 +154,7 @@ public class Station extends Agent {
 
     }
 
-    public void setBaseRate(double baseRate) {
+    public void setBaseRate(int baseRate) {
 
         this.baseRate = baseRate;
 
@@ -170,16 +185,6 @@ public class Station extends Agent {
     }
 
     /**
-     * Clone
-     */
-
-    public Station clone() {
-
-        return new Station(this.map, this.ape, this.baseRate, this.numBikes, this.position, this.rentHistory);
-
-    }
-
-    /**
      * Métodos Auxiliares
      */
 
@@ -201,7 +206,6 @@ public class Station extends Agent {
 
     }
 
-
     public double calculateDistance(Position origin, Position destination) {
 
         double distance = 0;
@@ -212,11 +216,19 @@ public class Station extends Agent {
 
     }
 
+    /**
+     * FALTA FAZER
+     */
+
     public double calculateTotalCost(double distance) {
 
         return distance * this.baseRate;
 
     }
+
+    /**
+     * FALTA FAZER
+     */
 
     public double calculateDiscount(double distance, double precoantigo) {
 

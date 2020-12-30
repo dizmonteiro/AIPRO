@@ -10,11 +10,11 @@ import jade.wrapper.ContainerController;
 
 public class MainContainer {
 
-    private int totalAgents = 3;
-    private int totalManagers = 1;
+    private int totalAgents = 0;
+    private int totalManagers = 0;
     private int totalInterfaces = 0;
-    private int totalUsers = 1;
-    private int totalStations = 1;
+    private int totalUsers = 0;
+    private int totalStations = 0;
     private Runtime rt;
     private ContainerController container;
 
@@ -79,15 +79,15 @@ public class MainContainer {
     }
 
     public void startManager(WorldMap map){
-        this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {});
+        this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {map});
     }
 
-    public void startUser(WorldMap map, int financialStatus, int stubborness, Position actualPosition, Position setDestination){
-        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {financialStatus, stubborness, actualPosition, setDestination});
+    public void startUser(WorldMap map, Integer financialStatus, Integer stubborness, Position actualPosition, Position setDestination){
+        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {map, financialStatus, stubborness, actualPosition, setDestination});
     }
 
-    public void startStation(WorldMap map, double ape, double baseRate, int numBikes, Position position) {
-        this.startAgentInPlatform("Station " + totalStations++, "Agents.Station", new Object[] { ape, baseRate, numBikes, position});
+    public void startStation(WorldMap map, Integer stationAPE, Integer stationBaseRate, Integer numBikes, Position position) {
+        this.startAgentInPlatform("Station " + totalStations++, "Agents.Station", new Object[] {map, stationAPE, stationBaseRate, numBikes, position});
     }
 
     public void startInterface(WorldMap map) {

@@ -17,18 +17,36 @@ public class User extends Agent {
      * Variáveis
      */
 
+    //Mapa global com agentes
     private WorldMap map;
 
+    //Variáveis aleatórias que servirão para influenciar as decisões do Agente User
     private int financialStatus; //grau de riqueza, 1-10, quanto mais rico menor será a probabilidade de aceitar os descontos.
     private int stubborness; //grau de teimosia de 1-10, quanto mais teimoso mmenor será a probabilidade de aceitar os descontos.
 
+    //Posição atual do Agente User
     private Position actualPosition;
 
+    //Travel Package atual do Agente User
+    //Info: - AID agenteUser;
+    //      - Position origin;
+    //      - Position destination;
+    //      - double totalCost;
+    //Variável será inicializada com apenas o AID, a Origin e a Destination.
     private TravelPackage actualTPackage;
+
+    //Inicialmente isTraveling = false
     private boolean isTraveling;
+
+    //Inicialmente isMoving = false
+    private boolean isMoving;
+
+    //Inicialmente travelHistory estará vazio
     private List<TravelPackage> travelHistory;
 
-    private boolean isMoving;
+    //AID do agent Manager com que o agent User vai comunicar
+    private AID agentManager;
+
 
     /**
      * Setup
@@ -39,50 +57,30 @@ public class User extends Agent {
         Object[] args = this.getArguments();
 
         //Variáveis pré-definidas
-        //this.setMap((WorldMap) args[0]);
-        //this.setFinancialStatus((Integer) args[0]);
-        //this.setStubborness((Integer) args[1]);
-        //this.setActualPosition((Position) args[2]);
+        this.setMap((WorldMap) args[0]);
+        this.setFinancialStatus((Integer) args[1]);
+        this.setStubborness((Integer) args[2]);
+        this.setActualPosition((Position) args[3]);
 
-        this.actualTPackage = new TravelPackage();
+        Position destination = new Position((Position) args[4]);
 
-        //this.actualTPackage.setDestination((Position) args[3]);
+        this.actualTPackage = new TravelPackage(this.getAID(), this.actualPosition, destination);
+
+        //Inicialmente o Agente User não está a viajar
+        this.setTraveling(false);
+        this.setMoving(false);
 
         //Registar o Agente User
         DFFunctions.registerAgent(this, "User");
+        this.agentManager = DFFunctions.findSpecificAgent(this,"Manager");
 
-        //Inicialmente o Agente User não está a viajar e ainda não fez nenhuma viajem
-
-
-        this.setTraveling(false);
-        this.setMoving(false);
+        //Inicialmente ainda não fez nenhuma viajem
         this.travelHistory = new ArrayList<>();
 
-        //Iniciar Behaviors
-        //É gerado numa estação aleatória
-        //Informa Manager que foi criado
-        //Recebe o AID das estações do Manager
-        //Manda um pedido de aluguer da bike à Estação. O pedido vai criar o TravelPackage que vai ter a origem, o destino aleatório e mais dados
-        //Começa o movimento e o behaviour UpdatePosition
+        System.out.println("> User AID: " + this.getAID() + " is ON");
 
         //addBehaviour(new InformCreationUser(this));
         //addBehaviour(new ReceiveInfoU(this));
-
-    }
-
-    /**
-     * Construtores
-     */
-
-    public User(WorldMap map, int financialStatus, int stubborness, Position actualPosition, TravelPackage actualTPackage, boolean isTraveling, List<TravelPackage> travelHistory) {
-
-        this.setMap(map);
-        this.setFinancialStatus(financialStatus);
-        this.setStubborness(stubborness);
-        this.setActualPosition(actualPosition);
-        this.setActualTPackage(actualTPackage);
-        this.setTraveling(isTraveling);
-        this.setTravelHistory(travelHistory);
 
     }
 
@@ -143,6 +141,12 @@ public class User extends Agent {
         }
 
         return res;
+
+    }
+
+    public AID getAgentManager() {
+
+        return this.agentManager;
 
     }
 
@@ -245,16 +249,6 @@ public class User extends Agent {
         x--;
 
         this.actualPosition.move(x,y);
-
-    }
-
-    /**
-     * Clone
-     */
-
-    public User clone() {
-
-        return new User(this.map, this.financialStatus, this.stubborness, this.actualPosition, this.actualTPackage, this.isTraveling, this.travelHistory);
 
     }
 

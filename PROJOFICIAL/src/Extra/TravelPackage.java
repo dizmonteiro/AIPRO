@@ -4,6 +4,10 @@ import jade.core.AID;
 
 import java.io.Serializable;
 
+/**
+ * TravelPackage
+ */
+
 public class TravelPackage implements Serializable {
 
     /**
@@ -22,9 +26,17 @@ public class TravelPackage implements Serializable {
     public TravelPackage() {
 
         this.setAgentUser(null);
-        this.setOrigin(null);
-        this.setDestination(null);
+        this.setOrigin(new Position());
+        this.setDestination(new Position());
         this.setTotalCost(0);
+
+    }
+
+    public TravelPackage(AID agentUser, Position origin, Position destination) {
+
+        this.setAgentUser(agentUser);
+        this.setOrigin(origin);
+        this.setDestination(destination);
 
     }
 

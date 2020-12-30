@@ -1,9 +1,9 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
-import Agents.Station;
 import Extra.InfoPackageFromUserToManager;
 import Extra.Position;
+import Extra.StationInfo;
 import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
@@ -114,9 +114,9 @@ public class ReceiveInfoM extends CyclicBehaviour {
 
                     //Caso seja uma estação que acabou de ser criada, adicionamos ao Map
 
-                    Station newStation = (Station) message.getContentObject();
+                    StationInfo newStationInfo = (StationInfo) message.getContentObject();
 
-                    this.agentManager.addStation(agent, newStation);
+                    this.agentManager.addStationInfo(agent, newStationInfo);
 
                 } catch (Exception e) {
 

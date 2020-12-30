@@ -1,14 +1,19 @@
 package Behaviors.User;
 
-import Agents.Station;
 import Agents.User;
 import Extra.InfoPackageFromUserToManager;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
-
 import java.io.IOException;
+
+/**
+ * Behavior InformCreationUser
+ * Este método será utilizado pelo Agente User quando for criado
+ * 1. Cria um InfoPackageFromUserToManager
+ * 2. Envia esse InfoPackage para o Manager
+ */
 
 public class InformCreationUser extends OneShotBehaviour {
 
@@ -17,7 +22,6 @@ public class InformCreationUser extends OneShotBehaviour {
      */
 
     private User agentUser;
-    private AID agentManager;
 
     /**
      * Construtor
@@ -35,12 +39,10 @@ public class InformCreationUser extends OneShotBehaviour {
 
     public void action() {
 
-        this.agentManager = DFFunctions.findSpecificAgent(this.agentUser,"Agent Manager");
-
         InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualTPackage(), this.agentUser.getActualPosition());
 
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-        message.addReceiver(this.agentManager);
+        message.addReceiver(this.agentUser.getAgentManager());
 
         try {
 

@@ -20,6 +20,13 @@ public class WorldMap {
      * Construtores
      */
 
+    public WorldMap() {
+
+        this.setMapSize(0);
+        this.setAgentPositions(new HashMap<>());
+
+    }
+
     public WorldMap(int mapSize, Map<String, List<Position>> agentPositions) {
 
         this.setMapSize(mapSize);
@@ -39,7 +46,7 @@ public class WorldMap {
 
     public Map<String, List<Position>> getAgentPositions() {
 
-        Map<String, List<Position>> res = new HashMap<String, List<Position>>(this.agentPositions);
+        Map<String, List<Position>> res = new HashMap<>(this.agentPositions);
 
         return res;
 
@@ -57,7 +64,7 @@ public class WorldMap {
 
     public void setAgentPositions(Map<String, List<Position>> agentPositions) {
 
-        this.agentPositions =  new HashMap<String, List<Position>>(agentPositions);
+        this.agentPositions =  new HashMap<>(agentPositions);
 
     }
 

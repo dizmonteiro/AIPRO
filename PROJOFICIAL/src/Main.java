@@ -19,7 +19,7 @@ public class Main {
 
         Position userP = new Position(4,4);
 
-        map = null;
+        map = new WorldMap();
 
         try {
 
@@ -27,10 +27,10 @@ public class Main {
             mc.startManager(map);
 
             Thread.sleep(1000);
-            mc.startStation(map,6,2,10,stationP);
+            mc.startStation(map,10,2,2, stationP);
 
             Thread.sleep(1000);
-            mc.startUser(map,2,2,userP,stationP);
+            mc.startUser(map,5,5, userP, stationP);
 
 
         } catch (Exception e) {
