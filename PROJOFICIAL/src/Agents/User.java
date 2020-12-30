@@ -40,13 +40,13 @@ public class User extends Agent {
 
         //Variáveis pré-definidas
         //this.setMap((WorldMap) args[0]);
-        this.setFinancialStatus((Integer) args[0]);
-        this.setStubborness((Integer) args[1]);
-        this.setActualPosition((Position) args[2]);
+        //this.setFinancialStatus((Integer) args[0]);
+        //this.setStubborness((Integer) args[1]);
+        //this.setActualPosition((Position) args[2]);
 
         this.actualTPackage = new TravelPackage();
 
-        this.actualTPackage.setDestination((Position) args[3]);
+        //this.actualTPackage.setDestination((Position) args[3]);
 
         //Registar o Agente User
         DFFunctions.registerAgent(this, "User");
