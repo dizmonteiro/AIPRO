@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/DeliverBike.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +107,7 @@
       <workItem from="1609175719205" duration="772000" />
       <workItem from="1609176650870" duration="16000" />
       <workItem from="1609178062760" duration="20271000" />
-      <workItem from="1609263318608" duration="17129000" />
+      <workItem from="1609263318608" duration="23105000" />
     </task>
     <servers />
   </component>

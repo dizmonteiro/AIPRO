@@ -67,4 +67,15 @@ public class InfoPackageFromUserToManager implements Serializable {
         this.actualPos = actualPos.clone();
 
     }
+
+
+    /**
+     * Clone
+     */
+
+    public InfoPackageFromUserToManager clone() {
+
+        return new InfoPackageFromUserToManager(this.isTraveling, this.tp, this.actualPos);
+
+    }
 }

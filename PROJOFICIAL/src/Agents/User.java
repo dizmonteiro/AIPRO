@@ -1,5 +1,7 @@
 package Agents;
 
+import Behaviors.User.InformCreationUser;
+import Behaviors.User.ReceiveInfoU;
 import Extra.Position;
 import Extra.TravelPackage;
 import Extra.WorldMap;
@@ -26,6 +28,8 @@ public class User extends Agent {
     private boolean isTraveling;
     private List<TravelPackage> travelHistory;
 
+    private boolean isMoving;
+
     /**
      * Setup
      */
@@ -40,12 +44,18 @@ public class User extends Agent {
         this.setStubborness((Integer) args[2]);
         this.setActualPosition((Position) args[3]);
 
+        this.actualTPackage = new TravelPackage();
+
+        this.actualTPackage.setDestination((Position) args[4]);
+
         //Registar o Agente User
         DFFunctions.registerAgent(this, "Agent User");
 
         //Inicialmente o Agente User não está a viajar e ainda não fez nenhuma viajem
-        this.actualTPackage = new TravelPackage();
+
+
         this.setTraveling(false);
+        this.setMoving(false);
         this.travelHistory = new ArrayList<>();
 
         //Iniciar Behaviors
@@ -54,6 +64,9 @@ public class User extends Agent {
         //Recebe o AID das estações do Manager
         //Manda um pedido de aluguer da bike à Estação. O pedido vai criar o TravelPackage que vai ter a origem, o destino aleatório e mais dados
         //Começa o movimento e o behaviour UpdatePosition
+
+        addBehaviour(new InformCreationUser(this));
+        addBehaviour(new ReceiveInfoU(this));
 
     }
 
@@ -110,6 +123,12 @@ public class User extends Agent {
     public boolean isTraveling() {
 
         return this.isTraveling;
+
+    }
+
+    public boolean isMoving() {
+
+        return this.isMoving;
 
     }
 
@@ -176,6 +195,56 @@ public class User extends Agent {
             this.travelHistory.add(tp.clone());
 
         }
+
+    }
+
+    public void setMoving(boolean moving) {
+
+        isMoving = moving;
+
+    }
+
+    public void movePlusY() {
+
+        int x = this.actualPosition.getX();
+        int y = this.actualPosition.getY();
+
+        y++;
+
+        this.actualPosition.move(x,y);
+
+    }
+
+    public void moveMinusY() {
+
+        int x = this.actualPosition.getX();
+        int y = this.actualPosition.getY();
+
+        y--;
+
+        this.actualPosition.move(x,y);
+
+    }
+
+    public void movePlusX() {
+
+        int x = this.actualPosition.getX();
+        int y = this.actualPosition.getY();
+
+        x++;
+
+        this.actualPosition.move(x,y);
+
+    }
+
+    public void moveMinusX() {
+
+        int x = this.actualPosition.getX();
+        int y = this.actualPosition.getY();
+
+        x--;
+
+        this.actualPosition.move(x,y);
 
     }
 

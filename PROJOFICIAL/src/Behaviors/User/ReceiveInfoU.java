@@ -1,6 +1,7 @@
 package Behaviors.User;
 
 import Agents.User;
+import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -59,6 +60,9 @@ public class ReceiveInfoU extends CyclicBehaviour {
 
                 try {
 
+                    AID agentStation = (AID) message.getContentObject();
+
+                    this.agentUser.addBehaviour(new MakeBikeRequest(this.agentUser, agentStation));
 
                 } catch (Exception e) {
 
@@ -67,18 +71,52 @@ public class ReceiveInfoU extends CyclicBehaviour {
                 }
 
                 //User recebe mensagem da Station com desconto para deixar a sua bike
-            } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REQUEST) {
+            } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.PROPOSE) {
 
+                try {
 
+                    TravelPackage newPackage = (TravelPackage) message.getContentObject();
+
+                    this.agentUser.setMoving(false);
+
+                    this.agentUser.addBehaviour(new AnswerProposal(this.agentUser,agent,newPackage));
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
 
                 //User recebe resposta da Station que aceita o seu Bike Request
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
 
+                try {
 
+                    TravelPackage newPackage = (TravelPackage) message.getContentObject();
+
+                    this.agentUser.setMoving(true);
+                    this.agentUser.setActualTPackage(newPackage);
+
+                    this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
 
                 //User recebe resposta da Station que rejeita o seu Bike Request
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
 
+                try {
+
+
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
 
             } else {
 

@@ -61,31 +61,49 @@ public class MakeProposal extends OneShotBehaviour {
         ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
         message.addReceiver(this.agentUser);
 
-        this.tp.setDestination(this.agentStation.getPosition());
+        if(tp.getDestination().equals(this.agentStation.getPosition())) {
 
-        double precoantigo = this.tp.getTotalCost();
+            try {
 
-        //Calcular Distancia
+                message.setContentObject(this.tp);
 
-        double distancia = this.agentStation.calculateDistance(tp.getOrigin(),tp.getDestination());
+            } catch (IOException e) {
 
-        //Calcular Promocao
+                e.printStackTrace();
 
-        double novopreco = this.agentStation.calculateDiscount(distancia,precoantigo);
+            }
 
-        this.tp.setTotalCost(novopreco);
+            this.agentStation.send(message);
 
-        try {
+        } else {
 
-            message.setContentObject(this.tp);
+            this.tp.setDestination(this.agentStation.getPosition());
 
-        } catch (IOException e) {
+            double precoantigo = this.tp.getTotalCost();
 
-            e.printStackTrace();
+            //Calcular Distancia
+
+            double distancia = this.agentStation.calculateDistance(tp.getOrigin(),tp.getDestination());
+
+            //Calcular Promocao
+
+            double novopreco = this.agentStation.calculateDiscount(distancia,precoantigo);
+
+            this.tp.setTotalCost(novopreco);
+
+            try {
+
+                message.setContentObject(this.tp);
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+
+            this.agentStation.send(message);
 
         }
-
-        this.agentStation.send(message);
 
     }
 

@@ -116,22 +116,6 @@ public class ReceiveInfoS extends CyclicBehaviour {
 
                 }
 
-                //Station recebe mensagem do User de que entregou a sua Bike
-            } else if(agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
-
-                try {
-
-                    TravelPackage newTP = (TravelPackage) message.getContentObject();
-
-                    this.agentStation.addBike();
-                    this.agentStation.addTravelPackage(newTP);
-
-                } catch (Exception e) {
-
-                    e.printStackTrace();
-
-                }
-
             } else {
 
                 block();

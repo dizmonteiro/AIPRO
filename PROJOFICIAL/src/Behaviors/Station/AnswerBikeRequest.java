@@ -77,6 +77,8 @@ public class AnswerBikeRequest extends OneShotBehaviour {
             //Atualizar o preço total
             this.tp.setTotalCost(price);
 
+            this.agentStation.removeBike();
+
             try {
 
                 message.setContentObject(this.tp);

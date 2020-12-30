@@ -1,5 +1,9 @@
 package Agents;
 
+import Behaviors.Station.InformCreationStation;
+import Behaviors.Station.ReceiveInfoS;
+import Behaviors.User.InformCreationUser;
+import Behaviors.User.ReceiveInfoU;
 import Extra.Position;
 import Extra.TravelPackage;
 import Extra.WorldMap;
@@ -48,6 +52,9 @@ public class Station extends Agent {
         //Iniciar Behaviors
         //Envia um INFORM ao Manager a dizer que foi criado
         //Começa a ouvir
+
+        addBehaviour(new InformCreationStation(this));
+        addBehaviour(new ReceiveInfoS(this));
 
     }
 
