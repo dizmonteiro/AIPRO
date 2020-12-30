@@ -25,7 +25,7 @@ public class Manager extends Agent {
      * Setup
      */
 
-    public void setup() {
+    protected void setup() {
 
         Object[] args = this.getArguments();
 
@@ -35,7 +35,7 @@ public class Manager extends Agent {
         //WorldMap news = (WorldMap) args[0];
 
         //Registar Agente Manager
-        DFFunctions.registerAgent(this, "Agent Manager");
+        DFFunctions.registerAgent(this, "Manager");
 
         //Inicialmente o Agente Manager não vai saber que Agentes estão ativos
         this.globalStations = new HashMap<>();

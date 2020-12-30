@@ -32,7 +32,7 @@ public class Station extends Agent {
      * Setup
      */
 
-    public void setup() {
+    protected void setup() {
 
         Object[] args = this.getArguments();
 
@@ -44,7 +44,7 @@ public class Station extends Agent {
         this.setPosition((Position) args[3]);
 
         //Registar o Agente Station
-        DFFunctions.registerAgent(this, "Agent Station");
+        DFFunctions.registerAgent(this, "Station");
 
         //Inicialmente o Agente Station não tem historico
         this.rentHistory = new ArrayList<>();
@@ -53,8 +53,8 @@ public class Station extends Agent {
         //Envia um INFORM ao Manager a dizer que foi criado
         //Começa a ouvir
 
-        addBehaviour(new InformCreationStation(this));
-        addBehaviour(new ReceiveInfoS(this));
+        //addBehaviour(new InformCreationStation(this));
+        //addBehaviour(new ReceiveInfoS(this));
 
     }
 

@@ -34,7 +34,7 @@ public class User extends Agent {
      * Setup
      */
 
-    public void setup() {
+    protected void setup() {
 
         Object[] args = this.getArguments();
 
@@ -49,7 +49,7 @@ public class User extends Agent {
         this.actualTPackage.setDestination((Position) args[3]);
 
         //Registar o Agente User
-        DFFunctions.registerAgent(this, "Agent User");
+        DFFunctions.registerAgent(this, "User");
 
         //Inicialmente o Agente User não está a viajar e ainda não fez nenhuma viajem
 
@@ -65,8 +65,8 @@ public class User extends Agent {
         //Manda um pedido de aluguer da bike à Estação. O pedido vai criar o TravelPackage que vai ter a origem, o destino aleatório e mais dados
         //Começa o movimento e o behaviour UpdatePosition
 
-        addBehaviour(new InformCreationUser(this));
-        addBehaviour(new ReceiveInfoU(this));
+        //addBehaviour(new InformCreationUser(this));
+        //addBehaviour(new ReceiveInfoU(this));
 
     }
 

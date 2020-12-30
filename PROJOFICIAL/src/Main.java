@@ -27,10 +27,10 @@ public class Main {
             mc.startManager(map);
 
             Thread.sleep(1000);
-            mc.startUser(map,2,2,userP,stationP);
+            mc.startStation(map,6,2,10,stationP);
 
             Thread.sleep(1000);
-            mc.startStation(map,6,2,10,stationP);
+            mc.startUser(map,2,2,userP,stationP);
 
 
         } catch (Exception e) {
