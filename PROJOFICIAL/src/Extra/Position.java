@@ -16,6 +16,11 @@ public class Position implements Serializable {
      * Construtores
      */
 
+    public Position() {
+        this.setX(0);
+        this.setY(0);
+    }
+
     public Position(int x, int y) {
         this.setX(x);
         this.setY(y);

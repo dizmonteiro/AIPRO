@@ -1,37 +1,39 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
+import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Behavior SendNearbyStations
  * 1. Recebe o AID do User
  * 2. Recebe o AID da Station
- * 3. Envia o AID da Station para o User
+ * 3. Envia o AID do User para a Station
  */
 
-public class SendNearbyStation extends OneShotBehaviour {
+public class SendNearbyUserToStation extends OneShotBehaviour {
 
     /**
      * Variáveis
      */
 
     private Manager agentManager;
-    private AID agentUser;
+    private TravelPackage tp;
     private AID agentStation;
 
     /**
      * Construtores
      */
 
-    public SendNearbyStation(Manager agentManager, AID agentUser, AID agentStation) {
+    public SendNearbyUserToStation(Manager agentManager, AID agentStation, TravelPackage tp) {
 
         this.setAgentManager(agentManager);
         this.setAgentStation(agentStation);
-        this.setAgentUser(agentUser);
+        this.setTravelPackage(tp);
 
     }
 
@@ -51,9 +53,9 @@ public class SendNearbyStation extends OneShotBehaviour {
 
     }
 
-    public void setAgentUser(AID agentUser) {
+    public void setTravelPackage(TravelPackage tp) {
 
-        this.agentUser = agentUser;
+        this.tp = tp.clone();
 
     }
 
@@ -64,11 +66,13 @@ public class SendNearbyStation extends OneShotBehaviour {
     public void action() {
 
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-        message.addReceiver(this.agentUser);
+        message.addReceiver(this.agentStation);
+
+
 
         try {
 
-            message.setContentObject(this.agentStation);
+            message.setContentObject(this.tp);
 
         } catch (IOException e) {
 

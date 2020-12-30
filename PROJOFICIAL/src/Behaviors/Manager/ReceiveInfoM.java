@@ -1,7 +1,10 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
+import Agents.Station;
+import Extra.InfoPackageFromUserToManager;
 import Extra.Position;
+import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -55,34 +58,65 @@ public class ReceiveInfoM extends CyclicBehaviour {
 
         if(message != null) {
 
-            AID agentUser = message.getSender();
-            String agentName = agentUser.getLocalName();
+            //O Agente Manager recolhe os dados da mensagem
+            AID agent = message.getSender();
+            String agentName = agent.getLocalName();
 
-            //Manager recebe a nova posição de um User
             if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
 
                 try {
 
-                    InfoPackage newPackage = (InfoPackage) message.getContentObject();
-                    Position newUserPos = newPackage.getActualPos();
+                    InfoPackageFromUserToManager newPackage = (InfoPackageFromUserToManager) message.getContentObject();
                     Boolean isTraveling = newPackage.isTraveling();
-                    this.agentManager.updateUserPos(agentUser, newUserPos);
+                    Position newUserPos = newPackage.getActualPos();
+                    TravelPackage tp = newPackage.getTp();
 
-                    //Manager verifica se a nova posição do User está dentro de uma APE
-                    if(this.agentManager.isNearStation(agentUser)) {
+                    //O Agente Manager verifica se o Agente User está a viajar
+                    if(isTraveling) {
 
-                        //Manager vai buscar todas as Stations que estão no range do User
-                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(agentUser));
+                        //O Agente Manager verifica se a nova posição do Agente User está dentro do APE de algum Agente Station
+                        if (this.agentManager.isNearStation(newUserPos)) {
 
-                        //Manager envia a lista das Stations para o User
-                        //Manager envia o User para todas as Stations
-                        for(AID agentStation : nearStations) {
+                            //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
+                            List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
 
-                            this.agentManager.addBehaviour(new SendNearbyStation(this.agentManager, agentUser, agentStation));
-                            this.agentManager.addBehaviour(new SendNearbyUser(this.agentManager, agentStation, agentUser, isTraveling));
+                            //O Agente Manager envia o AID do Agente User para todos os Agentes Stations
+                            for (AID agentStation : nearStations) {
+
+                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, tp));
+
+                            }
+                        }
+
+                    } else {
+
+                        //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
+                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
+
+                        //O Agente Manager envia o AID do Agente User para todos os Agentes Stations
+                        for (AID agentStation : nearStations) {
+
+                            this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
 
                         }
+
                     }
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
+
+            } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.INFORM) {
+
+                try {
+
+                    //Caso seja uma estação que acabou de ser criada, adicionamos ao Map
+
+                    Station newStation = (Station) message.getContentObject();
+
+                    this.agentManager.addStation(agent, newStation);
 
                 } catch (Exception e) {
 

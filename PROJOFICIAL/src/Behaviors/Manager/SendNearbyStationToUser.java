@@ -10,10 +10,10 @@ import java.io.IOException;
  * Behavior SendNearbyStations
  * 1. Recebe o AID do User
  * 2. Recebe o AID da Station
- * 3. Envia o AID do User para a Station
+ * 3. Envia o AID da Station para o User
  */
 
-public class SendNearbyUser extends OneShotBehaviour {
+public class SendNearbyStationToUser extends OneShotBehaviour {
 
     /**
      * Variáveis
@@ -22,18 +22,16 @@ public class SendNearbyUser extends OneShotBehaviour {
     private Manager agentManager;
     private AID agentUser;
     private AID agentStation;
-    private Boolean isUserTraveling;
 
     /**
      * Construtores
      */
 
-    public SendNearbyUser(Manager agentManager, AID agentStation, AID agentUser, Boolean isUserTraveling) {
+    public SendNearbyStationToUser(Manager agentManager, AID agentUser, AID agentStation) {
 
         this.setAgentManager(agentManager);
         this.setAgentStation(agentStation);
         this.setAgentUser(agentUser);
-        this.setUserTraveling(isUserTraveling);
 
     }
 
@@ -59,10 +57,6 @@ public class SendNearbyUser extends OneShotBehaviour {
 
     }
 
-    public void setUserTraveling(Boolean userTraveling) {
-        this.isUserTraveling = userTraveling;
-    }
-
     /**
      * Action
      */
@@ -70,13 +64,11 @@ public class SendNearbyUser extends OneShotBehaviour {
     public void action() {
 
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-        message.addReceiver(this.agentStation);
-
-        InfoPackage newPackage = new InfoPackage(this.isUserTraveling, this.agentUser);
+        message.addReceiver(this.agentUser);
 
         try {
 
-            message.setContentObject(newPackage);
+            message.setContentObject(this.agentStation);
 
         } catch (IOException e) {
 

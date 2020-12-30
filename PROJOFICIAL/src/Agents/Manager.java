@@ -19,7 +19,6 @@ public class Manager extends Agent {
      */
 
     private WorldMap map;
-    private Map<AID, User> globalUsers;
     private Map<AID, Station> globalStations;
 
     /**
@@ -37,23 +36,10 @@ public class Manager extends Agent {
         DFFunctions.registerAgent(this, "Agent Manager");
 
         //Inicialmente o Agente Manager não vai saber que Agentes estão ativos
-        this.globalUsers = new HashMap<>();
         this.globalStations = new HashMap<>();
 
         //Iniciar Behaviors
         addBehaviour(new ReceiveInfoM(this));
-
-    }
-
-    /**
-     * Construtores
-     */
-
-    public Manager(WorldMap map, Map<AID, User> globalUsers, Map<AID, Station> globalStations) {
-
-        this.setMap(map);
-        this.setGlobalUsers(globalUsers);
-        this.setGlobalStations(globalStations);
 
     }
 
@@ -69,15 +55,7 @@ public class Manager extends Agent {
 
     public Map<AID, Station> getGlobalStations() {
 
-        Map<AID, Station> res = new HashMap<AID, Station>(this.globalStations);
-
-        return res;
-
-    }
-
-    public Map<AID, User> getGlobalUsers() {
-
-        Map<AID, User> res = new HashMap<AID, User>(this.globalUsers);
+        Map<AID, Station> res = new HashMap<>(this.globalStations);
 
         return res;
 
@@ -95,35 +73,13 @@ public class Manager extends Agent {
 
     public void setGlobalStations(Map<AID, Station> globalStations) {
 
-        this.globalStations = new HashMap<AID, Station>(globalStations);
-
-    }
-
-    public void setGlobalUsers(Map<AID, User> globalUsers) {
-
-        this.globalUsers = new HashMap<AID, User>(globalUsers);
-
-    }
-
-    /**
-     * Clone
-     */
-
-    public Manager clone() {
-
-        return new Manager(this.map, this.globalUsers, this.globalStations);
+        this.globalStations = new HashMap<>(globalStations);
 
     }
 
     /**
      * Métodos Auxiliares
      */
-
-    public void updateUserPos(AID agent, Position newPos) {
-
-        this.globalUsers.get(agent).setActualPosition(newPos);
-
-    }
 
     //Verifica se a posição do User está dentro da APE de uma estação especifica
     public boolean isInRange(Position userPos, Position stationPos, int ape) {
@@ -142,9 +98,8 @@ public class Manager extends Agent {
     }
 
     //Verifica se o User está dentro da APE de qualquer estação
-    public boolean isNearStation(AID agent) {
+    public boolean isNearStation(Position userPosition) {
 
-        Position userPosition = this.globalUsers.get(agent).getActualPosition();
         final boolean[] x = new boolean[1];
         x[0] = false;
 
@@ -163,10 +118,9 @@ public class Manager extends Agent {
     }
 
     //Devolve uma lista com todas as estações em que o User tem no seu range
-    public List getNearStations(AID agent) {
+    public List getNearStations(Position userPosition) {
 
         List<AID> nearStations = new ArrayList<>();
-        Position userPosition = this.globalUsers.get(agent).getActualPosition();
 
         this.globalStations.forEach((k,v) -> {
 
@@ -182,4 +136,9 @@ public class Manager extends Agent {
 
     }
 
+    public void addStation(AID agentStation, Station station) {
+
+        this.globalStations.put(agentStation, station.clone());
+
+    }
 }

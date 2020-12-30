@@ -2,7 +2,9 @@ package Extra;
 
 import jade.core.AID;
 
-public class TravelPackage {
+import java.io.Serializable;
+
+public class TravelPackage implements Serializable {
 
     /**
      * Variáveis

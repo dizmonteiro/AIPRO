@@ -80,7 +80,6 @@ public class ReceiveInfoU extends CyclicBehaviour {
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
 
 
-
             } else {
 
                 block();

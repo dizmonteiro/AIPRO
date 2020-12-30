@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Extra/InfoPackageFromUserToManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/JESS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStationToUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUserToStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Extra/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Extra/TravelPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/TravelPackage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +48,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -95,7 +102,7 @@
       <workItem from="1609175719205" duration="772000" />
       <workItem from="1609176650870" duration="16000" />
       <workItem from="1609178062760" duration="20271000" />
-      <workItem from="1609263318608" duration="8459000" />
+      <workItem from="1609263318608" duration="14121000" />
     </task>
     <servers />
   </component>
