@@ -7,10 +7,7 @@ import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
 /**
- * Behavior SendNearbyStations
- * 1. Recebe o AID do User
- * 2. Recebe o AID da Station
- * 3. Envia o AID da Station para o User
+ * BEHAVIOR STATUS: NOT DONE
  */
 
 public class SendNearbyStationToUser extends OneShotBehaviour {

@@ -7,11 +7,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 /**
- * Behavior ReceiveInfoU
- * Pode receber:
- *      - Nearby Stations
- *      - Bike Request Answers
- *      - Proposals
+ * BEHAVIOR STATUS: NOT DONE
  */
 
 public class ReceiveInfoU extends CyclicBehaviour {

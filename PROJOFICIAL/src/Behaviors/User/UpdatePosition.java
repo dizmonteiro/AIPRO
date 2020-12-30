@@ -2,14 +2,15 @@ package Behaviors.User;
 
 import Agents.User;
 import Extra.InfoPackageFromUserToManager;
-import Extra.Position;
 import Util.DFFunctions;
 import jade.core.AID;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
-
 import java.io.IOException;
+
+/**
+ * BEHAVIOR STATUS: NOT DONE
+ */
 
 public class UpdatePosition extends OneShotBehaviour {
 

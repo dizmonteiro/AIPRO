@@ -5,8 +5,11 @@ import Extra.StationInfo;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
-
 import java.io.IOException;
+
+/**
+ * BEHAVIOR STATUS: DONE
+ */
 
 public class InformCreationStation extends OneShotBehaviour {
 

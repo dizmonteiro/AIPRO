@@ -11,6 +11,10 @@ import jade.lang.acl.ACLMessage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * BEHAVIOR STATUS: NOT DONE
+ */
+
 public class ReceiveInfoM extends CyclicBehaviour {
 
     /**
@@ -69,7 +73,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     //2.1.2. Recolhemos os dados contidos no pacote
                     Boolean isTraveling = newPackage.isTraveling();
                     Position newUserPos = newPackage.getActualPos();
-                    TravelPackage tp = newPackage.getTravelPackage();
+                    TravelPackage newTravelPackage = newPackage.getTravelPackage();
 
                     //Mensagem
                     System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new InfoPackageFromUserToManager");
@@ -79,22 +83,41 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     //2.1.4. Caso esteja a viajar (tem bike)
                     if(isTraveling) {
 
-                        //O Agente Manager verifica se a nova posição do Agente User está dentro do APE de algum Agente Station
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is Traveling");
+
+                        //2.1.4.1. Verificamos se a nova posição do User está dentro do APE de alguma Station
+
+                        //2.1.4.2. Caso esteja dentro do alcance de uma Station
                         if (this.agentManager.isNearStation(newUserPos)) {
 
-                            //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
+                            //Mensagem
+                            System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " IS inside Station APE");
+
+                            //2.1.4.2.1. Vamos buscar todos as Stations cujo User está ao alcance
                             List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
 
-                            //O Agente Manager envia o AID do Agente User para todos os Agentes Stations
+                            //2.1.4.2.2. Vamos enviar o travelPackage do User para todas as Stations cujo APE alcance o User
+                            /*
                             for (AID agentStation : nearStations) {
 
-                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, tp));
+                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, newTravelPackage));
 
-                            }
+                            }*/
+
+                            //2.1.4.2.2. Primeiramente vamos enviar só para a primeira Station
+                            this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage));
+
                         }
+
+                        //2.1.4.3. Caso não esteja dentro do alcance de uma Station
+
+                        //Mensagem
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT inside Station APE");
 
                     //2.1.5. Caso não esteja a viajar (não tem bike)
                     } else {
+
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT Traveling");
 
                         //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
                         List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));

@@ -6,13 +6,9 @@ import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
-import java.io.Serializable;
 
 /**
- * Behavior SendNearbyStations
- * 1. Recebe o AID do User
- * 2. Recebe o AID da Station
- * 3. Envia o AID do User para a Station
+ * BEHAVIOR STATUS: DONE
  */
 
 public class SendNearbyUserToStation extends OneShotBehaviour {
@@ -22,8 +18,8 @@ public class SendNearbyUserToStation extends OneShotBehaviour {
      */
 
     private Manager agentManager;
-    private TravelPackage tp;
     private AID agentStation;
+    private TravelPackage newTravelPackage;
 
     /**
      * Construtores
@@ -53,9 +49,9 @@ public class SendNearbyUserToStation extends OneShotBehaviour {
 
     }
 
-    public void setTravelPackage(TravelPackage tp) {
+    public void setTravelPackage(TravelPackage nTP) {
 
-        this.tp = tp.clone();
+        this.newTravelPackage = nTP.clone();
 
     }
 
@@ -65,14 +61,16 @@ public class SendNearbyUserToStation extends OneShotBehaviour {
 
     public void action() {
 
+        //1. Criamos a mensagem com Performative INFORM
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+
+        //2. Colocamos o AID da Station como recetor
         message.addReceiver(this.agentStation);
-
-
 
         try {
 
-            message.setContentObject(this.tp);
+            //3. Introduzimos o TravelPackage na mensagem
+            message.setContentObject(this.newTravelPackage);
 
         } catch (IOException e) {
 
@@ -80,6 +78,9 @@ public class SendNearbyUserToStation extends OneShotBehaviour {
 
         }
 
+        System.out.println("> Manager AID: " + this.agentManager.getAID() + " has sent TravelPackage from Nearby User to Station");
+
+        //4. Enviamos a mensagem para a Station
         this.agentManager.send(message);
 
     }

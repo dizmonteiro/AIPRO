@@ -8,6 +8,10 @@ import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
 
+/**
+ * BEHAVIOR STATUS: NOT DONE
+ */
+
 public class MakeProposal extends OneShotBehaviour {
 
     /**
