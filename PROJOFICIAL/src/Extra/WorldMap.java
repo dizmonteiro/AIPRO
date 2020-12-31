@@ -14,7 +14,8 @@ public class WorldMap {
      */
 
     private int mapSize;
-    private Map<String, List<Position>> agentPositions;
+    private Map<AID, Position> userPositions;
+    private Map<AID, StationInfo> stationPositions;
 
     /**
      * Construtores
@@ -23,14 +24,24 @@ public class WorldMap {
     public WorldMap() {
 
         this.setMapSize(0);
-        this.setAgentPositions(new HashMap<>());
+        this.setUserPositions(new HashMap<>());
+        this.setStationPositions(new HashMap<>());
 
     }
 
-    public WorldMap(int mapSize, Map<String, List<Position>> agentPositions) {
+    public WorldMap(int size, Map<AID, Position> users, Map<AID, StationInfo> stations) {
 
-        this.setMapSize(mapSize);
-        this.setAgentPositions(agentPositions);
+        this.setMapSize(size);
+        this.setUserPositions(users);
+        this.setStationPositions(stations);
+
+    }
+
+    public WorldMap(int size) {
+
+        this.setMapSize(size);
+        this.setUserPositions(new HashMap<>());
+        this.setStationPositions(new HashMap<>());
 
     }
 
@@ -44,9 +55,17 @@ public class WorldMap {
 
     }
 
-    public Map<String, List<Position>> getAgentPositions() {
+    public Map<AID, Position> getUserPositions() {
 
-        Map<String, List<Position>> res = new HashMap<>(this.agentPositions);
+        Map<AID, Position> res = new HashMap<>(this.userPositions);
+
+        return res;
+
+    }
+
+    public Map<AID, StationInfo> getStationPositions() {
+
+        Map<AID, StationInfo> res = new HashMap<>(this.stationPositions);
 
         return res;
 
@@ -62,9 +81,15 @@ public class WorldMap {
 
     }
 
-    public void setAgentPositions(Map<String, List<Position>> agentPositions) {
+    public void setUserPositions(Map<AID, Position> userPositions) {
 
-        this.agentPositions =  new HashMap<>(agentPositions);
+        this.userPositions =  new HashMap<>(userPositions);
+
+    }
+
+    public void setStationPositions(Map<AID, StationInfo> stationPositions) {
+
+        this.stationPositions =  new HashMap<>(stationPositions);
 
     }
 
@@ -74,7 +99,7 @@ public class WorldMap {
 
     public WorldMap clone() {
 
-        return new WorldMap(this.mapSize, this.agentPositions);
+        return new WorldMap(this.mapSize, this.userPositions, this.stationPositions);
 
     }
 

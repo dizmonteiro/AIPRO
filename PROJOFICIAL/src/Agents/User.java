@@ -57,12 +57,12 @@ public class User extends Agent {
         Object[] args = this.getArguments();
 
         //Variáveis pré-definidas
-        this.setMap((WorldMap) args[0]);
-        this.setFinancialStatus((Integer) args[1]);
-        this.setStubborness((Integer) args[2]);
-        this.setActualPosition((Position) args[3]);
+        //this.setMap((WorldMap) args[0]);
+        this.setFinancialStatus((Integer) args[0]);
+        this.setStubborness((Integer) args[1]);
+        this.setActualPosition((Position) args[2]);
 
-        Position destination = new Position((Position) args[4]);
+        Position destination = new Position((Position) args[3]);
 
         this.actualTPackage = new TravelPackage(this.getAID(), this.actualPosition, destination);
 
@@ -88,11 +88,13 @@ public class User extends Agent {
      * Getters
      */
 
+    /*
+
     public WorldMap getMap() {
 
         return this.map.clone();
 
-    }
+    }*/
 
     public int getFinancialStatus() {
 
@@ -154,11 +156,12 @@ public class User extends Agent {
      * Setters
      */
 
+    /*
     public void setMap(WorldMap map) {
 
         this.map = map.clone();
 
-    }
+    }*/
 
     public void setFinancialStatus(int financialStatus) {
 

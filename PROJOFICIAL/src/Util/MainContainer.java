@@ -78,16 +78,16 @@ public class MainContainer {
 
     }
 
-    public void startManager(WorldMap map){
-        this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {map});
+    public void startManager(){
+        this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {});
     }
 
-    public void startUser(WorldMap map, Integer financialStatus, Integer stubborness, Position actualPosition, Position setDestination){
-        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {map, financialStatus, stubborness, actualPosition, setDestination});
+    public void startUser(Integer financialStatus, Integer stubborness, Position actualPosition, Position setDestination){
+        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {financialStatus, stubborness, actualPosition, setDestination});
     }
 
-    public void startStation(WorldMap map, Integer stationAPE, Integer stationBaseRate, Integer numBikes, Position position) {
-        this.startAgentInPlatform("Station " + totalStations++, "Agents.Station", new Object[] {map, stationAPE, stationBaseRate, numBikes, position});
+    public void startStation(Integer stationAPE, Integer stationBaseRate, Integer numBikes, Position position) {
+        this.startAgentInPlatform("Station " + totalStations++, "Agents.Station", new Object[] {stationAPE, stationBaseRate, numBikes, position});
     }
 
     public void startInterface(WorldMap map) {

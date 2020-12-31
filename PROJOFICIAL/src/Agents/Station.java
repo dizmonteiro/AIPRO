@@ -50,11 +50,11 @@ public class Station extends Agent {
         Object[] args = this.getArguments();
 
         //RECOLHER VARIÁVEIS PRÉ-DEFINIDAS
-        this.setMap((WorldMap) args[0]);
-        this.setApe((Integer) args[1]);
-        this.setBaseRate((Integer) args[2]);
-        this.setNumBikes((Integer) args[3]);
-        this.setPosition((Position) args[4]);
+        //this.setMap((WorldMap) args[0]);
+        this.setApe((Integer) args[0]);
+        this.setBaseRate((Integer) args[1]);
+        this.setNumBikes((Integer) args[2]);
+        this.setPosition((Position) args[3]);
 
         //REGISTAR O AGENTE STATION
         DFFunctions.registerAgent(this, "Station");
@@ -79,11 +79,12 @@ public class Station extends Agent {
      * Getters
      */
 
+    /*
     public WorldMap getMap() {
 
         return this.map.clone();
 
-    }
+    }*/
 
     public int getApe() {
 
@@ -147,11 +148,15 @@ public class Station extends Agent {
      * Setters
      */
 
+    /*
+
     public void setMap(WorldMap map) {
 
         this.map = map.clone();
 
     }
+
+    */
 
     public void setApe(int ape) {
 

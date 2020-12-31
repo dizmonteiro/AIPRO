@@ -20,7 +20,7 @@ public class Manager extends Agent {
      */
 
     //Mapa Global com Agents
-    private WorldMap map;
+   // private WorldMap map;
 
     //Info das APE de todas as Stations
     private Map<AID, StationInfo> globalStations;
@@ -34,7 +34,7 @@ public class Manager extends Agent {
         Object[] args = this.getArguments();
 
         //RECOLHER VARIÁVEIS PRÉ-DEFINIDAS
-        this.setMap((WorldMap) args[0]);
+        //this.setMap((WorldMap) args[0]);
 
         //REGISTAR AGENTE MANAGER
         DFFunctions.registerAgent(this, "Manager");
@@ -52,12 +52,13 @@ public class Manager extends Agent {
     /**
      * Getters
      */
+    /*
 
     public WorldMap getMap() {
 
         return this.map.clone();
 
-    }
+    }*/
 
     public Map<AID, StationInfo> getGlobalStationsInfo() {
 
@@ -71,11 +72,12 @@ public class Manager extends Agent {
      * Setters
      */
 
+    /*
     public void setMap(WorldMap map) {
 
         this.map = map.clone();
 
-    }
+    }*/
 
     public void setGlobalStationsInfo(Map<AID, StationInfo> globalStationsInfo) {
 

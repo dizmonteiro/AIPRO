@@ -21,24 +21,24 @@ public class Main {
 
         Position stationD = new Position(20,14);
 
-        map = new WorldMap();
+        map = new WorldMap(100);
 
         try {
 
             Thread.sleep(1000);
-            mc.startManager(map);
+            mc.startManager();
 
             Thread.sleep(1000);
-            mc.startStation(map,2,2,2, stationO);
+            mc.startStation(2,2,2, stationO);
 
             Thread.sleep(1000);
-            mc.startStation(map,3,2,2, stationM);
+            mc.startStation(3,2,2, stationM);
 
             Thread.sleep(1000);
-            mc.startStation(map,3,2,2, stationD);
+            mc.startStation(3,2,2, stationD);
 
             Thread.sleep(1000);
-            mc.startUser(map,5,5, stationO, stationD);
+            mc.startUser(5,5, stationO, stationD);
 
 
         } catch (Exception e) {
