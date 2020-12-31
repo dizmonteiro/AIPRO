@@ -25,6 +25,16 @@ public class InformCreationStation extends OneShotBehaviour {
 
     public InformCreationStation(Station agentStation) {
 
+        this.setAgentStation(agentStation);
+
+    }
+
+    /**
+     * Setters
+     */
+
+    public void setAgentStation(Station agentStation) {
+
         this.agentStation = agentStation;
 
     }
@@ -35,21 +45,18 @@ public class InformCreationStation extends OneShotBehaviour {
 
     public void action() {
 
-        //1. Vamos buscar o AID do agentManager que está armazenado no agentStation
-        AID agentManager = this.agentStation.getAgentManager();
-
-        //2. Criamos o pacote stationInfo com o APE e a Posição do AgentStation
+        //1. Criamos o pacote stationInfo com o APE e a Posição do AgentStation
         StationInfo stationInfo = new StationInfo(this.agentStation.getApe(), this.agentStation.getPosition());
 
-        //3. Criamos a mensagem com performative INFORM
+        //2. Criamos a mensagem com performative INFORM
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
 
-        //4. Introduzimos o Manager como destinatario da mensagem
-        message.addReceiver(agentManager);
+        //3. Introduzimos o Manager como destinatario da mensagem
+        message.addReceiver(this.agentStation.getAgentManager());
 
         try {
 
-            //5. Colocamos o pacote StationInfo na mensagem
+            //4. Colocamos o pacote StationInfo na mensagem
             message.setContentObject(stationInfo.clone());
 
         } catch (IOException e) {
@@ -58,9 +65,10 @@ public class InformCreationStation extends OneShotBehaviour {
 
         }
 
+        //Mensagem
         System.out.println("> Station AID: " + this.agentStation.getAID() + " has sent StationInfo to Manager");
 
-        //6. Enviamos a mensagem
+        //5. Enviamos a mensagem
         this.agentStation.send(message);
 
     }

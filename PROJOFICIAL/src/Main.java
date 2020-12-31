@@ -15,7 +15,9 @@ public class Main {
         //mc.startInterface(map);
 
 
-        Position stationP = new Position(4,4);
+        Position stationO = new Position(4,4);
+
+        Position stationD = new Position(10,10);
 
         Position userP = new Position(4,4);
 
@@ -27,10 +29,13 @@ public class Main {
             mc.startManager(map);
 
             Thread.sleep(1000);
-            mc.startStation(map,10,2,2, stationP);
+            mc.startStation(map,10,2,2, stationO);
 
             Thread.sleep(1000);
-            mc.startUser(map,5,5, userP, stationP);
+            mc.startStation(map,10,2,2, stationD);
+
+            Thread.sleep(1000);
+            mc.startUser(map,5,5, userP, stationD);
 
 
         } catch (Exception e) {
