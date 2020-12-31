@@ -101,7 +101,7 @@ public class UpdatePosition extends OneShotBehaviour {
             System.out.println("> User AID: " + this.agentUser.getAID() + " has moved to new position: " + this.agentUser.getActualPosition().toString());
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

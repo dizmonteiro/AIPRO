@@ -17,9 +17,9 @@ public class Main {
 
         Position stationO = new Position(4,4);
 
-        Position stationD = new Position(20,14);
+        Position stationM = new Position(10,10);
 
-        Position userP = new Position(4,4);
+        Position stationD = new Position(20,14);
 
         map = new WorldMap();
 
@@ -32,10 +32,13 @@ public class Main {
             mc.startStation(map,2,2,2, stationO);
 
             Thread.sleep(1000);
-            mc.startStation(map,2,2,2, stationD);
+            mc.startStation(map,3,2,2, stationM);
 
             Thread.sleep(1000);
-            mc.startUser(map,5,5, userP, stationD);
+            mc.startStation(map,3,2,2, stationD);
+
+            Thread.sleep(1000);
+            mc.startUser(map,5,5, stationO, stationD);
 
 
         } catch (Exception e) {

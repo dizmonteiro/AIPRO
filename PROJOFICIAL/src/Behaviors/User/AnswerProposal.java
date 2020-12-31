@@ -92,9 +92,35 @@ public class AnswerProposal extends OneShotBehaviour {
             //Mensagem
             System.out.println("> User AID: " + this.agentUser.getAID() + " has turned OFF");
 
-            //2.5. Desligamos o User
+            this.agentUser.blockingReceive();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             this.agentUser.turnOff();
 
+            /*
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //2.4. Paramos a recepcao
+            this.agentUser.blockingReceive();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //2.5. Desligamos o User
+            this.agentUser.turnOff();
+            */
 
 
         //3. Caso não seja, vamos ver se vale a pena aceitar a proposta

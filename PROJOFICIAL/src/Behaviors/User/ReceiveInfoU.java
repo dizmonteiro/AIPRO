@@ -163,8 +163,35 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     //Mensagem
                     System.out.println("> User AID: " + this.agentUser.getAID() + " is turning OFF ");
 
-                    //2.4.1. Desligamos o agente
+                    this.agentUser.blockingReceive();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                     this.agentUser.turnOff();
+
+                    /*
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    //2.4. Paramos a recepcao
+                    this.agentUser.blockingReceive();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    //2.5. Desligamos o User
+                    this.agentUser.turnOff();
+                    */
 
                 } catch (Exception e) {
 
