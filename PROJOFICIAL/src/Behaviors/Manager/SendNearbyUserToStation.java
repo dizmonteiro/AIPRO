@@ -70,7 +70,7 @@ public class SendNearbyUserToStation extends OneShotBehaviour {
         try {
 
             //3. Introduzimos o TravelPackage na mensagem
-            message.setContentObject(this.newTravelPackage);
+            message.setContentObject(this.newTravelPackage.clone());
 
         } catch (IOException e) {
 

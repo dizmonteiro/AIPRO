@@ -11,7 +11,7 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-public class UpdatePosition extends CyclicBehaviour {
+public class UpdatePosition extends OneShotBehaviour {
 
     /**
      * Variáveis

@@ -19,18 +19,16 @@ public class MakeProposal extends OneShotBehaviour {
      */
 
     private Station agentStation;
-    private TravelPackage tp;
-    private AID agentUser;
+    private TravelPackage actualTravelPackage;
 
     /**
      * Construtores
      */
 
-    public MakeProposal(Station agentStation, AID agentUser, TravelPackage tp) {
+    public MakeProposal(Station agentStation, TravelPackage actualTravelPackage) {
 
         this.setAgentStation(agentStation);
-        this.setAgentUser(agentUser);
-        this.setTravelPackage(tp);
+        this.setTravelPackage(actualTravelPackage);
 
     }
 
@@ -44,15 +42,9 @@ public class MakeProposal extends OneShotBehaviour {
 
     }
 
-    public void setAgentUser(AID agentUser) {
-
-        this.agentUser = agentUser;
-
-    }
-
     public void setTravelPackage(TravelPackage tp) {
 
-        this.tp = tp.clone();
+        this.actualTravelPackage = tp.clone();
 
     }
 
@@ -62,52 +54,61 @@ public class MakeProposal extends OneShotBehaviour {
 
     public void action() {
 
+        //1. Criamos mensagem com performative PROPOSE
         ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
-        message.addReceiver(this.agentUser);
 
-        if(tp.getDestination().equals(this.agentStation.getPosition())) {
+        //2. Adicionamos o User contido no TravelPackage como o recetor da mensagem
+        message.addReceiver(this.actualTravelPackage.getAgentUser());
 
-            try {
+        //3. Verificamos se o travelPackage tem como destino a Station
 
-                message.setContentObject(this.tp);
+        //3.1. Caso a Station seja não seja o destino, vamos aplicar um desconto ao totalCost do travelPackage
+        //     Caso seja o destino, mandamos o mesmo travelPackage que recebemos (não fazemos alterações)
 
-            } catch (IOException e) {
+        if(!this.actualTravelPackage.getDestination().equalsPos(this.agentStation.getPosition())) {
 
-                e.printStackTrace();
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is NOT User destination");
 
-            }
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is updating travelPackage destination");
 
-            this.agentStation.send(message);
+            //3.1.1. Atualizamos destino do travelpackage para a posição desta station
+            this.actualTravelPackage.setDestination(this.agentStation.getPosition());
+
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is processing discount");
+
+            //3.1.2. Calculamos desconto
+            double discountPrice = this.agentStation.calculateDiscount(this.actualTravelPackage.getTotalCost());
+
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is updating travelPackage totalCost");
+
+            //3.1.3. Atualizamos o totalCost do travelPackage
+            this.actualTravelPackage.setTotalCost(discountPrice);
 
         } else {
 
-            this.tp.setDestination(this.agentStation.getPosition());
-
-            double precoantigo = this.tp.getTotalCost();
-
-            //Calcular Distancia
-
-            double distancia = this.agentStation.calculateDistance(tp.getOrigin(),tp.getDestination());
-
-            //Calcular Promocao
-
-            double novopreco = this.agentStation.calculateDiscount(distancia,precoantigo);
-
-            this.tp.setTotalCost(novopreco);
-
-            try {
-
-                message.setContentObject(this.tp);
-
-            } catch (IOException e) {
-
-                e.printStackTrace();
-
-            }
-
-            this.agentStation.send(message);
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is User destination");
 
         }
+
+        try {
+
+            message.setContentObject(this.actualTravelPackage);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+        //Mensagem
+        System.out.println("> Station AID: " + this.agentStation.getAID() + " has sent proposal to leave bike to User");
+
+        this.agentStation.send(message);
 
     }
 

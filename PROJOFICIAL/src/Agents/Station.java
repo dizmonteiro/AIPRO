@@ -35,6 +35,9 @@ public class Station extends Agent {
     //Registo do TravelPackage de todas as bicicletas que forem deixadas na estação
     private List<TravelPackage> rentHistory;
 
+    //Registo de AIDs de Users que rejeitaram proposta
+    private List<AID> rejectHistory;
+
     //AID do agente Manager
     private AID agentManager;
 
@@ -60,11 +63,15 @@ public class Station extends Agent {
         //INICIAR RENT HISTORY
         this.rentHistory = new ArrayList<>();
 
+        //INICIAR REJECT HISTORY
+        this.rejectHistory = new ArrayList<>();
+
         System.out.println("> Station AID: " + this.getAID() + " is ON");
 
         //INICIAR BEHAVIORS
+        addBehaviour(new ReceiveInfoS(this));
         addBehaviour(new InformCreationStation(this));
-        //addBehaviour(new ReceiveInfoS(this));
+
 
     }
 
@@ -109,6 +116,20 @@ public class Station extends Agent {
         for(TravelPackage tp : this.rentHistory) {
 
             res.add(tp.clone());
+
+        }
+
+        return res;
+
+    }
+
+    public List<AID> getRejectHistory() {
+
+        List<AID> res = new ArrayList<>();
+
+        for(AID a : this.rejectHistory) {
+
+            res.add(a);
 
         }
 
@@ -168,6 +189,18 @@ public class Station extends Agent {
 
     }
 
+    public void setRejectHistory(List<AID> rejectHistory) {
+
+        this.rejectHistory = new ArrayList<>();
+
+        for(AID a : rejectHistory) {
+
+            this.rejectHistory.add(a);
+
+        }
+
+    }
+
     /**
      * Métodos Auxiliares
      */
@@ -214,9 +247,15 @@ public class Station extends Agent {
      * FALTA FAZER
      */
 
-    public double calculateDiscount(double distance, double precoantigo) {
+    public double calculateDiscount(double oldPrice) {
 
-        return precoantigo - (1/numBikes);
+        return oldPrice - (5/this.numBikes);
+
+    }
+
+    public void addRejectHistory(AID agentUser) {
+
+        this.rejectHistory.add(agentUser);
 
     }
 

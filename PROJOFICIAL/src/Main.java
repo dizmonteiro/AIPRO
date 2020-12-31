@@ -17,7 +17,7 @@ public class Main {
 
         Position stationO = new Position(4,4);
 
-        Position stationD = new Position(50,50);
+        Position stationD = new Position(20,14);
 
         Position userP = new Position(4,4);
 
@@ -29,10 +29,10 @@ public class Main {
             mc.startManager(map);
 
             Thread.sleep(1000);
-            mc.startStation(map,10,2,2, stationO);
+            mc.startStation(map,2,2,2, stationO);
 
             Thread.sleep(1000);
-            mc.startStation(map,10,2,2, stationD);
+            mc.startStation(map,2,2,2, stationD);
 
             Thread.sleep(1000);
             mc.startUser(map,5,5, userP, stationD);

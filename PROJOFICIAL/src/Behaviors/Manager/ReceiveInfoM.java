@@ -107,12 +107,14 @@ public class ReceiveInfoM extends CyclicBehaviour {
                             //2.1.4.2.2. Primeiramente vamos enviar só para a primeira Station
                             this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage.clone()));
 
+                        } else {
+
+                            //2.1.4.3. Caso não esteja dentro do alcance de uma Station
+
+                            //Mensagem
+                            System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is NOT inside Station APE");
+
                         }
-
-                        //2.1.4.3. Caso não esteja dentro do alcance de uma Station
-
-                        //Mensagem
-                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is NOT inside Station APE");
 
                     //2.1.5. Caso não esteja a viajar (não tem bike)
                     // Nesta implementação inicial, isto quer dizer que o User acabou de ser criado

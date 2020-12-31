@@ -61,30 +61,48 @@ public class AnswerBikeRequest extends OneShotBehaviour {
 
     public void action() {
 
-        this.tp.setAgentUser(this.agentUser);
+        //1. Verificamos se a Station tem bikes disponiveis
 
+        //1.1. Caso tenha:
         if(this.agentStation.getNumBikes() > 0) {
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " has available bikes");
+
+            //1.1.1. Criamos uma mensagem com o performative ACCEPT_PROPOSAL
             ACLMessage message = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+
+            //1.1.2. Introduzimos o User como recetor da mensagem
             message.addReceiver(this.agentUser);
 
-            //Por a origem como a posição da estação
-            this.tp.setOrigin(this.agentStation.getPosition());
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is calculating distance to destination");
 
-            //Calcular Distancia
+            //1.1.3. Calculamos a distancia ao destino
             double distance = this.agentStation.calculateDistance(tp.getOrigin(),tp.getDestination());
 
-            //Calcular Preço
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is calculating totalCost of trip");
+
+            //1.1.4. Calculamos o preco total da viagem
             double price = this.agentStation.calculateTotalCost(distance);
 
-            //Atualizar o preço total
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " is updating totalCost of travelPackage");
+
+            //1.1.5. Atualizamos o totalCost do travelPackage
             this.tp.setTotalCost(price);
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " has removed 1 bike from available");
+
+            //1.1.6. Removemos uma bikes da station
             this.agentStation.removeBike();
 
             try {
 
-                message.setContentObject(this.tp);
+                //1.1.7. Introduzimos o travelPackage atualizado na mensagem
+                message.setContentObject(this.tp.clone());
 
             } catch (IOException e) {
 
@@ -92,17 +110,29 @@ public class AnswerBikeRequest extends OneShotBehaviour {
 
             }
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " has sent ACCEPT_PROPOSAL to User");
+
+            //1.1.8. Enviamos a mensagem para o User
             this.agentStation.send(message);
 
 
+        //1.2. Caso não tenha:
         } else {
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " does NOT have available bikes");
+
+            //1.2.1. Criamos uma mensagem
             ACLMessage message = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
+
+            //1.2.2. Introduzimos o User como recetor da mensagem
             message.addReceiver(this.agentUser);
 
             try {
 
-                message.setContentObject(this.tp);
+                //1.2.3. Introduzimos o travelPackage que recebemos, não importa
+                message.setContentObject(this.tp.clone());
 
             } catch (IOException e) {
 
@@ -110,6 +140,10 @@ public class AnswerBikeRequest extends OneShotBehaviour {
 
             }
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " has sent REJECT_PROPOSAL to User");
+
+            //1.2.4. Enviamos a mensagem para o User
             this.agentStation.send(message);
 
         }
