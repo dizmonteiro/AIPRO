@@ -15,7 +15,7 @@ public class Main {
         //mc.startInterface(map);
 
 
-        Position stationP = new Position(10,10);
+        Position stationP = new Position(4,4);
 
         Position userP = new Position(4,4);
 

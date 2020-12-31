@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BEHAVIOR STATUS: NOT DONE
+ * BEHAVIOR STATUS: DONE
  */
 
 public class ReceiveInfoM extends CyclicBehaviour {
@@ -83,7 +83,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     //2.1.4. Caso esteja a viajar (tem bike)
                     if(isTraveling) {
 
-                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is Traveling");
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is Traveling");
 
                         //2.1.4.1. Verificamos se a nova posição do User está dentro do APE de alguma Station
 
@@ -91,7 +91,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                         if (this.agentManager.isNearStation(newUserPos)) {
 
                             //Mensagem
-                            System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " IS inside Station APE");
+                            System.out.println("> Manager AID: " + this.agentManager.getAID() + " User IS inside Station APE");
 
                             //2.1.4.2.1. Vamos buscar todos as Stations cujo User está ao alcance
                             List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
@@ -112,20 +112,20 @@ public class ReceiveInfoM extends CyclicBehaviour {
                         //2.1.4.3. Caso não esteja dentro do alcance de uma Station
 
                         //Mensagem
-                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT inside Station APE");
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is NOT inside Station APE");
 
                     //2.1.5. Caso não esteja a viajar (não tem bike)
                     // Nesta implementação inicial, isto quer dizer que o User acabou de ser criado
                     } else {
 
                         //Mensagem
-                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT Traveling");
+                        System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is NOT Traveling");
 
                         //2.1.5.1. Vamos buscar o AID da Station em que o User foi criado
                         AID agentStation = this.agentManager.getStationWithPosition(newUserPos);
 
                         //2.1.5.2. Vamos enviar o AID da Station em que foi gerado para o User
-                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
+                        //this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
 
                     }
 

@@ -79,7 +79,7 @@ public class User extends Agent {
 
         System.out.println("> User AID: " + this.getAID() + " is ON");
 
-        //addBehaviour(new InformCreationUser(this));
+        addBehaviour(new InformCreationUser(this));
         //addBehaviour(new ReceiveInfoU(this));
 
     }

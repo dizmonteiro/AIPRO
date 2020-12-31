@@ -153,18 +153,18 @@ public class Manager extends Agent {
     //Vai buscar o AID da Station com determinada Position
     public AID getStationWithPosition(Position stationPos) {
 
-        AtomicReference<AID> agentStation = null;
+        List<AID> agentStation = new ArrayList<>();
 
         this.globalStations.forEach((k,v) -> {
 
             if(v.getStationPos().equalsPos(stationPos)) {
 
-                agentStation.set(k);
+                agentStation.add(k);
 
             }
 
         });
 
-        return agentStation.get();
+        return agentStation.get(0);
     }
 }
