@@ -70,7 +70,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     System.out.println("> User AID: " + this.agentUser.getAID() + " has collected Station AID from message");
 
                     //2.1.2. Enviamos o BikeRequest para a Station
-                    //this.agentUser.addBehaviour(new MakeBikeRequest(this.agentUser, agentStation));
+                    this.agentUser.addBehaviour(new MakeBikeRequest(this.agentUser, agentStation));
 
                 } catch (Exception e) {
 
