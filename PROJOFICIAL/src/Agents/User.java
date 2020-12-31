@@ -18,7 +18,7 @@ public class User extends Agent {
      */
 
     //Mapa global com agentes
-    private WorldMap map;
+    //private WorldMap map;
 
     //Variáveis aleatórias que servirão para influenciar as decisões do Agente User
     private int financialStatus; //grau de riqueza, 1-10, quanto mais rico menor será a probabilidade de aceitar os descontos.
@@ -88,14 +88,6 @@ public class User extends Agent {
      * Getters
      */
 
-    /*
-
-    public WorldMap getMap() {
-
-        return this.map.clone();
-
-    }*/
-
     public int getFinancialStatus() {
 
         return this.financialStatus;
@@ -155,13 +147,6 @@ public class User extends Agent {
     /**
      * Setters
      */
-
-    /*
-    public void setMap(WorldMap map) {
-
-        this.map = map.clone();
-
-    }*/
 
     public void setFinancialStatus(int financialStatus) {
 

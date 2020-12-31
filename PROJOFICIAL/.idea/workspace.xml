@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +101,7 @@
       <workItem from="1609310494140" duration="27000" />
       <workItem from="1609355362979" duration="28840000" />
       <workItem from="1609387779980" duration="2072000" />
-      <workItem from="1609432426912" duration="593000" />
+      <workItem from="1609432426912" duration="730000" />
     </task>
     <servers />
   </component>

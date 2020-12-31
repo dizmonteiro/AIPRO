@@ -18,7 +18,7 @@ public class Station extends Agent {
      */
 
     //Mapa global com agentes
-    private WorldMap map;
+    //private WorldMap map;
 
     //Variável ape, raio do range da estação
     private int ape;
@@ -78,13 +78,6 @@ public class Station extends Agent {
     /**
      * Getters
      */
-
-    /*
-    public WorldMap getMap() {
-
-        return this.map.clone();
-
-    }*/
 
     public int getApe() {
 
@@ -147,16 +140,6 @@ public class Station extends Agent {
     /**
      * Setters
      */
-
-    /*
-
-    public void setMap(WorldMap map) {
-
-        this.map = map.clone();
-
-    }
-
-    */
 
     public void setApe(int ape) {
 

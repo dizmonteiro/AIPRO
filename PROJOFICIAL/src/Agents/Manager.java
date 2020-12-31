@@ -52,13 +52,6 @@ public class Manager extends Agent {
     /**
      * Getters
      */
-    /*
-
-    public WorldMap getMap() {
-
-        return this.map.clone();
-
-    }*/
 
     public Map<AID, StationInfo> getGlobalStationsInfo() {
 
@@ -71,13 +64,6 @@ public class Manager extends Agent {
     /**
      * Setters
      */
-
-    /*
-    public void setMap(WorldMap map) {
-
-        this.map = map.clone();
-
-    }*/
 
     public void setGlobalStationsInfo(Map<AID, StationInfo> globalStationsInfo) {
 
