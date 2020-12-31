@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BEHAVIOR STATUS: DONE
+ * BEHAVIOR STATUS: NOT DONE, FALTA TESTAR SE A LISTA DAS NEARBYSTATIONS CONTEM A STATION DESTINO, CASO TENHA TEMOS QUE DAR O AID DESSA
  */
 
 public class ReceiveInfoM extends CyclicBehaviour {

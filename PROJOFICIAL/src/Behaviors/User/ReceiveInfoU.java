@@ -82,12 +82,24 @@ public class ReceiveInfoU extends CyclicBehaviour {
             //User está em viagem e recebe uma mensagem da Station para deixar a sua bike
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.PROPOSE) {
 
+                //Mensagem
+                System.out.println("> User AID: " + this.agentUser.getAID() + " has received new PROPOSE message from Station " + agent);
+
                 try {
 
+                    //2.2.1. Recolhemos o newPackage com a proposta para deixar a bike da mensagem
                     TravelPackage newPackage = (TravelPackage) message.getContentObject();
 
+                    //Mensagem
+                    System.out.println("> User AID: " + this.agentUser.getAID() + " has collected new TravelPackage from message");
+
+                    //2.2.2. Paramos o movimento do agente enquanto ele não responder à proposta
                     this.agentUser.setMoving(false);
 
+                    //Mensagem
+                    System.out.println("> User AID: " + this.agentUser.getAID() + " has stopped moving");
+
+                    //2.2.3. Enviamos a resposta para a Station
                     //this.agentUser.addBehaviour(new AnswerProposal(this.agentUser,agent,newPackage));
 
                 } catch (Exception e) {
@@ -100,13 +112,30 @@ public class ReceiveInfoU extends CyclicBehaviour {
             //User recebe resposta da Station que aceita o seu Bike Request
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
 
+                //Mensagem
+                System.out.println("> User AID: " + this.agentUser.getAID() + " has received new ACCEPT_PROPOSAL message from Station " + agent);
+
                 try {
 
+                    //2.3.1. Recolhemos o newPackage atualizado com o totalCost da mensagem
                     TravelPackage newPackage = (TravelPackage) message.getContentObject();
 
-                    this.agentUser.setMoving(true);
-                    this.agentUser.setActualTPackage(newPackage);
+                    //Mensagem
+                    System.out.println("> User AID: " + this.agentUser.getAID() + " has collected new TravelPackage from message");
 
+                    //2.3.2. Atualizamos o travelPackage do User
+                    this.agentUser.setActualTPackage(newPackage.clone());
+
+                    //Mensagem
+                    System.out.println("> User AID: " + this.agentUser.getAID() + " has updated actual TravelPackage");
+
+                    //2.3.3. Atualizamos o User para começar a caminhar
+                    this.agentUser.setMoving(true);
+
+                    //Mensagem
+                    System.out.println("> User AID: " + this.agentUser.getAID() + " has started moving");
+
+                    //2.3.4. Começamos o behavior UpdatePosition que vai atualizar a posição do User e comunicar com o Manager
                     //this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
 
                 } catch (Exception e) {

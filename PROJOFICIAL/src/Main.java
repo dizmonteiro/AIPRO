@@ -17,7 +17,7 @@ public class Main {
 
         Position stationO = new Position(4,4);
 
-        Position stationD = new Position(10,10);
+        Position stationD = new Position(50,50);
 
         Position userP = new Position(4,4);
 
