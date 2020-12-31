@@ -90,10 +90,12 @@ public class Manager extends Agent {
     //Verifica se a posição do User está dentro da APE de uma estação especifica
     public boolean isInRange(Position userPos, Position stationPos, int ape) {
 
-        double calc1 = ((userPos.getX() - stationPos.getX())^2) + ((userPos.getY() - stationPos.getY())^2);
-        double calc2 = ape^2;
+        double calc1 = (userPos.getX() - stationPos.getX()) * (userPos.getX() - stationPos.getX());
+        double calc2 = (userPos.getY() - stationPos.getY()) * (userPos.getY() - stationPos.getY());
+        double calc3 = calc1 + calc2;
+        double calc4 = ape*ape;
 
-        if(calc1 < calc2) {
+        if(calc3 <= calc4) {
 
             return true;
 
