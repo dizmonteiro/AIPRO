@@ -22,7 +22,7 @@ public class Interface extends Agent {
     private List<User> users;
     private List<Station> stations;
     private PainelInicial pi;
-
+    private JFrame f;
     /**
      * Setup
      */
@@ -40,7 +40,13 @@ public class Interface extends Agent {
 
         pi = new PainelInicial();
         JScrollPane scroll = new JScrollPane(pi);
+        JFrame frame = new JFrame(getClass().getSimpleName());
         pi.setPreferredSize(new Dimension(500*10,500*10));
+        frame.add(scroll);
+        frame.pack();
+        frame.setVisible(true);
+        f = new JFrame("Interface");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
