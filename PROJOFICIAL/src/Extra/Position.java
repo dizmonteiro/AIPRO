@@ -83,6 +83,10 @@ public class Position implements Serializable {
      * Outros Métodos
      */
 
+    public String toString() {
+        return "Position x: " + this.x + " y: " + this.y;
+    }
+
     public void move(int x, int y) {
 
         setX(x);

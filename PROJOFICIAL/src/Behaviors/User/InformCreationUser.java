@@ -7,7 +7,7 @@ import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
 /**
- * BEHAVIOR STATUS: NOT DONE
+ * BEHAVIOR STATUS: DONE
  */
 
 public class InformCreationUser extends OneShotBehaviour {

@@ -2,8 +2,7 @@ package Behaviors.User;
 
 import Agents.User;
 import Extra.InfoPackageFromUserToManager;
-import Util.DFFunctions;
-import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
@@ -12,14 +11,13 @@ import java.io.IOException;
  * BEHAVIOR STATUS: NOT DONE
  */
 
-public class UpdatePosition extends OneShotBehaviour {
+public class UpdatePosition extends CyclicBehaviour {
 
     /**
      * Variáveis
      */
 
     private User agentUser;
-    private AID agentManager;
 
     /**
      * Construtores
@@ -28,7 +26,16 @@ public class UpdatePosition extends OneShotBehaviour {
     public UpdatePosition(User agentUser) {
 
         this.agentUser = agentUser;
-        this.agentManager = DFFunctions.findSpecificAgent(this.agentUser,"Agent Manager");
+
+    }
+
+    /**
+     * Setters
+     */
+
+    public void setAgentUser(User agentUser) {
+
+        this.agentUser = agentUser;
 
     }
 
@@ -38,7 +45,7 @@ public class UpdatePosition extends OneShotBehaviour {
 
     public void action() {
 
-        while(this.agentUser.isMoving() && !this.agentUser.getActualPosition().equals(this.agentUser.getActualTPackage().getDestination())){
+        while(this.agentUser.isMoving() && !this.agentUser.getActualPosition().equalsPos(this.agentUser.getActualTPackage().getDestination())){
 
             int actualX = this.agentUser.getActualPosition().getX();
             int actualY = this.agentUser.getActualPosition().getY();
@@ -90,20 +97,28 @@ public class UpdatePosition extends OneShotBehaviour {
 
             }
 
+            //Mensagem
+            System.out.println("> User AID: " + this.agentUser.getAID() + " has moved to new position: " + this.agentUser.getActualPosition().toString());
+
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+            //1. Criamos mensagem com performative INFORM
             ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-            message.addReceiver(this.agentManager);
 
-            InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage());
+            //2. Introduzimos o Manager como recetor da mensagem
+            message.addReceiver(this.agentUser.getAgentManager());
+
+            //3. Criamos InfoPackageFromUserToManager com posição atualizada
+            InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage().clone());
 
             try {
 
-                message.setContentObject(newPackage);
+                //4. Introduzimos copia do package na mensagem
+                message.setContentObject(newPackage.clone());
 
             } catch (IOException e) {
 
@@ -111,6 +126,10 @@ public class UpdatePosition extends OneShotBehaviour {
 
             }
 
+            //Mensagem
+            System.out.println("> User AID: " + this.agentUser.getAID() + " has sent update position to Manager");
+
+            //5. Enviamos mensagem para o Manager
             this.agentUser.send(message);
 
         }
