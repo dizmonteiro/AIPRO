@@ -100,7 +100,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     System.out.println("> User AID: " + this.agentUser.getAID() + " has stopped moving");
 
                     //2.2.3. Enviamos a resposta para a Station
-                    this.agentUser.addBehaviour(new AnswerProposal(this.agentUser, agent, newPackage.clone()));
+                    //this.agentUser.addBehaviour(new AnswerProposal(this.agentUser, agent, newPackage.clone()));
 
                 } catch (Exception e) {
 
@@ -136,7 +136,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     System.out.println("> User AID: " + this.agentUser.getAID() + " has started moving");
 
                     //2.3.4. Começamos o behavior UpdatePosition que vai atualizar a posição do User e comunicar com o Manager
-                    this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
+                    //this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
 
                 } catch (Exception e) {
 
