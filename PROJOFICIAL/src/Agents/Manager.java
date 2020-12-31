@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Manager extends Agent {
 
@@ -147,5 +148,23 @@ public class Manager extends Agent {
         //1. Adicionamos um clone do pacote que recebemos
         this.globalStations.put(agentStation, stationInfo.clone());
 
+    }
+
+    //Vai buscar o AID da Station com determinada Position
+    public AID getStationWithPosition(Position stationPos) {
+
+        AtomicReference<AID> agentStation = null;
+
+        this.globalStations.forEach((k,v) -> {
+
+            if(v.getStationPos().equalsPos(stationPos)) {
+
+                agentStation.set(k);
+
+            }
+
+        });
+
+        return agentStation.get();
     }
 }

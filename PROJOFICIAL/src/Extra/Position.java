@@ -90,6 +90,17 @@ public class Position implements Serializable {
 
     }
 
+    public boolean equalsPos(Position newp) {
+
+        if(this.x == newp.getX() && this.y == newp.getY()) {
+
+            return true;
+
+        }
+
+        return false;
+    }
+
     public Position randomPos(int max) {
 
         Random r = new Random();

@@ -7,7 +7,7 @@ import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
 /**
- * BEHAVIOR STATUS: NOT DONE
+ * BEHAVIOR STATUS: DONE
  */
 
 public class SendNearbyStationToUser extends OneShotBehaviour {
@@ -60,11 +60,15 @@ public class SendNearbyStationToUser extends OneShotBehaviour {
 
     public void action() {
 
+        //1. Criamos mensagem com Performative INFORM
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+
+        //2. Pomos o User como destinatario da mensagem
         message.addReceiver(this.agentUser);
 
         try {
 
+            //3. Pomos o AID da Station em que o User foi gerado na mensagem
             message.setContentObject(this.agentStation);
 
         } catch (IOException e) {
@@ -73,6 +77,10 @@ public class SendNearbyStationToUser extends OneShotBehaviour {
 
         }
 
+        //Mensagem
+        System.out.println("> Manager AID: " + this.agentManager.getAID() + " has sent TravelPackage from Nearby User to Station");
+
+        //4. Enviamos a mensagem para o User
         this.agentManager.send(message);
 
     }

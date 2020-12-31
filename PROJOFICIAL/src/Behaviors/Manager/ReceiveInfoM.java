@@ -105,7 +105,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                             }*/
 
                             //2.1.4.2.2. Primeiramente vamos enviar só para a primeira Station
-                            this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage));
+                            this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage.clone()));
 
                         }
 
@@ -115,19 +115,17 @@ public class ReceiveInfoM extends CyclicBehaviour {
                         System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT inside Station APE");
 
                     //2.1.5. Caso não esteja a viajar (não tem bike)
+                    // Nesta implementação inicial, isto quer dizer que o User acabou de ser criado
                     } else {
 
+                        //Mensagem
                         System.out.println("> Manager AID: " + this.agentManager.getAID() + " User AID: " + agent + " is NOT Traveling");
 
-                        //O Agente Manager vai buscar todas os Agentes Station cujo range contem a nova posição do Agente User
-                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
+                        //2.1.5.1. Vamos buscar o AID da Station em que o User foi criado
+                        AID agentStation = this.agentManager.getStationWithPosition(newUserPos);
 
-                        //O Agente Manager envia o AID do Agente User para todos os Agentes Stations
-                        for (AID agentStation : nearStations) {
-
-                            this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
-
-                        }
+                        //2.1.5.2. Vamos enviar o AID da Station em que foi gerado para o User
+                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
 
                     }
 
