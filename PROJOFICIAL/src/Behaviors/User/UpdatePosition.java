@@ -97,14 +97,14 @@ public class UpdatePosition extends OneShotBehaviour {
 
             }
 
-            //Mensagem
-            System.out.println("> User AID: " + this.agentUser.getAID() + " has moved to new position: " + this.agentUser.getActualPosition().toString());
-
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            //Mensagem
+            System.out.println("> User AID: " + this.agentUser.getAID() + " has moved to new position: " + this.agentUser.getActualPosition().toString());
 
             //1. Criamos mensagem com performative INFORM
             ACLMessage message = new ACLMessage(ACLMessage.INFORM);

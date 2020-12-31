@@ -19,7 +19,7 @@ public class Main {
 
         Position stationM = new Position(10,10);
 
-        Position stationD = new Position(20,14);
+        Position stationD = new Position(15,10);
 
         map = new WorldMap(100);
 
@@ -31,8 +31,8 @@ public class Main {
             Thread.sleep(1000);
             mc.startStation(2,2,2, stationO);
 
-            Thread.sleep(1000);
-            mc.startStation(3,2,2, stationM);
+            //Thread.sleep(1000);
+            ///mc.startStation(3,2,2, stationM);
 
             Thread.sleep(1000);
             mc.startStation(3,2,2, stationD);
