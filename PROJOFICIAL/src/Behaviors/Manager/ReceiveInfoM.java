@@ -63,7 +63,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
             //2.1. Caso seja um User a mandar um INFORM
             if (agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM) {
 
-                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new message from User " + agent);
+                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new INFORM message from User " + agent);
 
                 try {
 
@@ -76,7 +76,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     TravelPackage newTravelPackage = newPackage.getTravelPackage();
 
                     //Mensagem
-                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new InfoPackageFromUserToManager");
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has collected new InfoPackageFromUserToManager");
 
                     //2.1.3. Verificamos se o User que enviou o pacote está a viajar
 
@@ -140,7 +140,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.INFORM) {
 
                 //Mensagem
-                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new message from Station " + agent);
+                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new INFORM message from Station " + agent);
 
                 try {
 
@@ -148,7 +148,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     StationInfo newStationInfo = (StationInfo) message.getContentObject();
 
                     //Mensagem
-                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new StationInfo");
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has collected new StationInfo");
 
                     //2.2.2. Adicionamos ao pacote à lista que temos na classe Manager
                     this.agentManager.addStationInfo(agent, newStationInfo.clone());

@@ -79,8 +79,8 @@ public class User extends Agent {
 
         System.out.println("> User AID: " + this.getAID() + " is ON");
 
+        addBehaviour(new ReceiveInfoU(this));
         addBehaviour(new InformCreationUser(this));
-        //addBehaviour(new ReceiveInfoU(this));
 
     }
 
@@ -256,5 +256,10 @@ public class User extends Agent {
      * Métodos Auxiliares
      */
 
+    public void turnOff() {
+
+        DFFunctions.removeAgent(this);
+
+    }
 
 }

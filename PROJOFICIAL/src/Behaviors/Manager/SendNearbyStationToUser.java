@@ -78,7 +78,7 @@ public class SendNearbyStationToUser extends OneShotBehaviour {
         }
 
         //Mensagem
-        System.out.println("> Manager AID: " + this.agentManager.getAID() + " has sent TravelPackage from Nearby User to Station");
+        System.out.println("> Manager AID: " + this.agentManager.getAID() + " has sent AID from Nearby Station to User");
 
         //4. Enviamos a mensagem para o User
         this.agentManager.send(message);
