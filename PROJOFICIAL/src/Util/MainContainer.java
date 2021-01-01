@@ -82,8 +82,8 @@ public class MainContainer {
         this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {});
     }
 
-    public void startUser(Integer financialStatus, Integer stubborness, Position actualPosition, Position setDestination){
-        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {financialStatus, stubborness, actualPosition, setDestination});
+    public void startUser(Integer financialStatus, Integer stubborness, Integer velocity, Position actualPosition, Position setDestination){
+        this.startAgentInPlatform("User "+ totalUsers++, "Agents.User", new Object[] {financialStatus, stubborness, velocity, actualPosition, setDestination});
     }
 
     public void startStation(Integer stationAPE, Integer stationBaseRate, Integer numBikes, Position position) {

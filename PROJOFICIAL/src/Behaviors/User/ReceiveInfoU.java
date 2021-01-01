@@ -142,7 +142,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     System.out.println("> User AID: " + this.agentUser.getAID() + " has started moving");
 
                     //2.3.5. Começamos o behavior UpdatePosition que vai atualizar a posição do User e comunicar com o Manager
-                    this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
+                    //this.agentUser.addBehaviour(new UpdatePosition(this.agentUser));
 
                 } catch (Exception e) {
 

@@ -38,7 +38,7 @@ public class Main {
             mc.startStation(3,2,2, stationD);
 
             Thread.sleep(1000);
-            mc.startUser(5,5, stationO, stationD);
+            mc.startUser(5,5, 10, stationO, stationD);
 
 
         } catch (Exception e) {

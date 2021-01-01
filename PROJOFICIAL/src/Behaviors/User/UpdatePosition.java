@@ -11,7 +11,7 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-public class UpdatePosition extends OneShotBehaviour {
+public class UpdatePosition extends CyclicBehaviour {
 
     /**
      * Variáveis
@@ -98,7 +98,7 @@ public class UpdatePosition extends OneShotBehaviour {
             }
 
             try {
-                Thread.sleep(1500);
+                Thread.sleep(this.agentUser.getVelocity()*100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

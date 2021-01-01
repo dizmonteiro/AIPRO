@@ -2,6 +2,7 @@ package Agents;
 
 import Behaviors.User.InformCreationUser;
 import Behaviors.User.ReceiveInfoU;
+import Behaviors.User.UpdatePosition;
 import Extra.Position;
 import Extra.TravelPackage;
 import Extra.WorldMap;
@@ -23,6 +24,7 @@ public class User extends Agent {
     //Variáveis aleatórias que servirão para influenciar as decisões do Agente User
     private int financialStatus; //grau de riqueza, 1-10, quanto mais rico menor será a probabilidade de aceitar os descontos.
     private int stubborness; //grau de teimosia de 1-10, quanto mais teimoso mmenor será a probabilidade de aceitar os descontos.
+    private int velocity;
 
     //Posição atual do Agente User
     private Position actualPosition;
@@ -60,9 +62,11 @@ public class User extends Agent {
         //this.setMap((WorldMap) args[0]);
         this.setFinancialStatus((Integer) args[0]);
         this.setStubborness((Integer) args[1]);
-        this.setActualPosition((Position) args[2]);
+        this.setVelocity((Integer) args[2]);
+        this.setActualPosition((Position) args[3]);
 
-        Position destination = new Position((Position) args[3]);
+
+        Position destination = new Position((Position) args[4]);
 
         this.actualTPackage = new TravelPackage(this.getAID(), this.actualPosition, destination);
 
@@ -81,6 +85,7 @@ public class User extends Agent {
 
         addBehaviour(new ReceiveInfoU(this));
         addBehaviour(new InformCreationUser(this));
+        addBehaviour(new UpdatePosition(this));
 
     }
 
@@ -144,6 +149,12 @@ public class User extends Agent {
 
     }
 
+    public int getVelocity() {
+
+        return this.velocity;
+
+    }
+
     /**
      * Setters
      */
@@ -193,6 +204,12 @@ public class User extends Agent {
     public void setMoving(boolean moving) {
 
         isMoving = moving;
+
+    }
+
+    public void setVelocity(int velocity) {
+
+        this.velocity = velocity;
 
     }
 
