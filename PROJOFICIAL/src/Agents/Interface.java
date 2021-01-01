@@ -1,10 +1,13 @@
 package Agents;
 
+import Behaviors.Manager.ReceiveInfoM;
 import Extra.Position;
+import Extra.StationInfo;
 import Extra.WorldMap;
 import Util.DFFunctions;
+import jade.core.AID;
 import jade.core.Agent;
-
+import Behaviors.Interface.ReceiveInfoI;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,10 +22,11 @@ public class Interface extends Agent {
      */
 
     private WorldMap map;
-    private List<User> users;
-    private List<Station> stations;
+    private Map<AID, Position> userPositions;
     private PainelInicial pi;
     private JFrame f;
+    //Info das APE de todas as Stations
+    private Map<AID, StationInfo> globalStations;
     /**
      * Setup
      */
@@ -35,8 +39,9 @@ public class Interface extends Agent {
 
         DFFunctions.registerAgent(this, "Agent Interface");
 
-        this.users = new ArrayList<>();
-        this.stations = new ArrayList<>();
+        this.userPositions = new HashMap<>();
+        //INICIALMENTE A LISTA DE AGENTES STATION VAI ESTAR VAZIA
+        this.globalStations = new HashMap<>();
 
         pi = new PainelInicial();
         JScrollPane scroll = new JScrollPane(pi);
@@ -47,18 +52,18 @@ public class Interface extends Agent {
         frame.setVisible(true);
         f = new JFrame("Interface");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //INICIAR BEHAVIORS
+        addBehaviour(new ReceiveInfoI(this));
     }
 
     /**
      * Construtores
      */
 
-    public Interface(WorldMap map, List<User> users, List<Station> stations) {
+    public Interface(WorldMap map) {
 
         this.setMap(map);
-        //this.setUsers(users);
-        //this.setStations(stations);
-
     }
 
     /**
@@ -71,31 +76,6 @@ public class Interface extends Agent {
 
     }
 
-    /*
-    public List<Station> getStations() {
-
-        List<Station> res = new ArrayList<>();
-
-        for(Station s : this.stations) {
-            res.add(s.clone());
-        }
-
-        return res;
-
-    }
-
-    public List<User> getUsers() {
-
-        List<User> res = new ArrayList<>();
-
-        for(User u : this.users) {
-            res.add(u.clone());
-        }
-
-        return res;
-
-    }
-*/
     /**
      * Setters
      */
@@ -105,27 +85,6 @@ public class Interface extends Agent {
         this.map = map.clone();
 
     }
-    /*
-
-    public void setStations(List<Station> stations) {
-
-        this.stations = new ArrayList<>();
-
-        for(Station s : stations) {
-            this.stations.add(s.clone());
-        }
-
-    }
-
-    public void setUsers(List<User> users) {
-
-        this.users = new ArrayList<>();
-
-        for(User u : users) {
-            this.users.add(u.clone());
-        }
-
-    }*/
 
     /**
      * Clone
@@ -133,13 +92,31 @@ public class Interface extends Agent {
 
     public Interface clone() {
 
-        return new Interface(this.map, this.users, this.stations);
+        return new Interface(this.map);
 
     }
 
     /**
      * Métodos Auxiliares
      */
+    //Vai buscar o AID da Station com determinada Position
+    public AID getStationWithPosition(Position stationPos) {
+
+        List<AID> agentStation = new ArrayList<>();
+
+        this.globalStations.forEach((k,v) -> {
+
+            if(v.getStationPos().equalsPos(stationPos)) {
+
+                agentStation.add(k);
+
+            }
+
+        });
+
+        return agentStation.get(0);
+    }
+
 
     /**
      * Behaviors
@@ -158,18 +135,20 @@ public class Interface extends Agent {
                 }
             }
 
-            for(User u : users) {
-                u_pos = u.getActualPosition();
+            for (Map.Entry<AID, Position> entry : userPositions.entrySet()) {
+                AID k = entry.getKey();
+                Position v = entry.getValue();
                 g.setColor(Color.ORANGE);
-                g.fillRect(u_pos.getX() * 10, u_pos.getY() * 10, 10, 10);
+                g.fillRect(v.getX() * 10, v.getY() * 10, 10, 10);
             }
 
-            for(Station s : stations) {
-                s_pos = s.getPosition();
-                g.setColor(Color.ORANGE);
+            for (Map.Entry<AID, StationInfo> entry : globalStations.entrySet()) {
+                AID k = entry.getKey();
+                StationInfo v = entry.getValue();
+                s_pos = v.getStationPos();
+                g.setColor(Color.GREEN);
                 g.fillRect(s_pos.getX() * 10, s_pos.getY() * 10, 10, 10);
             }
-
         }
     }
 
