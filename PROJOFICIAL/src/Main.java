@@ -26,6 +26,9 @@ public class Main {
         try {
 
             Thread.sleep(1000);
+            mc.startInterface(map);
+
+            Thread.sleep(1000);
             mc.startManager();
 
             Thread.sleep(1000);

@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/ReceiveInfoU.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/ReceiveInfoU.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Util/MainContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Util/MainContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
@@ -108,7 +112,7 @@
       <workItem from="1609310494140" duration="27000" />
       <workItem from="1609355362979" duration="28840000" />
       <workItem from="1609387779980" duration="2072000" />
-      <workItem from="1609432426912" duration="5566000" />
+      <workItem from="1609432426912" duration="11217000" />
     </task>
     <servers />
   </component>

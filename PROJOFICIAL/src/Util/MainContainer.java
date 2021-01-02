@@ -91,6 +91,6 @@ public class MainContainer {
     }
 
     public void startInterface(WorldMap map) {
-        this.startAgentInPlatform("Agent Interface", "Agent Interface", new Object[] {map});
+        this.startAgentInPlatform("Interface", "Agents.Interface", new Object[] {map});
     }
 }

@@ -20,10 +20,13 @@ public class Manager extends Agent {
      */
 
     //Mapa Global com Agents
-   // private WorldMap map;
+    //private WorldMap map;
+
 
     //Info das APE de todas as Stations
     private Map<AID, StationInfo> globalStations;
+
+    private AID agentInterface;
 
     /**
      * Setup
@@ -38,6 +41,7 @@ public class Manager extends Agent {
 
         //REGISTAR AGENTE MANAGER
         DFFunctions.registerAgent(this, "Manager");
+        this.agentInterface = DFFunctions.findSpecificAgent(this,"Interface");
 
         //INICIALMENTE A LISTA DE AGENTES STATION VAI ESTAR VAZIA
         this.globalStations = new HashMap<>();
@@ -58,6 +62,12 @@ public class Manager extends Agent {
         Map<AID, StationInfo> res = new HashMap<>(this.globalStations);
 
         return res;
+
+    }
+
+    public AID getAgentInterface() {
+
+        return this.agentInterface;
 
     }
 

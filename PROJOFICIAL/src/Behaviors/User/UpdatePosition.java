@@ -4,6 +4,7 @@ import Agents.User;
 import Extra.InfoPackageFromUserToManager;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
@@ -11,27 +12,33 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-public class UpdatePosition extends CyclicBehaviour {
+//public class UpdatePosition extends CyclicBehavior {
+public class UpdatePosition extends TickerBehaviour {
 
     /**
      * Variáveis
      */
 
     private User agentUser;
+    private int velocity;
 
     /**
      * Construtores
      */
 
-    public UpdatePosition(User agentUser) {
+    public UpdatePosition(User agentUser, int velocity) {
 
-        this.agentUser = agentUser;
+        super(agentUser,velocity*100);
+        this.setAgentUser(agentUser);
+        this.velocity = velocity;
+
 
     }
 
     /**
      * Setters
      */
+
 
     public void setAgentUser(User agentUser) {
 
@@ -43,9 +50,9 @@ public class UpdatePosition extends CyclicBehaviour {
      * Action
      */
 
-    public void action() {
+    public void onTick() {
 
-        while(this.agentUser.isMoving() && !this.agentUser.getActualPosition().equalsPos(this.agentUser.getActualTPackage().getDestination())){
+        if(this.agentUser.isMoving() && !this.agentUser.getActualPosition().equalsPos(this.agentUser.getActualTPackage().getDestination())){
 
             int actualX = this.agentUser.getActualPosition().getX();
             int actualY = this.agentUser.getActualPosition().getY();

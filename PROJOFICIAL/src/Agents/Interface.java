@@ -37,7 +37,7 @@ public class Interface extends Agent {
 
         this.setMap((WorldMap) args[0]);
 
-        DFFunctions.registerAgent(this, "Agent Interface");
+        DFFunctions.registerAgent(this, "Interface");
 
         this.userPositions = new HashMap<>();
         //INICIALMENTE A LISTA DE AGENTES STATION VAI ESTAR VAZIA
@@ -58,15 +58,6 @@ public class Interface extends Agent {
     }
 
     /**
-     * Construtores
-     */
-
-    public Interface(WorldMap map) {
-
-        this.setMap(map);
-    }
-
-    /**
      * Getters
      */
 
@@ -83,16 +74,6 @@ public class Interface extends Agent {
     public void setMap(WorldMap map) {
 
         this.map = map.clone();
-
-    }
-
-    /**
-     * Clone
-     */
-
-    public Interface clone() {
-
-        return new Interface(this.map);
 
     }
 
