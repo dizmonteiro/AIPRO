@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        map = new WorldMap(80);
+        map = new WorldMap(50);
 
         try {
 
@@ -36,7 +36,7 @@ public class Main {
 
             generateStations(25);
 
-            generateUsers(80);
+            generateUsers(60);
 
             //generateUsers(50);
 
@@ -158,7 +158,7 @@ public class Main {
 
             int ape = r.nextInt(9);
             int baseRate = r.nextInt(3);
-            int numBikes = r.nextInt(18);
+            int numBikes = r.nextInt(25);
             int randomPos = r.nextInt(10000);
 
             Thread.sleep(100);
@@ -188,7 +188,7 @@ public class Main {
             int randomPos1 = r.nextInt(10);
             int randomPos2 = r.nextInt(10);
 
-            Thread.sleep(250);
+            Thread.sleep(500);
 
             mc.startUser(financialStatus,stubborness,velocity,userPositions.get(randomPos1), auxStationPositions.get(randomPos2));
 

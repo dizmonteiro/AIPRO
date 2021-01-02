@@ -113,7 +113,7 @@ public class Interface extends Agent {
                 int numb = v.getNumBikes();
                 if(numb==0) {
                     g.setColor(Color.BLACK);
-                } else if (numb>10){
+                } else if (numb>20){
                     g.setColor(Color.YELLOW);
                 } else if (numb>5){
                     g.setColor(Color.GREEN);
