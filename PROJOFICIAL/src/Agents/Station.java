@@ -236,7 +236,15 @@ public class Station extends Agent {
 
     public double calculateDiscount(double oldPrice) {
 
-        return oldPrice - oldPrice*(100/this.numBikes);
+        if(this.numBikes == 0) {
+
+            return 0;
+
+        } else {
+
+            return oldPrice - oldPrice*(100/this.numBikes);
+
+        }
 
     }
 

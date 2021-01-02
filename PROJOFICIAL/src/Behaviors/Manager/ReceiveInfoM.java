@@ -151,8 +151,15 @@ public class ReceiveInfoM extends CyclicBehaviour {
                         //2.1.5.1. Vamos buscar o AID da Station em que o User foi criado
                         //AID agentStation = this.agentManager.getStationWithPosition(newUserPos);
 
-                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
-                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, nearStations.get(0)));
+                        //List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
+
+                        Position aux = newUserPos.clone();
+
+                        aux.xChange(-1);
+
+                        AID origin = this.agentManager.getStationWithPosition(aux.clone());
+
+                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, origin));
 
                         //2.1.5.2. Vamos enviar o AID da Station em que foi gerado para o User
                         //this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));

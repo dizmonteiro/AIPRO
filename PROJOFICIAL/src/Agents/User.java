@@ -270,13 +270,19 @@ public class User extends Agent {
 
     public boolean evaluateProposal(double oldPrice, double newPrice) {
 
+        if(newPrice == 0) {
+
+            return true;
+
+        }
+
         double discount = Math.abs((newPrice*100)/oldPrice);
 
         double auxdiscount1 = discount/100;
 
         int auxdiscount2 = (int) Math.floor(auxdiscount1);
 
-        if(auxdiscount2 == 10 || auxdiscount2 > this.stubborness + this.financialStatus) {
+        if(auxdiscount2 > this.stubborness + this.financialStatus) {
 
             return true;
 

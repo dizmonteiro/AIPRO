@@ -27,7 +27,7 @@ public class MainContainer {
             e.printStackTrace();
         }
 
-        this.initMainContainerInPlatform("localhost", "9888", "MainContainer");
+        this.initMainContainerInPlatform("localhost", "9999", "MainContainer");
 
     }
 

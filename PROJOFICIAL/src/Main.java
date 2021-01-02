@@ -33,23 +33,24 @@ public class Main {
             mc.startManager();
 
 
+            /*
             Random r = new Random();
 
-            generatePositions(10000,r);
+            generatePositions(5000,r);
 
-            generateStations(15,r);
+            generateStations(20,r);
 
-            generateUsers(40,r);
+            generateUsers(30,r);*/
 
 
-            /*
+
             Position station1 = new Position(5,5);
             Position station1b = new Position(6,5);
             Position station2 = new Position(20,20);
             Position station3 = new Position(40,40);
 
             Thread.sleep(100);
-            mc.startStation(2,5,5,station1);
+            mc.startStation(2,5,7,station1);
 
             Thread.sleep(100);
             mc.startStation(4,5,10,station2);
@@ -60,9 +61,23 @@ public class Main {
             Thread.sleep(100);
             mc.startUser(10,10,3,station1b,station3);
 
-            Thread.sleep(3000);
+            Thread.sleep(8000);
+            mc.startUser(10,1,3,station1b,station3);
+
+            Thread.sleep(8000);
+            mc.startUser(1,10,3,station1b,station3);
+
+            Thread.sleep(8000);
             mc.startUser(1,1,3,station1b,station3);
-            */
+
+            Thread.sleep(8000);
+            mc.startUser(7,7,3,station1b,station3);
+
+            Thread.sleep(8000);
+            mc.startUser(5,5,3,station1b,station3);
+
+            Thread.sleep(8000);
+            mc.startUser(3,3,3,station1b,station3);
 
 
 
@@ -96,7 +111,7 @@ public class Main {
             int ape = r.nextInt(4) + 1;
             int baseRate = r.nextInt(3) + 1;
             int numBikes = r.nextInt(20) + 5;
-            int randomPos = r.nextInt(10000);
+            int randomPos = r.nextInt(5000);
 
             Thread.sleep(100);
 
@@ -121,8 +136,8 @@ public class Main {
             int financialStatus = r.nextInt(10) + 1;
             int stubborness = r.nextInt(10) + 1;
             int velocity = r.nextInt(6) + 2;
-            int randomPos1 = r.nextInt(10);
-            int randomPos2 = r.nextInt(10);
+            int randomPos1 = r.nextInt(20);
+            int randomPos2 = r.nextInt(20);
 
             Thread.sleep(700);
 
