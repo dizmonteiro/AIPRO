@@ -116,6 +116,12 @@ public class AnswerBikeRequest extends OneShotBehaviour {
             //1.1.8. Enviamos a mensagem para o User
             this.agentStation.send(message);
 
+            //Mensagem
+            System.out.println("> Station AID: " + this.agentStation.getAID() + " has sent updated StationInfo to Manager");
+
+            //1.1.9. Atualizamos a info do numBikes que o Manager tem
+            this.agentStation.addBehaviour(new InformUpdateStation(this.agentStation));
+
 
         //1.2. Caso não tenha:
         } else {

@@ -1,10 +1,9 @@
 package Agents;
 
-import Behaviors.Station.InformCreationStation;
+import Behaviors.Station.InformUpdateStation;
 import Behaviors.Station.ReceiveInfoS;
 import Extra.Position;
 import Extra.TravelPackage;
-import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
@@ -70,7 +69,7 @@ public class Station extends Agent {
 
         //INICIAR BEHAVIORS
         addBehaviour(new ReceiveInfoS(this));
-        addBehaviour(new InformCreationStation(this));
+        addBehaviour(new InformUpdateStation(this));
 
 
     }
@@ -237,7 +236,7 @@ public class Station extends Agent {
 
     public double calculateDiscount(double oldPrice) {
 
-        return oldPrice - (5/this.numBikes);
+        return oldPrice - oldPrice*(100/this.numBikes);
 
     }
 

@@ -169,7 +169,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                 }
 
             //2.2. Caso seja uma Station a mandar um INFORM
-            //Vamos receber este tipo de mensagem quando uma nova estação for criada
+            //Vamos receber este tipo de mensagem quando uma nova estação for criada ou quando for atualizada
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.INFORM) {
 
                 //Mensagem

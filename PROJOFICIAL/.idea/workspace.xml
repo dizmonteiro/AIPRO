@@ -5,15 +5,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformCreationStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformCreationStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/StationInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/StationInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Station.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/AnswerBikeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/AnswerBikeRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformCreationStation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/ReceiveInfoS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/ReceiveInfoS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/StationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/StationInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/InformCreationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformUpdateStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,7 +112,7 @@
       <workItem from="1609310494140" duration="27000" />
       <workItem from="1609355362979" duration="28840000" />
       <workItem from="1609387779980" duration="2072000" />
-      <workItem from="1609432426912" duration="19350000" />
+      <workItem from="1609432426912" duration="21399000" />
     </task>
     <servers />
   </component>

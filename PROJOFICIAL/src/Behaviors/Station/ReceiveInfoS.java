@@ -137,6 +137,9 @@ public class ReceiveInfoS extends CyclicBehaviour {
                     //2.3.4. Adicionamos o TravelPackage ao historico
                     this.agentStation.addTravelPackage(newTP.clone());
 
+                    //2.3.5. Atualizamos a info do numBikes que o Manager tem
+                    this.agentStation.addBehaviour(new InformUpdateStation(this.agentStation));
+
                 } catch (Exception e) {
 
                     e.printStackTrace();

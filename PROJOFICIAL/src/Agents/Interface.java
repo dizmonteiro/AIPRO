@@ -41,7 +41,7 @@ public class Interface extends Agent {
         pi = new PainelInicial();
         JScrollPane scroll = new JScrollPane(pi);
         JFrame frame = new JFrame(getClass().getSimpleName());
-        pi.setPreferredSize(new Dimension(this.map.getMapSize()*10,this.map.getMapSize()*10));
+        pi.setPreferredSize(new Dimension(this.map.getMapSize()*15,this.map.getMapSize()*15));
         frame.add(scroll);
         frame.pack();
         frame.setVisible(true);
@@ -83,9 +83,9 @@ public class Interface extends Agent {
             super.paintComponent(g);
             for (int row = 0; row < map.getMapSize(); row++) {
                 for (int col = 0; col < map.getMapSize(); col++) {
-                    x = row * 10;
-                    y = col * 10;
-                    g.drawRect(x, y, 10, 10);
+                    x = row * 15;
+                    y = col * 15;
+                    g.drawRect(x, y, 15, 15);
                     revalidate();
                     repaint();
                 }
@@ -101,7 +101,7 @@ public class Interface extends Agent {
                 } else {
                     g.setColor(Color.MAGENTA);
                 }
-                g.fillRect(u_pos.getX() * 10, u_pos.getY() * 10, 10, 10);
+                g.fillRect(u_pos.getX() * 15, u_pos.getY() * 15, 15, 15);
                 revalidate();
                 repaint();
             }
@@ -111,12 +111,14 @@ public class Interface extends Agent {
                 StationInfo v = entry.getValue();
                 s_pos = v.getStationPos();
                 int numb = v.getNumBikes();
-                if(numb>0) {
+                if(numb==0) {
+                    g.setColor(Color.BLACK);
+                } else if (numb>5){
                     g.setColor(Color.GREEN);
                 } else {
                     g.setColor(Color.RED);
                 }
-                g.fillRect(s_pos.getX() * 10, s_pos.getY() * 10, 10, 10);
+                g.fillRect(s_pos.getX() * 15, s_pos.getY() * 15, 15, 15);
                 revalidate();
                 repaint();
             }

@@ -11,7 +11,7 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-public class InformCreationStation extends OneShotBehaviour {
+public class InformUpdateStation extends OneShotBehaviour {
 
     /**
      * Variáveis
@@ -23,7 +23,7 @@ public class InformCreationStation extends OneShotBehaviour {
      * Construtor
      */
 
-    public InformCreationStation(Station agentStation) {
+    public InformUpdateStation(Station agentStation) {
 
         this.setAgentStation(agentStation);
 

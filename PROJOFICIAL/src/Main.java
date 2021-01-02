@@ -21,8 +21,8 @@ public class Main {
         Position stationb = new Position(20,20);
         Position stationb2 = new Position(21,20);
 
-        Position stationc = new Position(40,50);
-        Position stationc2 = new Position(41,50);
+        Position stationc = new Position(40,40);
+        Position stationc2 = new Position(41,40);
 
         Position stationd = new Position(13,28);
         Position stationd2 = new Position(14,28);
@@ -36,20 +36,20 @@ public class Main {
         Position stationg = new Position(10,12);
         Position stationg2 = new Position(11,12);
 
-        Position stationh = new Position(50,12);
-        Position stationh2 = new Position(51,12);
+        Position stationh = new Position(40,12);
+        Position stationh2 = new Position(41,12);
 
         Position stationi = new Position(25,15);
         Position stationi2 = new Position(26,15);
 
-        map = new WorldMap(100);
+        map = new WorldMap(50);
 
         try {
 
-            Thread.sleep(000);
+            Thread.sleep(100);
             mc.startInterface(map);
 
-            Thread.sleep(1000);
+            Thread.sleep(100);
             mc.startManager();
 
             Thread.sleep(100);
