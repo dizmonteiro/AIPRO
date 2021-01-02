@@ -11,6 +11,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class User extends Agent {
 
@@ -264,6 +265,28 @@ public class User extends Agent {
     public void turnOff() {
 
         DFFunctions.removeAgent(this);
+
+    }
+
+    public boolean evaluateProposal(double oldPrice, double newPrice) {
+
+        double discount = Math.abs((newPrice*100)/oldPrice);
+
+        int auxdiscount = (int) Math.floor(discount);
+
+        Random r = new Random();
+
+        int odd = this.financialStatus + this.stubborness + auxdiscount;
+
+        int pick = r.nextInt(odd) + 1;
+
+        if (pick == 1 || pick == 2) {
+
+            return true;
+
+        }
+
+        return false;
 
     }
 

@@ -32,99 +32,36 @@ public class Main {
             Thread.sleep(100);
             mc.startManager();
 
-            generatePositions(10000);
 
-            generateStations(25);
+            Random r = new Random();
 
-            generateUsers(60);
+            generatePositions(10000,r);
 
-            //generateUsers(50);
+            generateStations(10,r);
+
+            generateUsers(50,r);
 
             /*
-        Position stationa = new Position(10,10);
-        Position stationa2 = new Position(11,10);
+            Position station1 = new Position(5,5);
+            Position station1b = new Position(6,5);
+            Position station2 = new Position(20,20);
+            Position station3 = new Position(40,40);
 
-        Position stationb = new Position(20,20);
-        Position stationb2 = new Position(21,20);
+            Thread.sleep(100);
+            mc.startStation(2,5,5,station1);
 
-        Position stationc = new Position(40,40);
-        Position stationc2 = new Position(41,40);
+            Thread.sleep(100);
+            mc.startStation(2,5,5,station2);
 
-        Position stationd = new Position(13,28);
-        Position stationd2 = new Position(14,28);
+            Thread.sleep(100);
+            mc.startStation(2,5,5,station3);
 
-        Position statione = new Position(32,30);
-        Position statione2 = new Position(33,30);
+            Thread.sleep(100);
+            mc.startUser(10,10,3,station1b,station3);
 
-        Position stationf = new Position(40,40);
-        Position stationf2 = new Position(41,40);
-
-        Position stationg = new Position(10,12);
-        Position stationg2 = new Position(11,12);
-
-        Position stationh = new Position(40,12);
-        Position stationh2 = new Position(41,12);
-
-        Position stationi = new Position(25,15);
-        Position stationi2 = new Position(26,15);
-
-        Thread.sleep(100);
-        mc.startStation(2,2,2, stationa);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, stationb);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, stationc);
-
-        Thread.sleep(100);
-        mc.startStation(2,2,2, stationd);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, statione);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, stationf);
-
-        Thread.sleep(100);
-        mc.startStation(2,2,2, stationg);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, stationh);
-
-        Thread.sleep(100);
-        mc.startStation(3,2,2, stationi);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationa2, stationf);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationf2, statione);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationc2, stationa);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationb2, stationd);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationg2, stationd);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationh2, stationd);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationi2, stationd);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, statione2, stationi);
-
-        Thread.sleep(100);
-        mc.startUser(5,5, 10, stationd2, stationh);
-
-         */
-
-
+            Thread.sleep(3000);
+            mc.startUser(1,1,3,station1b,station3);
+            */
 
         } catch (InterruptedException e) {
 
@@ -134,9 +71,7 @@ public class Main {
 
     }
 
-    public static void generatePositions(int maxPositions) {
-
-        Random r = new Random();
+    public static void generatePositions(int maxPositions, Random r) {
 
         for(int i = 0; i< maxPositions; i++) {
 
@@ -150,15 +85,14 @@ public class Main {
 
     }
 
-    public static void generateStations(int maxStations) throws InterruptedException {
+    public static void generateStations(int maxStations, Random r) throws InterruptedException {
 
-        Random r = new Random();
 
         for(int i = 0; i < maxStations; i++) {
 
-            int ape = r.nextInt(9);
-            int baseRate = r.nextInt(3);
-            int numBikes = r.nextInt(25);
+            int ape = r.nextInt(4) + 1;
+            int baseRate = r.nextInt(3) + 1;
+            int numBikes = r.nextInt(20) + 1;
             int randomPos = r.nextInt(10000);
 
             Thread.sleep(100);
@@ -176,19 +110,18 @@ public class Main {
 
     }
 
-    public static void generateUsers(int maxUsers) throws InterruptedException {
+    public static void generateUsers(int maxUsers, Random r) throws InterruptedException {
 
-        Random r = new Random();
 
         for(int i = 0; i < maxUsers; i++) {
 
-            int financialStatus = r.nextInt(10);
-            int stubborness = r.nextInt(10);
-            int velocity = r.nextInt(10);
+            int financialStatus = r.nextInt(10) + 1;
+            int stubborness = r.nextInt(10) + 1;
+            int velocity = r.nextInt(6) + 2;
             int randomPos1 = r.nextInt(10);
             int randomPos2 = r.nextInt(10);
 
-            Thread.sleep(500);
+            Thread.sleep(600);
 
             mc.startUser(financialStatus,stubborness,velocity,userPositions.get(randomPos1), auxStationPositions.get(randomPos2));
 
