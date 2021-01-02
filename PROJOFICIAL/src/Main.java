@@ -37,9 +37,10 @@ public class Main {
 
             generatePositions(10000,r);
 
-            generateStations(10,r);
+            generateStations(15,r);
 
-            generateUsers(50,r);
+            generateUsers(40,r);
+
 
             /*
             Position station1 = new Position(5,5);
@@ -51,10 +52,10 @@ public class Main {
             mc.startStation(2,5,5,station1);
 
             Thread.sleep(100);
-            mc.startStation(2,5,5,station2);
+            mc.startStation(4,5,10,station2);
 
             Thread.sleep(100);
-            mc.startStation(2,5,5,station3);
+            mc.startStation(3,5,0,station3);
 
             Thread.sleep(100);
             mc.startUser(10,10,3,station1b,station3);
@@ -62,6 +63,8 @@ public class Main {
             Thread.sleep(3000);
             mc.startUser(1,1,3,station1b,station3);
             */
+
+
 
         } catch (InterruptedException e) {
 
@@ -92,7 +95,7 @@ public class Main {
 
             int ape = r.nextInt(4) + 1;
             int baseRate = r.nextInt(3) + 1;
-            int numBikes = r.nextInt(20) + 1;
+            int numBikes = r.nextInt(20) + 5;
             int randomPos = r.nextInt(10000);
 
             Thread.sleep(100);
@@ -121,7 +124,7 @@ public class Main {
             int randomPos1 = r.nextInt(10);
             int randomPos2 = r.nextInt(10);
 
-            Thread.sleep(600);
+            Thread.sleep(700);
 
             mc.startUser(financialStatus,stubborness,velocity,userPositions.get(randomPos1), auxStationPositions.get(randomPos2));
 

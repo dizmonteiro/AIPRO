@@ -272,15 +272,23 @@ public class User extends Agent {
 
         double discount = Math.abs((newPrice*100)/oldPrice);
 
-        int auxdiscount = (int) Math.floor(discount);
+        double auxdiscount1 = discount/100;
+
+        int auxdiscount2 = (int) Math.floor(auxdiscount1);
+
+        if(auxdiscount2 == 10 || auxdiscount2 > this.stubborness + this.financialStatus) {
+
+            return true;
+
+        }
 
         Random r = new Random();
 
-        int odd = this.financialStatus + this.stubborness + auxdiscount;
+        int odd = this.financialStatus + this.stubborness - auxdiscount2;
 
         int pick = r.nextInt(odd) + 1;
 
-        if (pick == 1 || pick == 2) {
+        if (pick == 1) {
 
             return true;
 
