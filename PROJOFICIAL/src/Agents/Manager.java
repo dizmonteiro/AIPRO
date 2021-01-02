@@ -167,4 +167,34 @@ public class Manager extends Agent {
 
         return agentStation.get(0);
     }
+
+    //Verifica se a lista de near stations tem o destino do User
+    public boolean checkIfHasDestination(List<AID> nearStations, Position newUserPos) {
+
+        for(AID a : nearStations) {
+
+            if(this.globalStations.get(a).getStationPos().equalsPos(newUserPos)) {
+
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    public AID getDestinationFromList(List<AID> nearStations, Position newUserPos) {
+
+        for(AID a : nearStations) {
+
+            if(this.globalStations.get(a).getStationPos().equalsPos(newUserPos)) {
+
+                return a;
+            }
+
+        }
+
+        return null;
+
+    }
 }

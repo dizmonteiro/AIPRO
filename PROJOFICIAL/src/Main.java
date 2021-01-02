@@ -33,6 +33,15 @@ public class Main {
         Position stationf = new Position(40,40);
         Position stationf2 = new Position(41,40);
 
+        Position stationg = new Position(10,12);
+        Position stationg2 = new Position(11,12);
+
+        Position stationh = new Position(50,12);
+        Position stationh2 = new Position(51,12);
+
+        Position stationi = new Position(25,15);
+        Position stationi2 = new Position(26,15);
+
         map = new WorldMap(100);
 
         try {
@@ -62,6 +71,15 @@ public class Main {
             mc.startStation(3,2,2, stationf);
 
             Thread.sleep(100);
+            mc.startStation(2,2,2, stationg);
+
+            Thread.sleep(100);
+            mc.startStation(3,2,2, stationh);
+
+            Thread.sleep(100);
+            mc.startStation(3,2,2, stationi);
+
+            Thread.sleep(100);
             mc.startUser(5,5, 10, stationa2, stationf);
 
             Thread.sleep(100);
@@ -72,6 +90,21 @@ public class Main {
 
             Thread.sleep(100);
             mc.startUser(5,5, 10, stationb2, stationd);
+
+            Thread.sleep(100);
+            mc.startUser(5,5, 10, stationg2, stationd);
+
+            Thread.sleep(100);
+            mc.startUser(5,5, 10, stationh2, stationd);
+
+            Thread.sleep(100);
+            mc.startUser(5,5, 10, stationi2, stationd);
+
+            Thread.sleep(100);
+            mc.startUser(5,5, 10, statione2, stationi);
+
+            Thread.sleep(100);
+            mc.startUser(5,5, 10, stationd2, stationh);
 
 
         } catch (Exception e) {

@@ -46,7 +46,7 @@ public class InformCreationStation extends OneShotBehaviour {
     public void action() {
 
         //1. Criamos o pacote stationInfo com o APE e a Posição do AgentStation
-        StationInfo stationInfo = new StationInfo(this.agentStation.getAID(),this.agentStation.getApe(), this.agentStation.getPosition());
+        StationInfo stationInfo = new StationInfo(this.agentStation.getAID(),this.agentStation.getApe(), this.agentStation.getPosition(), this.agentStation.getNumBikes());
 
         //2. Criamos a mensagem com performative INFORM
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);

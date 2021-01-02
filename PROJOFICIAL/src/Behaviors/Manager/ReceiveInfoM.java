@@ -96,16 +96,41 @@ public class ReceiveInfoM extends CyclicBehaviour {
                             //2.1.4.2.1. Vamos buscar todos as Stations cujo User está ao alcance
                             List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
 
+                            //Mensagem
+                            System.out.println("> Manager AID: " + this.agentManager.getAID() + " Checking if Station is User Destination");
+
+                            if(this.agentManager.checkIfHasDestination(nearStations, newUserPos)) {
+
+                                //Mensagem
+                                System.out.println("> Manager AID: " + this.agentManager.getAID() + " Station IS User Destination");
+
+                                AID destination = this.agentManager.getDestinationFromList(nearStations, newUserPos);
+
+                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, destination, newTravelPackage.clone()));
+
+                            } else {
+
+                                //Mensagem
+                                System.out.println("> Manager AID: " + this.agentManager.getAID() + " Station is NOT User Destination");
+
+                                for (AID agentStation : nearStations) {
+
+                                    this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, newTravelPackage.clone()));
+
+                                }
+
+                            }
+
                             //2.1.4.2.2. Vamos enviar o travelPackage do User para todas as Stations cujo APE alcance o User
                             /*
                             for (AID agentStation : nearStations) {
 
-                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, newTravelPackage));
+                                this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, agentStation, newTravelPackage.clone()));
 
                             }*/
 
                             //2.1.4.2.2. Primeiramente vamos enviar só para a primeira Station
-                            this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage.clone()));
+                            //this.agentManager.addBehaviour(new SendNearbyUserToStation(this.agentManager, nearStations.get(0), newTravelPackage.clone()));
 
                         } else {
 

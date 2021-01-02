@@ -110,7 +110,12 @@ public class Interface extends Agent {
                 AID k = entry.getKey();
                 StationInfo v = entry.getValue();
                 s_pos = v.getStationPos();
-                g.setColor(Color.GREEN);
+                int numb = v.getNumBikes();
+                if(numb>0) {
+                    g.setColor(Color.GREEN);
+                } else {
+                    g.setColor(Color.RED);
+                }
                 g.fillRect(s_pos.getX() * 10, s_pos.getY() * 10, 10, 10);
                 revalidate();
                 repaint();

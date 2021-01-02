@@ -13,16 +13,18 @@ public class StationInfo implements Serializable {
     private AID agentStation;
     private int stationAPE;
     private Position stationPos;
+    private int numBikes;
 
     /**
      * Construtores
      */
 
-    public StationInfo(AID agentStation, int stationAPE, Position stationPos) {
+    public StationInfo(AID agentStation, int stationAPE, Position stationPos, int numBikes) {
 
         this.agentStation = agentStation;
         this.stationAPE = stationAPE;
         this.stationPos = stationPos.clone();
+        this.numBikes = numBikes;
 
     }
 
@@ -48,13 +50,19 @@ public class StationInfo implements Serializable {
 
     }
 
+    public int getNumBikes() {
+
+        return this.numBikes;
+
+    }
+
     /**
      * Clone
      */
 
     public StationInfo clone() {
 
-        return new StationInfo(this.agentStation, this.stationAPE, this.stationPos);
+        return new StationInfo(this.agentStation, this.stationAPE, this.stationPos, this.numBikes);
 
     }
 }
