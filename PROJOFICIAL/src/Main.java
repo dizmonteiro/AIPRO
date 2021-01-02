@@ -33,17 +33,16 @@ public class Main {
             mc.startManager();
 
 
-            /*
+
             Random r = new Random();
 
             generatePositions(5000,r);
 
             generateStations(20,r);
 
-            generateUsers(30,r);*/
+            generateUsers(40,r);
 
-
-
+            /*
             Position station1 = new Position(5,5);
             Position station1b = new Position(6,5);
             Position station2 = new Position(20,20);
@@ -78,7 +77,7 @@ public class Main {
 
             Thread.sleep(8000);
             mc.startUser(3,3,3,station1b,station3);
-
+            */
 
 
         } catch (InterruptedException e) {

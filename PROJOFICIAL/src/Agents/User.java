@@ -282,7 +282,7 @@ public class User extends Agent {
 
         int auxdiscount2 = (int) Math.floor(auxdiscount1);
 
-        if(auxdiscount2 > this.stubborness + this.financialStatus) {
+        if(auxdiscount2 >= this.stubborness + this.financialStatus) {
 
             return true;
 
