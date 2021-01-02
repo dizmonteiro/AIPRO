@@ -105,16 +105,6 @@ public class Position implements Serializable {
         return false;
     }
 
-    public Position randomPos(int max) {
-
-        Random r = new Random();
-
-        int resultx = r.nextInt(max);
-        int resulty = r.nextInt(max);
-
-        return new Position(resultx, resulty);
-    }
-
     public void xChange(int x) {
 
         this.setX(this.x + x);

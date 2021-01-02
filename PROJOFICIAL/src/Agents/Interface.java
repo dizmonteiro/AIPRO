@@ -97,7 +97,7 @@ public class Interface extends Agent {
                 u_pos = v.getActualPos();
                 boolean istrav = v.isTraveling();
                 if(istrav) {
-                    g.setColor(Color.ORANGE);
+                    g.setColor(Color.BLUE);
                 } else {
                     g.setColor(Color.MAGENTA);
                 }
@@ -113,6 +113,8 @@ public class Interface extends Agent {
                 int numb = v.getNumBikes();
                 if(numb==0) {
                     g.setColor(Color.BLACK);
+                } else if (numb>10){
+                    g.setColor(Color.YELLOW);
                 } else if (numb>5){
                     g.setColor(Color.GREEN);
                 } else {

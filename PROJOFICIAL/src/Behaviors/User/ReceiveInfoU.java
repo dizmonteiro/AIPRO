@@ -160,7 +160,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
             } else if (agentName.contains("Station") && message.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
 
                 //Mensagem
-                System.out.println("> User AID: " + this.agentUser.getAID() + " has received new REJECT_PROPOSAL message from Manager " + agent);
+                System.out.println("> User AID: " + this.agentUser.getAID() + " has received new REJECT_PROPOSAL message from Station " + agent);
 
                 try {
 
