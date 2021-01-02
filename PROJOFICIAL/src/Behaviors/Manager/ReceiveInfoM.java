@@ -1,7 +1,7 @@
 package Behaviors.Manager;
 
 import Agents.Manager;
-import Extra.InfoPackageFromUserToManager;
+import Extra.InfoPackageFromUser;
 import Extra.Position;
 import Extra.StationInfo;
 import Extra.TravelPackage;
@@ -68,7 +68,7 @@ public class ReceiveInfoM extends CyclicBehaviour {
                 try {
 
                     //2.1.1. Recolhemos o pacote InfoPackageFromUserToManager enviado pelo User
-                    InfoPackageFromUserToManager newPackage = (InfoPackageFromUserToManager) message.getContentObject();
+                    InfoPackageFromUser newPackage = (InfoPackageFromUser) message.getContentObject();
 
                     //2.1.2. Recolhemos os dados contidos no pacote
                     Boolean isTraveling = newPackage.isTraveling();
@@ -124,12 +124,18 @@ public class ReceiveInfoM extends CyclicBehaviour {
                         System.out.println("> Manager AID: " + this.agentManager.getAID() + " User is NOT Traveling");
 
                         //2.1.5.1. Vamos buscar o AID da Station em que o User foi criado
-                        AID agentStation = this.agentManager.getStationWithPosition(newUserPos);
+                        //AID agentStation = this.agentManager.getStationWithPosition(newUserPos);
+
+                        List<AID> nearStations = new ArrayList<>(this.agentManager.getNearStations(newUserPos));
+                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, nearStations.get(0)));
 
                         //2.1.5.2. Vamos enviar o AID da Station em que foi gerado para o User
-                        this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
+                        //this.agentManager.addBehaviour(new SendNearbyStationToUser(this.agentManager, agent, agentStation));
 
                     }
+
+                    //2.2. Enviamos o package do User para a Interface
+                    this.agentManager.addBehaviour(new SendUserPackage(this.agentManager, newPackage.clone()));
 
                 } catch (Exception e) {
 
@@ -158,11 +164,37 @@ public class ReceiveInfoM extends CyclicBehaviour {
                     //Mensagem
                     System.out.println("> Manager AID: " + this.agentManager.getAID() + " has saved new StationInfo");
 
+                    //2.2.3. Enviamos a StationInfo para a interface
+                    this.agentManager.addBehaviour(new SendStationInfo(this.agentManager, newStationInfo.clone()));
+
                 } catch (Exception e) {
 
                     e.printStackTrace();
 
                 }
+
+            } else if (agentName.contains("User") && message.getPerformative() == ACLMessage.CANCEL) {
+
+                //Mensagem
+                System.out.println("> Manager AID: " + this.agentManager.getAID() + " has received new CANCEL message from User " + agent);
+
+                try {
+
+                    //2.2.1. Recolhemos o pacote StationInfo enviado pela Station
+                    AID turnOffUser = (AID) message.getContentObject();
+
+                    //Mensagem
+                    System.out.println("> Manager AID: " + this.agentManager.getAID() + " has collected AID of User who turned off");
+
+                    //2.2.3. Enviamos a StationInfo para a interface
+                    this.agentManager.addBehaviour(new SendTurnOffNotice(this.agentManager, turnOffUser));
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
+
 
             } else {
 

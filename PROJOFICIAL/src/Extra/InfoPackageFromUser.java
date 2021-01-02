@@ -2,7 +2,7 @@ package Extra;
 
 import java.io.Serializable;
 
-public class InfoPackageFromUserToManager implements Serializable {
+public class InfoPackageFromUser implements Serializable {
 
     /**
      * Variáveis
@@ -17,7 +17,7 @@ public class InfoPackageFromUserToManager implements Serializable {
      * Construtores
      */
 
-    public InfoPackageFromUserToManager(boolean isTraveling, Position actualPos, TravelPackage newTP) {
+    public InfoPackageFromUser(boolean isTraveling, Position actualPos, TravelPackage newTP) {
 
         this.setTraveling(isTraveling);
         this.setActualPos(actualPos);
@@ -74,9 +74,9 @@ public class InfoPackageFromUserToManager implements Serializable {
      * Clone
      */
 
-    public InfoPackageFromUserToManager clone() {
+    public InfoPackageFromUser clone() {
 
-        return new InfoPackageFromUserToManager(this.isTraveling, this.actualPos, this.actualTravelPackage);
+        return new InfoPackageFromUser(this.isTraveling, this.actualPos, this.actualTravelPackage);
 
     }
 }

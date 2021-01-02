@@ -1,7 +1,6 @@
 package Behaviors.Station;
 
 import Agents.Station;
-import Extra.InfoPackageFromUserToManager;
 import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
@@ -101,6 +100,9 @@ public class ReceiveInfoS extends CyclicBehaviour {
 
                     //2.2.1. Recolhemos o pacote TravelPackage enviado pelo User
                     TravelPackage newTP = (TravelPackage) message.getContentObject();
+
+                    System.out.println("> Station AID: " + this.agentStation.getAID() + " is processing request...");
+                    Thread.sleep(1000);
 
                     //2.2.2. Criamos uma resposta para a proposta do User
                     this.agentStation.addBehaviour(new AnswerBikeRequest(this.agentStation, agent, newTP.clone()));

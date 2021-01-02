@@ -115,5 +115,17 @@ public class Position implements Serializable {
         return new Position(resultx, resulty);
     }
 
+    public void xChange(int x) {
+
+        this.setX(this.x + x);
+
+    }
+
+    public void yChange(int y) {
+
+        this.setX(this.y + y);
+
+    }
+
 
 }

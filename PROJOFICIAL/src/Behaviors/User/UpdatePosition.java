@@ -1,9 +1,7 @@
 package Behaviors.User;
 
 import Agents.User;
-import Extra.InfoPackageFromUserToManager;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
+import Extra.InfoPackageFromUser;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
@@ -12,7 +10,6 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-//public class UpdatePosition extends CyclicBehavior {
 public class UpdatePosition extends TickerBehaviour {
 
     /**
@@ -28,7 +25,7 @@ public class UpdatePosition extends TickerBehaviour {
 
     public UpdatePosition(User agentUser, int velocity) {
 
-        super(agentUser,velocity*100);
+        super(agentUser,velocity*10);
         this.setAgentUser(agentUser);
         this.velocity = velocity;
 
@@ -120,7 +117,7 @@ public class UpdatePosition extends TickerBehaviour {
             message.addReceiver(this.agentUser.getAgentManager());
 
             //3. Criamos InfoPackageFromUserToManager com posição atualizada
-            InfoPackageFromUserToManager newPackage = new InfoPackageFromUserToManager(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage().clone());
+            InfoPackageFromUser newPackage = new InfoPackageFromUser(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage().clone());
 
             try {
 

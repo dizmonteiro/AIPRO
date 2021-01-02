@@ -1,5 +1,7 @@
 package Extra;
 
+import jade.core.AID;
+
 import java.io.Serializable;
 
 public class StationInfo implements Serializable {
@@ -8,6 +10,7 @@ public class StationInfo implements Serializable {
      * Variáveis
      */
 
+    private AID agentStation;
     private int stationAPE;
     private Position stationPos;
 
@@ -15,8 +18,9 @@ public class StationInfo implements Serializable {
      * Construtores
      */
 
-    public StationInfo(int stationAPE, Position stationPos) {
+    public StationInfo(AID agentStation, int stationAPE, Position stationPos) {
 
+        this.agentStation = agentStation;
         this.stationAPE = stationAPE;
         this.stationPos = stationPos.clone();
 
@@ -38,13 +42,19 @@ public class StationInfo implements Serializable {
 
     }
 
+    public AID getAgentStation() {
+
+        return this.agentStation;
+
+    }
+
     /**
      * Clone
      */
 
     public StationInfo clone() {
 
-        return new StationInfo(this.stationAPE, this.stationPos);
+        return new StationInfo(this.agentStation, this.stationAPE, this.stationPos);
 
     }
 }

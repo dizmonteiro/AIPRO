@@ -10,7 +10,7 @@ import java.io.IOException;
  * BEHAVIOR STATUS: DONE
  */
 
-public class InformCreationUser extends OneShotBehaviour {
+public class InformTurnOff extends OneShotBehaviour {
 
     /**
      * Variáveis
@@ -22,7 +22,7 @@ public class InformCreationUser extends OneShotBehaviour {
      * Construtor
      */
 
-    public InformCreationUser(User agentUser) {
+    public InformTurnOff(User agentUser) {
 
         this.setAgentUser(agentUser);
 
@@ -44,11 +44,8 @@ public class InformCreationUser extends OneShotBehaviour {
 
     public void action() {
 
-        //1. Criamos o pacote InfoPackageFromUserToManager que vai conter a informação se o User está a viajar, a posição atual do User e o travelPackage atual do User
-        InfoPackageFromUser newPackage = new InfoPackageFromUser(this.agentUser.isTraveling(), this.agentUser.getActualPosition(), this.agentUser.getActualTPackage().clone());
-
         //2. Criamos a mensagem com performative INFORM
-        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+        ACLMessage message = new ACLMessage(ACLMessage.CANCEL);
 
         //3. Introduzimos o manager como receptor da mensagem
         message.addReceiver(this.agentUser.getAgentManager());
@@ -56,7 +53,7 @@ public class InformCreationUser extends OneShotBehaviour {
         try {
 
             //4. Colocamos o pacote InfoPackageFromUserToManager na mensagem
-            message.setContentObject(newPackage.clone());
+            message.setContentObject(this.agentUser.getAID());
 
         } catch (IOException e) {
 
@@ -65,10 +62,26 @@ public class InformCreationUser extends OneShotBehaviour {
         }
 
         //Mensagem
-        System.out.println("> User AID: " + this.agentUser.getAID() + " has sent InfoPackageFromUserToManager to Manager");
+        System.out.println("> User AID: " + this.agentUser.getAID() + " has sent Turn Off Notice to Manager");
 
         //5. Enviamos a mensagem para o Manager
         this.agentUser.send(message);
+
+        //Mensagem
+        System.out.println("> User AID: " + this.agentUser.getAID() + " has stopped receiving Messages");
+
+        this.agentUser.blockingReceive();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //Mensagem
+        System.out.println("> User AID: " + this.agentUser.getAID() + " has turned OFF");
+
+        this.agentUser.turnOff();
 
     }
 }

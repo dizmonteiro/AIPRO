@@ -1,6 +1,7 @@
 package Agents;
 
 import Behaviors.Manager.ReceiveInfoM;
+import Extra.InfoPackageFromUser;
 import Extra.Position;
 import Extra.StationInfo;
 import Extra.WorldMap;
@@ -22,11 +23,9 @@ public class Interface extends Agent {
      */
 
     private WorldMap map;
-    private Map<AID, Position> userPositions;
     private PainelInicial pi;
     private JFrame f;
-    //Info das APE de todas as Stations
-    private Map<AID, StationInfo> globalStations;
+
     /**
      * Setup
      */
@@ -39,14 +38,10 @@ public class Interface extends Agent {
 
         DFFunctions.registerAgent(this, "Interface");
 
-        this.userPositions = new HashMap<>();
-        //INICIALMENTE A LISTA DE AGENTES STATION VAI ESTAR VAZIA
-        this.globalStations = new HashMap<>();
-
         pi = new PainelInicial();
         JScrollPane scroll = new JScrollPane(pi);
         JFrame frame = new JFrame(getClass().getSimpleName());
-        pi.setPreferredSize(new Dimension(500*10,500*10));
+        pi.setPreferredSize(new Dimension(this.map.getMapSize()*10,this.map.getMapSize()*10));
         frame.add(scroll);
         frame.pack();
         frame.setVisible(true);
@@ -78,28 +73,6 @@ public class Interface extends Agent {
     }
 
     /**
-     * Métodos Auxiliares
-     */
-    //Vai buscar o AID da Station com determinada Position
-    public AID getStationWithPosition(Position stationPos) {
-
-        List<AID> agentStation = new ArrayList<>();
-
-        this.globalStations.forEach((k,v) -> {
-
-            if(v.getStationPos().equalsPos(stationPos)) {
-
-                agentStation.add(k);
-
-            }
-
-        });
-
-        return agentStation.get(0);
-    }
-
-
-    /**
      * Behaviors
      */
     public class PainelInicial extends JPanel {
@@ -113,27 +86,54 @@ public class Interface extends Agent {
                     x = row * 10;
                     y = col * 10;
                     g.drawRect(x, y, 10, 10);
+                    revalidate();
+                    repaint();
                 }
             }
 
-            for (Map.Entry<AID, Position> entry : userPositions.entrySet()) {
+            for (Map.Entry<AID, InfoPackageFromUser> entry : map.getUserPositions().entrySet()) {
                 AID k = entry.getKey();
-                Position v = entry.getValue();
-                g.setColor(Color.ORANGE);
-                g.fillRect(v.getX() * 10, v.getY() * 10, 10, 10);
+                InfoPackageFromUser v = entry.getValue();
+                u_pos = v.getActualPos();
+                boolean istrav = v.isTraveling();
+                if(istrav) {
+                    g.setColor(Color.ORANGE);
+                } else {
+                    g.setColor(Color.MAGENTA);
+                }
+                g.fillRect(u_pos.getX() * 10, u_pos.getY() * 10, 10, 10);
+                revalidate();
+                repaint();
             }
 
-            for (Map.Entry<AID, StationInfo> entry : globalStations.entrySet()) {
+            for (Map.Entry<AID, StationInfo> entry : map.getStationPositions().entrySet()) {
                 AID k = entry.getKey();
                 StationInfo v = entry.getValue();
                 s_pos = v.getStationPos();
                 g.setColor(Color.GREEN);
                 g.fillRect(s_pos.getX() * 10, s_pos.getY() * 10, 10, 10);
+                revalidate();
+                repaint();
             }
         }
     }
 
+    public void addStation(StationInfo stationPackage) {
 
+        this.map.addStationInfo(stationPackage.clone());
 
+    }
+
+    public void addUser(InfoPackageFromUser userPackage) {
+
+        this.map.addUserInfo(userPackage.clone());
+
+    }
+
+    public void removeUser(AID user) {
+
+        this.map.removeUserFromMAP(user);
+
+    }
 
 }

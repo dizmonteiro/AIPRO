@@ -14,7 +14,7 @@ public class WorldMap {
      */
 
     private int mapSize;
-    private Map<AID, Position> userPositions;
+    private Map<AID, InfoPackageFromUser> userPositions;
     private Map<AID, StationInfo> stationPositions;
 
     /**
@@ -29,7 +29,7 @@ public class WorldMap {
 
     }
 
-    public WorldMap(int size, Map<AID, Position> users, Map<AID, StationInfo> stations) {
+    public WorldMap(int size, Map<AID, InfoPackageFromUser> users, Map<AID, StationInfo> stations) {
 
         this.setMapSize(size);
         this.setUserPositions(users);
@@ -55,9 +55,9 @@ public class WorldMap {
 
     }
 
-    public Map<AID, Position> getUserPositions() {
+    public Map<AID, InfoPackageFromUser> getUserPositions() {
 
-        Map<AID, Position> res = new HashMap<>(this.userPositions);
+        Map<AID, InfoPackageFromUser> res = new HashMap<>(this.userPositions);
 
         return res;
 
@@ -81,7 +81,7 @@ public class WorldMap {
 
     }
 
-    public void setUserPositions(Map<AID, Position> userPositions) {
+    public void setUserPositions(Map<AID, InfoPackageFromUser> userPositions) {
 
         this.userPositions =  new HashMap<>(userPositions);
 
@@ -112,5 +112,24 @@ public class WorldMap {
         return null;
 
     }
+
+    public void addStationInfo(StationInfo newPackage) {
+
+        this.stationPositions.put(newPackage.getAgentStation(),newPackage.clone());
+
+    }
+
+    public void addUserInfo(InfoPackageFromUser newPackage) {
+
+        this.userPositions.put(newPackage.getTravelPackage().getAgentUser(),newPackage.clone());
+
+    }
+
+    public void removeUserFromMAP(AID user) {
+
+        this.userPositions.remove(user);
+
+    }
+
 
 }

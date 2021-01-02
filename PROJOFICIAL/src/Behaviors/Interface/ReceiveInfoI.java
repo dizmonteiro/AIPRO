@@ -1,15 +1,12 @@
 package Behaviors.Interface;
 
 import Agents.Interface;
-import Extra.InfoPackageFromUserToManager;
+import Extra.InfoPackageFromUser;
 import Extra.Position;
 import Extra.StationInfo;
-import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReceiveInfoI extends CyclicBehaviour{
     //vars
@@ -30,33 +27,70 @@ public class ReceiveInfoI extends CyclicBehaviour{
 
     //Métodos
     public void action(){
+
         ACLMessage message = this.agentInterface.receive();
 
         if(message != null){
+
             //Conteúdo da mensagem
             AID agent = message.getSender();
             String agentName = agent.getLocalName();
 
-            //Verificar agente e performative da message
-            if(agentName.contains("User") && message.getPerformative() == ACLMessage.INFORM){
+            //Info da Station
+            if(agentName.contains("Manager") && message.getPerformative() == ACLMessage.INFORM) {
 
-                //System.out.println();
+                //Mensagem
+                System.out.println("> Interface AID: " + this.agentInterface.getAID() + " has received new StationInfo Package message from Manager ");
 
                 try {
+
                     //Reaproveitar
-                    InfoPackageFromUserToManager newPackage = (InfoPackageFromUserToManager) message.getContentObject();
+                    StationInfo newStationPackage = (StationInfo) message.getContentObject();
 
-                    Boolean isTraveling = newPackage.isTraveling();
-                    Position newUserPos = newPackage.getActualPos();
+                    this.agentInterface.addStation(newStationPackage.clone());
 
-                    if(!isTraveling){
-                        AID agentStation = this.agentInterface.getStationWithPosition(newUserPos);
-                    }
-
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+            //Info da Pos do User
+            } else if(agentName.contains("Manager") && message.getPerformative() == ACLMessage.INFORM_REF) {
+
+                //Mensagem
+                System.out.println("> Interface AID: " + this.agentInterface.getAID() + " has received new User Package message from Manager ");
+
+                try {
+
+                    //Reaproveitar
+                    InfoPackageFromUser newUserPackage = (InfoPackageFromUser) message.getContentObject();
+
+                    this.agentInterface.addUser(newUserPackage.clone());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else if(agentName.contains("Manager") && message.getPerformative() == ACLMessage.CANCEL) {
+
+                //Mensagem
+                System.out.println("> Interface AID: " + this.agentInterface.getAID() + " has received new TURN OFF NOTICE from Manager ");
+
+                try {
+
+                    //Reaproveitar
+                    AID userturnoff = (AID) message.getContentObject();
+
+                    this.agentInterface.removeUser(userturnoff);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            } else {
+
+                block();
+
             }
         }
     }

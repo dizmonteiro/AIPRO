@@ -99,6 +99,10 @@ public class ReceiveInfoU extends CyclicBehaviour {
                     //Mensagem
                     System.out.println("> User AID: " + this.agentUser.getAID() + " has stopped moving");
 
+                    //Mensagem
+                    System.out.println("> Station AID: " + this.agentUser.getAID() + " is processing proposal...");
+                    Thread.sleep(2500);
+
                     //2.2.3. Enviamos a resposta para a Station
                     this.agentUser.addBehaviour(new AnswerProposal(this.agentUser, agent, newPackage.clone()));
 
@@ -160,38 +164,7 @@ public class ReceiveInfoU extends CyclicBehaviour {
 
                 try {
 
-                    //Mensagem
-                    System.out.println("> User AID: " + this.agentUser.getAID() + " is turning OFF ");
-
-                    this.agentUser.blockingReceive();
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    this.agentUser.turnOff();
-
-                    /*
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    //2.4. Paramos a recepcao
-                    this.agentUser.blockingReceive();
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    //2.5. Desligamos o User
-                    this.agentUser.turnOff();
-                    */
+                    this.agentUser.addBehaviour(new InformTurnOff(this.agentUser));
 
                 } catch (Exception e) {
 
