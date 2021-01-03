@@ -7,10 +7,6 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
-/**
- * BEHAVIOR STATUS: ALMOST DONE, FALTA O ACEITAR PROPOSTA CASO O DESCONTO SEJA BOM O SUFICIENTE
- */
-
 public class AnswerProposal extends OneShotBehaviour {
 
     /**

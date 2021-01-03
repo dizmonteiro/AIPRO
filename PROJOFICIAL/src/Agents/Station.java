@@ -16,9 +16,6 @@ public class Station extends Agent {
      * Variáveis
      */
 
-    //Mapa global com agentes
-    //private WorldMap map;
-
     //Variável ape, raio do range da estação
     private int ape;
 

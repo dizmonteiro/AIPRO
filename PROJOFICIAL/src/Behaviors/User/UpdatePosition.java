@@ -6,10 +6,6 @@ import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
-/**
- * BEHAVIOR STATUS: DONE
- */
-
 public class UpdatePosition extends TickerBehaviour {
 
     /**

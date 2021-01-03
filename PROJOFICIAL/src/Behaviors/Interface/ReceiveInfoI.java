@@ -2,14 +2,12 @@ package Behaviors.Interface;
 
 import Agents.Interface;
 import Extra.InfoPackageFromUser;
-import Extra.Position;
 import Extra.StationInfo;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class ReceiveInfoI extends CyclicBehaviour{
-    //vars
 
     private Interface agentInterface;
 
@@ -25,18 +23,15 @@ public class ReceiveInfoI extends CyclicBehaviour{
     }
 
 
-    //Métodos
     public void action(){
 
         ACLMessage message = this.agentInterface.receive();
 
         if(message != null){
 
-            //Conteúdo da mensagem
             AID agent = message.getSender();
             String agentName = agent.getLocalName();
 
-            //Info da Station
             if(agentName.contains("Manager") && message.getPerformative() == ACLMessage.INFORM) {
 
                 //Mensagem
@@ -44,7 +39,6 @@ public class ReceiveInfoI extends CyclicBehaviour{
 
                 try {
 
-                    //Reaproveitar
                     StationInfo newStationPackage = (StationInfo) message.getContentObject();
 
                     this.agentInterface.addStation(newStationPackage.clone());
@@ -61,7 +55,6 @@ public class ReceiveInfoI extends CyclicBehaviour{
 
                 try {
 
-                    //Reaproveitar
                     InfoPackageFromUser newUserPackage = (InfoPackageFromUser) message.getContentObject();
 
                     this.agentInterface.addUser(newUserPackage.clone());
@@ -72,7 +65,6 @@ public class ReceiveInfoI extends CyclicBehaviour{
 
             } else if(agentName.contains("Manager") && message.getPerformative() == ACLMessage.CANCEL) {
 
-                //Mensagem
                 System.out.println("> Interface AID: " + this.agentInterface.getAID() + " has received new TURN OFF NOTICE from Manager ");
 
                 try {

@@ -1,14 +1,9 @@
 package Behaviors.User;
 
 import Agents.User;
-import Extra.InfoPackageFromUser;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
-
-/**
- * BEHAVIOR STATUS: DONE
- */
 
 public class InformTurnOff extends OneShotBehaviour {
 

@@ -1,7 +1,6 @@
 package Extra;
 
 import java.io.Serializable;
-import java.util.Random;
 
 public class Position implements Serializable {
 

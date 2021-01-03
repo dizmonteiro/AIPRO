@@ -1,6 +1,5 @@
 package Agents;
 
-import Behaviors.Manager.ReceiveInfoM;
 import Extra.InfoPackageFromUser;
 import Extra.Position;
 import Extra.StationInfo;
@@ -11,9 +10,6 @@ import jade.core.Agent;
 import Behaviors.Interface.ReceiveInfoI;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.*;
 
 public class Interface extends Agent {

@@ -1,15 +1,10 @@
 package Behaviors.User;
 
 import Agents.User;
-import Extra.TravelPackage;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
-
-/**
- * BEHAVIOR STATUS: DONE
- */
 
 public class MakeBikeRequest extends OneShotBehaviour {
 

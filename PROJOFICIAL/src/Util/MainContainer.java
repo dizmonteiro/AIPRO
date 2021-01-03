@@ -10,9 +10,6 @@ import jade.wrapper.ContainerController;
 
 public class MainContainer {
 
-    private int totalAgents = 0;
-    private int totalManagers = 0;
-    private int totalInterfaces = 0;
     private int totalUsers = 0;
     private int totalStations = 0;
     private Runtime rt;
@@ -28,23 +25,6 @@ public class MainContainer {
         }
 
         this.initMainContainerInPlatform("localhost", "9999", "MainContainer");
-
-    }
-
-    public ContainerController initContainerInPlatform(String host, String port, String containerName) {
-
-        // Get the JADE runtime interface (singleton)
-        this.rt = Runtime.instance();
-
-        // Create a Profile, where the launch arguments are stored
-        Profile profile = new ProfileImpl();
-        profile.setParameter(Profile.CONTAINER_NAME, containerName);
-        profile.setParameter(Profile.MAIN_HOST, host);
-        profile.setParameter(Profile.MAIN_PORT, port);
-        // create a non-main agent container
-        ContainerController container = rt.createAgentContainer(profile);
-
-        return container;
 
     }
 
@@ -79,7 +59,7 @@ public class MainContainer {
     }
 
     public void startManager(){
-        this.startAgentInPlatform("Manager " + totalManagers++, "Agents.Manager", new Object[] {});
+        this.startAgentInPlatform("Manager ", "Agents.Manager", new Object[] {});
     }
 
     public void startUser(Integer financialStatus, Integer stubborness, Integer velocity, Position actualPosition, Position setDestination){

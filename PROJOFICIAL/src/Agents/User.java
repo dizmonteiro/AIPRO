@@ -5,7 +5,6 @@ import Behaviors.User.ReceiveInfoU;
 import Behaviors.User.UpdatePosition;
 import Extra.Position;
 import Extra.TravelPackage;
-import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
@@ -18,9 +17,6 @@ public class User extends Agent {
     /**
      * Variáveis
      */
-
-    //Mapa global com agentes
-    //private WorldMap map;
 
     //Variáveis aleatórias que servirão para influenciar as decisões do Agente User
     private int financialStatus; //grau de riqueza, 1-10, quanto mais rico menor será a probabilidade de aceitar os descontos.
@@ -60,7 +56,6 @@ public class User extends Agent {
         Object[] args = this.getArguments();
 
         //Variáveis pré-definidas
-        //this.setMap((WorldMap) args[0]);
         this.setFinancialStatus((Integer) args[0]);
         this.setStubborness((Integer) args[1]);
         this.setVelocity((Integer) args[2]);

@@ -1,10 +1,7 @@
 package Extra;
 
-import Agents.User;
 import jade.core.AID;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class WorldMap {

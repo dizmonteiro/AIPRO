@@ -34,13 +34,21 @@ public class Main {
 
 
 
+            //Random Gen
+
+            
             Random r = new Random();
+
+            int numberStations = 20;
+
+            int numberUsers = 40;
 
             generatePositions(5000,r);
 
-            generateStations(20,r);
+            generateStations(numberStations,r);
 
-            generateUsers(40,r);
+            generateUsers(numberUsers,numberStations,r);
+
 
             /*
             Position station1 = new Position(5,5);
@@ -58,22 +66,22 @@ public class Main {
             mc.startStation(3,5,0,station3);
 
             Thread.sleep(100);
-            mc.startUser(10,10,3,station1b,station3);
+            mc.startUser(10,10,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(10,1,3,station1b,station3);
+            mc.startUser(10,1,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(1,10,3,station1b,station3);
+            mc.startUser(1,10,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(1,1,3,station1b,station3);
+            mc.startUser(1,1,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(7,7,3,station1b,station3);
+            mc.startUser(7,7,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(5,5,3,station1b,station3);
+            mc.startUser(5,5,4,station1b,station3);
 
             Thread.sleep(8000);
             mc.startUser(3,3,3,station1b,station3);
@@ -127,18 +135,20 @@ public class Main {
 
     }
 
-    public static void generateUsers(int maxUsers, Random r) throws InterruptedException {
+    public static void generateUsers(int maxUsers, int maxStations, Random r) throws InterruptedException {
 
 
         for(int i = 0; i < maxUsers; i++) {
 
             int financialStatus = r.nextInt(10) + 1;
             int stubborness = r.nextInt(10) + 1;
-            int velocity = r.nextInt(6) + 2;
-            int randomPos1 = r.nextInt(20);
-            int randomPos2 = r.nextInt(20);
+            int velocity = r.nextInt(6) + 3;
+            int randomPos1 = r.nextInt(maxStations);
+            int randomPos2 = r.nextInt(maxStations);
 
             Thread.sleep(700);
+
+            //Position newUserPos = userPositions.get(randomPos1).clone();
 
             mc.startUser(financialStatus,stubborness,velocity,userPositions.get(randomPos1), auxStationPositions.get(randomPos2));
 

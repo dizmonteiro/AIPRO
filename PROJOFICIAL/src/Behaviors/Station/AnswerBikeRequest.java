@@ -7,10 +7,6 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 
-/**
- * BEHAVIOR STATUS: NOT DONE
- */
-
 public class AnswerBikeRequest extends OneShotBehaviour {
 
     /**

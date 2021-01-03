@@ -6,10 +6,6 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-/**
- * BEHAVIOR STATUS: NOT DONE
- */
-
 public class ReceiveInfoS extends CyclicBehaviour {
 
     /**

@@ -3,7 +3,6 @@ package Agents;
 import Behaviors.Manager.ReceiveInfoM;
 import Extra.Position;
 import Extra.StationInfo;
-import Extra.WorldMap;
 import Util.DFFunctions;
 import jade.core.AID;
 import jade.core.Agent;
@@ -11,17 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Manager extends Agent {
 
     /**
      * Variáveis
      */
-
-    //Mapa Global com Agents
-    //private WorldMap map;
-
 
     //Info das APE de todas as Stations
     private Map<AID, StationInfo> globalStations;
