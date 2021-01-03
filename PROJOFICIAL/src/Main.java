@@ -36,7 +36,7 @@ public class Main {
 
             //Random Gen
 
-            
+
             Random r = new Random();
 
             int numberStations = 20;

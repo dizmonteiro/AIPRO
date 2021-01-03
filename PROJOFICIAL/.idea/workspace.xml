@@ -3,58 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2ce55ec-9618-4a55-b27f-bc3382a27121" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface$PainelInicial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Interface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/Station.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Agents/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Interface/ReceiveInfoI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Interface/ReceiveInfoI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/ReceiveInfoM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendNearbyStationToUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendNearbyStationToUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendNearbyUserToStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendNearbyUserToStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendStationInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendStationInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendTurnOffNotice.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendTurnOffNotice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendUserPackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Manager/SendUserPackage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/AnswerBikeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/AnswerBikeRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformUpdateStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/InformUpdateStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/MakeProposal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/MakeProposal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/ReceiveInfoS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/Station/ReceiveInfoS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/AnswerProposal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/AnswerProposal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformCreationUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformCreationUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformTurnOff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/InformTurnOff.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/MakeBikeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/MakeBikeRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/ReceiveInfoU.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/ReceiveInfoU.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Behaviors/User/UpdatePosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/WorldMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Extra/WorldMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROJOFICIAL/Util/MainContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROJOFICIAL/Util/MainContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Interface/ReceiveInfoI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Interface/ReceiveInfoI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/ReceiveInfoM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStationToUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyStationToUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUserToStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendNearbyUserToStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendStationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendStationInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendTurnOffNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendTurnOffNotice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Manager/SendUserPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Manager/SendUserPackage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/AnswerBikeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/InformUpdateStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/InformUpdateStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/MakeProposal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/Station/ReceiveInfoS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/AnswerProposal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/InformCreationUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/InformTurnOff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/InformTurnOff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/MakeBikeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/ReceiveInfoU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Behaviors/User/UpdatePosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Extra/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Extra/WorldMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/MainContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MainContainer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +104,8 @@
       <workItem from="1609614834100" duration="432000" />
       <workItem from="1609615745790" duration="90000" />
       <workItem from="1609629550059" duration="2401000" />
-      <workItem from="1609706098215" duration="2860000" />
+      <workItem from="1609706098215" duration="3036000" />
+      <workItem from="1609715669209" duration="352000" />
     </task>
     <servers />
   </component>
