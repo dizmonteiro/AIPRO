@@ -36,14 +36,13 @@ public class Main {
 
             //Random Gen
 
-
             Random r = new Random();
 
-            int numberStations = 20;
+            int numberStations = 10;
 
-            int numberUsers = 40;
+            int numberUsers = 100;
 
-            generatePositions(5000,r);
+            generatePositions(50000,r);
 
             generateStations(numberStations,r);
 
@@ -53,7 +52,7 @@ public class Main {
             /*
             Position station1 = new Position(5,5);
             Position station1b = new Position(6,5);
-            Position station2 = new Position(20,20);
+            Position station2 = new Position(30,30);
             Position station3 = new Position(40,40);
 
             Thread.sleep(100);
@@ -84,8 +83,8 @@ public class Main {
             mc.startUser(5,5,4,station1b,station3);
 
             Thread.sleep(8000);
-            mc.startUser(3,3,3,station1b,station3);
-            */
+            mc.startUser(3,3,3,station1b,station3);*/
+
 
 
         } catch (InterruptedException e) {
@@ -100,8 +99,8 @@ public class Main {
 
         for(int i = 0; i< maxPositions; i++) {
 
-            int resultx = r.nextInt(map.getMapSize());
-            int resulty = r.nextInt(map.getMapSize());
+            int resultx = r.nextInt(map.getMapSize()-3)+1;
+            int resulty = r.nextInt(map.getMapSize()-3)+1;
 
             stationPositions.add(new Position(resultx,resulty));
 
@@ -115,10 +114,10 @@ public class Main {
 
         for(int i = 0; i < maxStations; i++) {
 
-            int ape = r.nextInt(4) + 1;
+            int ape = r.nextInt(4) + 3;
             int baseRate = r.nextInt(3) + 1;
-            int numBikes = r.nextInt(20) + 5;
-            int randomPos = r.nextInt(5000);
+            int numBikes = r.nextInt(12) + 5;
+            int randomPos = r.nextInt(50000);
 
             Thread.sleep(100);
 
@@ -142,11 +141,27 @@ public class Main {
 
             int financialStatus = r.nextInt(10) + 1;
             int stubborness = r.nextInt(10) + 1;
-            int velocity = r.nextInt(6) + 3;
+            int velocity = r.nextInt(9) + 3;
             int randomPos1 = r.nextInt(maxStations);
             int randomPos2 = r.nextInt(maxStations);
 
-            Thread.sleep(700);
+            Thread.sleep(800);
+
+            Position origin = userPositions.get(randomPos1);
+
+            Position aux = origin.clone();
+
+            aux.xChange(-1);
+
+            Position destination = userPositions.get(randomPos2);
+
+            while (aux.equalsPos(destination)) {
+
+                randomPos2 = r.nextInt(maxStations);
+
+                destination = userPositions.get(randomPos2);
+
+            }
 
             //Position newUserPos = userPositions.get(randomPos1).clone();
 
